@@ -22,6 +22,7 @@
 - [Benefits](#benefits)
 - [Technical Alignment](#technical-alignment)
 - [Applications](#applications)
+- [BDD providers](#bdd-providers)
 - [Quick start](#quick-start)
 - [Contributing](#contributing)
 - [License](#license)
@@ -74,17 +75,58 @@ OpenSpec unifies and extends behavioral driven specification platforms into a cr
 
 ---
 
+## BDD providers
+
+OpenSpec references executable scenarios through `bdd_ref`. Use any supported provider:
+
+- Cucumber  
+- Behave  
+- Behat  
+- JBehave  
+- Karate  
+- Robot  
+- SpecFlow  
+- **OpenSpec Core**: a minimal YAML BDD format for domains without a native BDD stack, and for teams that want a flexible, schema-validated BDD language.  
+  - Docs: `docs/openspec/spec-bdd-openspec-core.md`  
+  - Schema: `docs/openspec/implementations/bdd/openspec.core/schema.yaml`  
+  - Example: `docs/openspec/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml`
+
+**Example: referencing `openspec.core` from a spec**
+```yaml
+profile: https://openspec.dev/profiles/@software
+kind: software
+meta:
+  id: AUTH-101
+  title: User can log in with email and password
+  owner: app-auth
+  priority: P0
+
+requirements:
+  - id: AUTH-101.1
+    statement: Users can authenticate with valid credentials
+    criteria:
+      - id: AUTH-101.1.1
+        type: functional
+        text: Valid credentials produce a successful session
+        bdd_ref:
+          source: https://openspec.dev/profiles/bdd/openspec.core
+          path: docs/openspec/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml
+          scenario: auth-login-success
+```
+
+---
+
 ## Quick start
 1. Read the white paper: [docs/openspec/whitepaper.md](./docs/openspec/whitepaper.md).  
 2. (Optional) Build a PDF locally with Pandoc:  
-   ```bash  
-   pandoc docs/openspec/whitepaper.md -o docs/openspec/whitepaper.pdf  
+   ```bash
+   pandoc docs/openspec/whitepaper.md -o docs/openspec/whitepaper.pdf
    ```  
 3. Create a release with GitHub CLI:  
-   ```bash  
-   gh release create v0.1.0 docs/openspec/whitepaper.pdf \  
-     --title "OpenSpec v0.1.0" \  
-     --notes "Initial publication of the OpenSpec white paper."  
+   ```bash
+   gh release create v0.1.0 docs/openspec/whitepaper.pdf 
+     --title "OpenSpec v0.1.0" 
+     --notes "Initial publication of the OpenSpec white paper."
    ```  
 
 ---
