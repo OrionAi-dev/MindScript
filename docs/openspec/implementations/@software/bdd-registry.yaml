@@ -1,5 +1,7 @@
 version: 1
 supported:
+  - id: openspec.core
+    url: https://openspec.dev/profiles/bdd/openspec.core
   - id: behave
     url: https://openspec.dev/profiles/bdd/behave
   - id: cucumber
