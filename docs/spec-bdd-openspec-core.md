@@ -56,7 +56,7 @@ scenarios:
 ## Referencing from `@software`
 
 ```yaml
-# inside docs/openspec/implementations/@software/examples/AUTH-101.openspec-core.yaml
+# inside docs/openspec/implementations/@software/examples/AUTH-101.context-turn.yaml
 profile: https://openspec.dev/profiles/@software
 kind: software
 meta: { id: AUTH-101, title: User can log in, owner: app-auth, priority: P0 }
