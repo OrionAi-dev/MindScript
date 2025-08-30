@@ -65,7 +65,7 @@ Key fields:
 Point a criterion to an `openspec.core` scenario the same way you would point to Cucumber.
 
 ```yaml
-# docs/openspec/implementations/@software/examples/AUTH-101.openspec-core.yaml
+# docs/openspec/implementations/@software/examples/AUTH-101.context-turn.yaml
 profile: https://openspec.dev/profiles/@software
 kind: software
 meta: { id: AUTH-101, title: User can log in, owner: app-auth, priority: P0 }
@@ -121,7 +121,7 @@ ajv validate
 
 ## Tooling notes
 
-- **Traceability:** produce `dist/openspec-core/index.json` that maps `criteria.id` to `{ file, scenario_id }`.  
+- **Traceability:** produce `dist/context-turn/index.json` that maps `criteria.id` to `{ file, scenario_id }`.  
 - **Generators (optional):** render `.feature` files for Cucumber, Behave, Behat, Robot.  
 - **Round trip (optional):** import or export Gherkin for migration.
 
@@ -145,4 +145,4 @@ This repository uses **Apache-2.0**. See `LICENSE`.
 
 - Keep `openspec.core` small and stable.  
 - Changes should be backward compatible when possible.  
-- Add examples and update the root doc at `docs/openspec/spec-bdd-openspec-core.md`.
+- Add examples and update the root doc at `docs/openspec/spec-bdd-context-turn.md`.

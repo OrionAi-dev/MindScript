@@ -1,26 +1,49 @@
-# OpenSpec Specification Overview
+# OpenSpec Overview (Specification Layer)
 
-OpenSpec defines requirements and acceptance criteria in a structured, machine-readable format.  
-This document explains the structure, keywords, and conventions.
+OpenSpec defines requirements and acceptance criteria in a structured, machine-readable format.
+This complements the **infrastructure layer** (Context/Turn specs) by giving higher-level ways to describe goals and map them to contracts.
 
-## Structure
-- **Spec Node**: the smallest unit of intent  
-- **Requirement**: a condition that must be satisfied  
-- **Acceptance Criteria**: measurable or testable conditions that prove completion  
-- **Reference**: a link to another spec node or external artifact  
+---
+
+## Core Structure
+
+* **Spec Node**: smallest unit of intent (maps to a requirement or field).
+* **Requirement**: a condition that must be satisfied (maps to `fields` in a Context/Turn).
+* **Acceptance Criteria**: measurable/testable checks (maps to `acceptanceCriteria[]`).
+* **Reference**: link to another spec node, BDD scenario, or external artifact.
+
+---
 
 ## Conventions
-- Specs should be written in plain Markdown with YAML frontmatter for metadata  
-- Each requirement has a unique identifier  
-- Acceptance criteria are listed as bullet points under the requirement  
 
-## Example
+* Specs can be written directly in JSON/TypeScript contracts.
+* YAML/Markdown frontmatter remains supported for human-readable domains (e.g., BDD or policy).
+* Each requirement or field has a unique identifier.
+* Acceptance criteria reference verifiers that can be executed automatically.
+
+---
+
+## Example (Requirement → Turn)
+
 ```yaml
 id: FEATURE-101
 title: User Login
 type: requirement
+acceptanceCriteria:
+  - id: FEATURE-101.1
+    description: User can log in with valid credentials
+    verifier: tool_success
+  - id: FEATURE-101.2
+    description: Invalid credentials are rejected
+    verifier: response_shape
 ```
 
-**Acceptance Criteria**  
-- User can log in with valid credentials  
-- Login attempts with invalid credentials are rejected
+This requirement maps to an OpenSpec Turn contract with `fields` (`username`, `password`) and `acceptanceCriteria` that are verified after execution.
+
+---
+
+## Cross-References
+
+* [context-turn.md](./context-turn.md) → Context vs Turn model
+* [verification.md](./verification.md) → how acceptance criteria are validated
+* [spec-bdd-context-turn.md](./spec-bdd-context-turn.md) → portable BDD profile for non-software domains

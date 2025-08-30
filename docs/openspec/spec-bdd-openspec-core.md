@@ -52,7 +52,7 @@ scenarios:
 ## Referencing from `@software`
 
 ```yaml
-# inside docs/openspec/implementations/@software/examples/AUTH-101.openspec-core.yaml
+# inside docs/openspec/implementations/@software/examples/AUTH-101.context-turn.yaml
 profile: https://openspec.dev/profiles/@software
 kind: software
 meta: { id: AUTH-101, title: User can log in, owner: app-auth, priority: P0 }
@@ -84,7 +84,7 @@ ajv validate
 
 ## Adapters (tooling)
 
-- **Traceability:** produce `dist/openspec-core/index.json` that links criteria to scenario ids.  
+- **Traceability:** produce `dist/context-turn/index.json` that links criteria to scenario ids.  
 - **Generators (optional):** render `.feature` files for Cucumber, Behave, Behat, or Robot.  
 - **Round-trip (optional):** import and export from Gherkin if you need to migrate.
 
@@ -102,4 +102,4 @@ ajv validate
 
 - Schema and examples: `docs/openspec/implementations/bdd/openspec.core/`  
 - `@software` BDD registry entry: `docs/openspec/implementations/@software/bdd-registry.yaml`  
-- This page: `docs/openspec/spec-bdd-openspec-core.md`
+- This page: `docs/openspec/spec-bdd-context-turn.md`
