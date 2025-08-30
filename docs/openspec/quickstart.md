@@ -1,6 +1,6 @@
 # Quickstart
 
-This quickstart shows how to use OpenSPI in 5 steps.
+This quickstart shows how to use OpenSpec infrastructure (Context + Turn contracts) in 5 steps.
 
 ---
 
@@ -93,7 +93,7 @@ Check against acceptance criteria.
 
 For deeper detail, see:
 
-* [spec.md](./spec.md)
+* [spec-language.md](./spec-language.md)
 * [context-turn.md](./context-turn.md)
 * [verification.md](./verification.md)
 * [templates.md](./templates.md)

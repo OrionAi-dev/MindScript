@@ -1,15 +1,15 @@
 # OpenSpec BDD: `openspec.core` (v1.0)
 
-**What it is:** a minimal, portable BDD scenario format (YAML) you can use in domains that do not already have a native BDD stack.  
+**What it is:** a minimal, portable BDD scenario format (YAML) for domains that do not already have a native BDD stack.
 **How it is used:** just like Cucumber or Behave — your OpenSpec specs reference it via `bdd_ref.source` and `bdd_ref.path`.
 
 ---
 
 ## When to use `openspec.core`
 
-- You want human-readable scenarios but do not want to commit to a specific BDD tool yet.  
-- You need a single source that can later generate Cucumber, Behave, Behat, or Robot files.  
-- Non-software domains (legal, operations, policy) need structured scenarios with schema validation.
+* You want human-readable scenarios but do not want to commit to a specific BDD tool yet.
+* You need a single source that can later generate Cucumber, Behave, Behat, or Robot files.
+* Non-software domains (legal, operations, policy) need structured scenarios with schema validation.
 
 If you already have a mature BDD toolchain, prefer that and just reference it.
 
@@ -18,18 +18,22 @@ If you already have a mature BDD toolchain, prefer that and just reference it.
 ## File format (YAML)
 
 **Header**
-- `profile: https://openspec.dev/profiles/bdd/openspec.core`
-- `kind: bdd-core`
-- `meta.id` (for example, `AUTH-101.core`), `meta.title`, optional `meta.tags`
+
+* `profile: https://openspec.dev/profiles/bdd/openspec.core`
+* `kind: bdd-core`
+* `meta.id` (e.g. `AUTH-101.core`), `meta.title`, optional `meta.tags`
 
 **Body**
-- Optional `background.steps[]` – list of steps (Given, When, Then, And, But)  
-- `scenarios[]` – each with:
-  - `id`, `name`, optional `tags`
-  - `outline: true|false` and `examples[]` (for parameterized scenarios)
-  - `steps[]` – `{ keyword, text, table?, doc? }`
+
+* Optional `background.steps[]` – list of steps (Given, When, Then, And, But)
+* `scenarios[]` – each with:
+
+  * `id`, `name`, optional `tags`
+  * `outline: true|false` and `examples[]` (for parameterized scenarios)
+  * `steps[]` – `{ keyword, text, table?, doc? }`
 
 **Minimal example**
+
 ```yaml
 profile: https://openspec.dev/profiles/bdd/openspec.core
 kind: bdd-core
@@ -75,8 +79,8 @@ requirements:
 
 ```bash
 # Validate an openspec.core file
-ajv validate 
-  -s <(yq -o=json docs/openspec/implementations/bdd/openspec.core/schema.yaml) 
+ajv validate \
+  -s <(yq -o=json docs/openspec/implementations/bdd/openspec.core/schema.yaml) \
   -d <(yq -o=json docs/openspec/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml)
 ```
 
@@ -84,22 +88,30 @@ ajv validate
 
 ## Adapters (tooling)
 
-- **Traceability:** produce `dist/openspec-core/index.json` that links criteria to scenario ids.  
-- **Generators (optional):** render `.feature` files for Cucumber, Behave, Behat, or Robot.  
-- **Round-trip (optional):** import and export from Gherkin if you need to migrate.
+* **Traceability:** produce `dist/openspec-core/index.json` linking criteria to scenario ids.
+* **Generators (optional):** render `.feature` files for Cucumber, Behave, Behat, or Robot.
+* **Round-trip (optional):** import/export from Gherkin if you need to migrate.
 
 ---
 
 ## Versioning
 
-- Profile URL: `https://openspec.dev/profiles/bdd/openspec.core`  
-- Schema URL: `https://openspec.dev/schemas/bdd/openspec.core-1.0.json`  
-- Use SemVer. Backward compatible additions bump the minor version, breaking changes bump the major version.
+* Profile URL: `https://openspec.dev/profiles/bdd/openspec.core`
+* Schema URL: `https://openspec.dev/schemas/bdd/openspec.core-1.0.json`
+* Use SemVer. Backward compatible additions bump the minor version, breaking changes bump the major version.
 
 ---
 
 ## Where the files live in this repo
 
-- Schema and examples: `docs/openspec/implementations/bdd/openspec.core/`  
-- `@software` BDD registry entry: `docs/openspec/implementations/@software/bdd-registry.yaml`  
-- This page: `docs/openspec/spec-bdd-openspec-core.md`
+* Schema and examples: `docs/openspec/implementations/bdd/openspec.core/`
+* `@software` BDD registry: `docs/openspec/implementations/@software/bdd-registry.yaml`
+* This page: `docs/openspec/spec-bdd-openspec-core.md`
+
+---
+
+## Cross-References
+
+* [overview.md](./openspec/overview.md) → OpenSpec entrypoint
+* [spec-language.md](./openspec/spec-language.md) → core Context/Turn spec language
+* [templates.md](./openspec/templates.md) → librarian & promotion rules

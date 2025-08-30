@@ -1,12 +1,13 @@
 # Templates & Librarian
 
-Templates capture recurring patterns of specs so they don’t need to be rebuilt from scratch every time. The **Librarian** manages templates: classifying, patching, promoting, and rolling back.
+Templates capture recurring patterns of specs so they don’t need to be rebuilt from scratch every time.
+The **Librarian** manages templates: classifying, patching, promoting, and rolling back.
 
 ---
 
 ## Templates
 
-* **Definition**: A reusable, semver‑versioned starting point for a spec.
+* **Definition**: A reusable, semver-versioned starting point for a spec.
 * **Structure**: Identical to a Context/Turn spec but marked with `version` and stored in a registry.
 * **Use case**: Jumpstart a Turn by applying a template, then patching.
 
@@ -24,7 +25,7 @@ Example:
   "baseId": "restaurant.standard.v1",
   "patches": [
     { "op": "replace", "path": "/fields/radius_minutes/default", "value": 10 },
-    { "op": "add", "path": "/fields/dietary_restrictions", "value": {"type":"string","many":true} }
+    { "op": "add", "path": "/fields/dietary_restrictions", "value": { "type": "string", "many": true } }
   ]
 }
 ```
@@ -51,9 +52,9 @@ Example:
 
 ## Canary & Rollback
 
-* New template versions start as canary (10% of traffic).
-* Auto‑promote if metrics improve.
-* Auto‑rollback on golden test failures or user‑reported regressions.
+* New template versions start as **canary** (10% of traffic).
+* Auto-promote if metrics improve.
+* Auto-rollback on golden test failures or user-reported regressions.
 
 ---
 
@@ -62,15 +63,19 @@ Example:
 Templates are stored with stable IDs:
 
 ```
-openspi://templates/{intent}/{name}/{version}
+openspec://templates/{intent}/{name}/{version}
 ```
 
 Example:
 
 ```
-openspi://templates/restaurant/standard/v1
+openspec://templates/restaurant/standard/v1
 ```
 
 ---
 
-See also: [verification.md](./verification.md) for how acceptance checks interact with template promotion.
+## Cross-References
+
+* [spec-language.md](./spec-language.md) → core schema and field definitions
+* [verification.md](./verification.md) → how acceptance checks interact with template promotion
+* [quickstart.md](./quickstart.md) → end-to-end usage example

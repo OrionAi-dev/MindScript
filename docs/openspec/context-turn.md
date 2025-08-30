@@ -1,13 +1,23 @@
 # Context vs Turn
 
+OpenSpec distinguishes between **Context** (long-lived environment contract) and **Turn** (ephemeral per-request contract). Together they ensure that assumptions are explicit, scoped, and auditable.
+
+---
+
 ## OpenSpec.Context
 
 A **Context** is a long-lived environment contract.
 
-* **Scope**: session | project | workspace | global
-* **Lifespan**: session (ends when session ends), rolling (TTL/uses, auto-renew), or pinned (explicit, global, requires consent)
-* **Contents**: project id, role, tone, locale/tz, privacy flags, filetype preferences, overlays (e.g., astrology), guardrails
+* **Scope**: `session` | `project` | `workspace` | `global`
+* **Lifespan**:
+
+  * `session` → ends when session ends
+  * `rolling` → TTL/uses, auto-renew
+  * `pinned` → explicit, global, requires consent
+* **Contents**: project id, role, tone, locale/timezone, privacy flags, filetype preferences, overlays (e.g., astrology), guardrails
 * **Behavior**: persists across turns; provides defaults; refreshed periodically
+
+---
 
 ## OpenSpec.Turn
 
@@ -19,11 +29,15 @@ A **Turn** is an ephemeral, per-request contract.
 * **Executes** deterministically against the contract
 * **Discarded** after use (unless promoted into a template)
 
-## Inheritance
+---
+
+## Inheritance Rules
 
 * A Turn can override Context fields.
-* Precedence order: user > turn-explicit > context > preference > default > model.
+* **Precedence order**: `user` > `turn-explicit` > `context` > `preference` > `default` > `model`
 * Conflicts trigger clarifiers or error flags.
+
+---
 
 ## Lifecycle
 
@@ -32,6 +46,8 @@ A **Turn** is an ephemeral, per-request contract.
 3. **Clarify** – ask only for required, low-confidence fields.
 4. **Lock & Execute** – freeze, run, verify.
 5. **Update Context** – if user changes prefs, patch Context; auto-refresh on expiry.
+
+---
 
 ## Example
 

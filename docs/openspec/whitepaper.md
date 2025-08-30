@@ -1,71 +1,72 @@
 # OpenSpec White Paper
-**A Unified Framework for Defining Requirements Before Creation**
+
+OpenSpec is a universal specification layer for human–AI interaction. It ensures clarity, auditability, and determinism by replacing assumptions with explicit contracts.
 
 ---
 
-## Introduction  
-Projects in every domain often make the same mistake: creating first and clarifying later. Code is written before requirements are set. Contracts are drafted before terms are aligned. Policies are published before compliance standards are understood.  
+## Motivation
 
-The result is rework, misalignment, and wasted effort.  
+Today’s AI systems often assume context, preferences, or intent without asking. This creates frustration, ambiguity, and inconsistency. OpenSpec solves this by requiring **contracts**:
 
-**OpenSpec** addresses this problem by providing a structured way to define requirements *before* generating documents, content, or systems. By applying proven software engineering fundamentals such as acceptance criteria and specification-driven development to other domains, OpenSpec establishes a foundation of clarity that guides creation.  
-
----
-
-## What is OpenSpec?  
-OpenSpec is a framework for defining requirements and acceptance criteria before any content is produced. It borrows from behavior driven and requirements driven specification practices in software engineering, but extends them to legal drafting, compliance, enterprise governance, and other fields.  
-
-Instead of juggling siloed tools and reinterpreting intent across teams, OpenSpec offers a unified language for specifying what “done” looks like across disciplines.  
+* **Context**: long-lived environment specs (tone, locale, privacy, overlays, etc.)
+* **Turn**: ephemeral, per-request specs inheriting from Context
+* **Contract**: immutable, locked snapshot with signature
 
 ---
 
-## Core Principles  
-- **Requirements before generation**: clarity comes first.  
-- **Acceptance criteria**: define “done” upfront.  
-- **Unified language**: applies across domains.  
-- **Transparency**: requirements are explicit and visible.  
-- **Interoperability**: connects with existing tools and workflows.  
-- **Traceability**: links intent to outputs for accountability.  
-- **Clarity before creation**: minimizes rework and confusion.  
+## Principles
+
+1. **Clarity before execution** – every assumption must be explicit.
+2. **Spec-first interaction** – Context and Turn specs define what will happen before it happens.
+3. **Determinism** – once locked, a Turn executes against an immutable contract.
+4. **Auditability** – provenance, signature, and events allow inspection and replay.
+5. **Extensibility** – templates, verifiers, overlays, and user preferences evolve without breaking the core schema.
 
 ---
 
-## Benefits  
-- **Precision**: outputs consistently reflect the original intent.  
-- **Efficiency**: reduces wasted cycles by aligning teams early and cutting down on revisions.  
-- **Trust**: improves collaboration by making criteria explicit and shared.  
-- **Flexibility**: adapts across software, legal, and enterprise contexts.  
-- **Scalability**: supports both small projects and large organizations, providing a stable foundation as complexity grows.  
+## Building Blocks
+
+* **SpecField**: typed field with constraints, provenance, and scope.
+* **Context**: long-lived spec carrying defaults and policies.
+* **Turn**: short-lived spec that clarifies and executes.
+* **AcceptanceCriteria**: contract conditions verified after execution.
+* **Templates & Patches**: reusable specs and diffs, managed by the Librarian.
+* **Verifiers**: pluggable checks ensuring outputs match contracts.
+* **Events**: lock, verify, fail, refresh logged as a timeline.
 
 ---
 
-## Technical Alignment  
-OpenSpec unifies and extends behavioral driven specification platforms into a cross domain framework.  
+## Workflow
 
-- **Structured nodes**: requirements are expressed in a clear, linked format.  
-- **Interoperability**: layers on top of existing workflows.  
-- **Compatibility**: works with familiar formats and standards.  
-- **Extensibility**: adapts to new domains without breaking the core.  
-
----
-
-## Applications  
-- **Software engineering**: define acceptance criteria before writing features.  
-- **Legal drafting**: agree on terms and rules before redlining.  
-- **Compliance**: encode requirements for audits and governance.  
-- **Enterprise knowledge**: unify requirements across teams.  
-- **AI and automation**: guide outputs with human intent.  
+1. **Activate Context** – load or create environment spec.
+2. **Draft Turn** – interpreter fills fields from Context.
+3. **Clarify** – only ask for missing/low-confidence fields.
+4. **Lock** – freeze spec with signature + timestamp.
+5. **Execute** – bind fields to tools or models.
+6. **Verify** – run acceptance criteria; pass/fail.
+7. **Update Context** – patch preferences or rotate lifespan.
 
 ---
 
-## Vision  
-OpenSpec is more than a technical framework. It is a foundation for clarity and trust in creation itself. By defining acceptance criteria and intent before generating outputs, it provides a scalable, cross domain language for collaboration.  
+## Ecosystem
 
-In an era of AI-generated code, contracts, and policies, OpenSpec helps ensure that automation follows human intent, not the other way around. It points toward a future where clarity comes first, and creation becomes faster, more reliable, and more aligned.  
+* **TypeScript bindings** → canonical reference ([typescript.md](./typescript.md))
+* **Verifiers stdlib** → common checks ([verification.md](./verification.md))
+* **Librarian** → template promotion and governance ([templates.md](./templates.md))
+* **Adapters** → BDD frameworks and domain tools ([implementations](./implementations/))
 
 ---
 
-## Next Steps  
-- The OpenSpec white paper is the first step.  
-- We invite collaboration, contributions, and feedback from software engineers, legal experts, compliance officers, and beyond.  
-- The roadmap includes open source tooling, integrations, and extensions to broaden adoption.  
+## Roadmap
+
+* v0.1.0 – White paper release
+* v0.2.0 – Examples & validation rules
+* v0.3.0 – OpenSpec Infra (Context/Turn, TS bindings)
+* v0.4.0 – CLI, JSON Schema, golden tests, template promotion
+* v1.0.0 – Unified stable spec & reference implementations
+
+---
+
+## Vision
+
+OpenSpec aims to be the **specification backbone** for AI workflows. By treating every request as a contract, it transforms AI from a guesser into a reliable collaborator—bridging human intent, machine execution, and verifiable outcomes.

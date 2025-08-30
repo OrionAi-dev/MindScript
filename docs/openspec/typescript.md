@@ -1,13 +1,15 @@
 # TypeScript Bindings
 
-Type‑first design with strict types, zod validation, and JSON Schema generation.
+OpenSpec is type-first. The canonical bindings are implemented in TypeScript to guarantee consistency, validation, and extensibility.
+
+---
 
 ## Goals
 
 * **Type safety**: Every spec is a typed object.
-* **Consistency**: SpecFields follow discriminated unions.
-* **Validation**: Runtime checks with zod; schema export for interoperability.
-* **Extensibility**: Use module augmentation and `ext` namespaces.
+* **Consistency**: `SpecField` uses discriminated unions.
+* **Validation**: Runtime checks with [zod](https://zod.dev).
+* **Extensibility**: Support module augmentation and `ext` namespaces.
 
 ---
 
@@ -27,7 +29,14 @@ export type ISODateTime = string & { readonly __brand: "ISODateTime" };
 ## SpecField
 
 ```ts
-export type FieldType = "string" | "number" | "boolean" | "enum" | "object" | "array" | "any";
+export type FieldType =
+  | "string"
+  | "number"
+  | "boolean"
+  | "enum"
+  | "object"
+  | "array"
+  | "any";
 
 export interface BaseField<T = unknown> {
   type: FieldType;
@@ -48,15 +57,16 @@ export interface BaseField<T = unknown> {
   ext?: Record<string, JsonValue>; // extensibility bucket
 }
 
-export type SpecField<T = unknown> = BaseField<T> & (
-  | { type: "string"; value?: string; default?: string }
-  | { type: "number"; value?: number; default?: number }
-  | { type: "boolean"; value?: boolean; default?: boolean }
-  | { type: "enum"; enum: readonly T[]; value?: T; default?: T }
-  | { type: "object"; properties?: Record<string, SpecField> }
-  | { type: "array"; items?: SpecField }
-  | { type: "any" }
-);
+export type SpecField<T = unknown> = BaseField<T> &
+  (
+    | { type: "string"; value?: string; default?: string }
+    | { type: "number"; value?: number; default?: number }
+    | { type: "boolean"; value?: boolean; default?: boolean }
+    | { type: "enum"; enum: readonly T[]; value?: T; default?: T }
+    | { type: "object"; properties?: Record<string, SpecField> }
+    | { type: "array"; items?: SpecField }
+    | { type: "any" }
+  );
 ```
 
 ---
@@ -83,7 +93,9 @@ export type FieldScope =
   | { kind: "intent"; value: string }
   | { kind: "global" };
 
-export interface OpenSpecBase<F extends Record<string, SpecField> = Record<string, SpecField>> {
+export interface OpenSpecBase<
+  F extends Record<string, SpecField> = Record<string, SpecField>
+> {
   kind: "context" | "turn";
   id: string;
   intent: string;
@@ -95,15 +107,17 @@ export interface OpenSpecBase<F extends Record<string, SpecField> = Record<strin
   signature?: string;
 }
 
-export interface OpenSpecContext<F extends Record<string, SpecField> = Record<string, SpecField>>
-  extends OpenSpecBase<F> {
+export interface OpenSpecContext<
+  F extends Record<string, SpecField> = Record<string, SpecField>
+> extends OpenSpecBase<F> {
   kind: "context";
   scope: { type: "session" | "project" | "workspace" | "global"; id?: string };
   lifespan: { mode: "session" | "rolling" | "pinned"; ttlDays?: number; maxUses?: number };
 }
 
-export interface OpenSpecTurn<F extends Record<string, SpecField> = Record<string, SpecField>>
-  extends OpenSpecBase<F> {
+export interface OpenSpecTurn<
+  F extends Record<string, SpecField> = Record<string, SpecField>
+> extends OpenSpecBase<F> {
   kind: "turn";
   inheritsFrom: string;
 }
@@ -123,7 +137,9 @@ export interface DerivedSpec {
   provenance: ReadonlyArray<Provenance>;
 }
 
-export interface ToolBinding<P extends Record<string, SpecField> = Record<string, SpecField>> {
+export interface ToolBinding<
+  P extends Record<string, SpecField> = Record<string, SpecField>
+> {
   intent: string;
   tool: string;
   paramMap: { [K in keyof P]?: string } & Record<string, string>;
@@ -134,10 +150,12 @@ export interface ToolBinding<P extends Record<string, SpecField> = Record<string
 
 ## Validation & Tooling
 
-* Generate JSON Schema from TypeScript via `ts-json-schema-generator`.
+* Generate JSON Schema from TypeScript via [`ts-json-schema-generator`](https://github.com/YousefED/typescript-json-schema).
 * Runtime validation with `zod`.
-* Enforce strict mode in tsconfig: `strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`.
-* ESLint: forbid `any`, enforce readonly.
+* Enforce strict mode in `tsconfig`:
+
+  * `strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`
+* ESLint rules: forbid `any`, enforce readonly.
 
 ---
 
@@ -145,9 +163,16 @@ export interface ToolBinding<P extends Record<string, SpecField> = Record<string
 
 ```ts
 export interface RestaurantFields {
-  definition_of_best: SpecField<"highest_rated" | "best_value" | "closest"> & { type: "enum" };
+  definition_of_best: SpecField<
+    "highest_rated" | "best_value" | "closest"
+  > & { type: "enum" };
   cuisine: SpecField<string> & { type: "string" };
-  radius_minutes: SpecField<number> & { type: "number"; min?: 1; max?: 60; default?: 15 };
+  radius_minutes: SpecField<number> & {
+    type: "number";
+    min?: 1;
+    max?: 60;
+    default?: 15;
+  };
 }
 
 export type RestaurantTurn = OpenSpecTurn<RestaurantFields>;
