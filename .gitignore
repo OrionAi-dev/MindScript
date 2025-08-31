@@ -32,3 +32,9 @@ logs/
 **/.venv/
 site/           # mkdocs build output
 .DS_Store
+
+# Python
+.venv/
+
+# Python
+.venv/
