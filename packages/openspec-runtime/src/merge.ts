@@ -2,7 +2,7 @@
 // Merge OpenSpec.Context into OpenSpec.Turn with precedence and safe deep merge.
 // ES5-compatible (no Map/Set/Promise).
 
-import { OpenSpecContext, OpenSpecTurn, SpecField } from "./types";
+import { OpenSpecContext, OpenSpecTurn, SpecField } from '@mindscript/openspec-types';
 
 /**
  * Source precedence (highest wins on conflict).

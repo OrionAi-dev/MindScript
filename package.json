@@ -1,0 +1,20 @@
+{
+  "name": "@mindscript/openspec-monorepo",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "packageManager": "pnpm@9",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "release": "changeset version && pnpm -r run build && changeset publish"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "@changesets/cli": "^2.27.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}

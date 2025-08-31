@@ -1,0 +1,13 @@
+{
+  "name": "@mindscript/openspec-runtime",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": { "build": "tsup src/index.ts --dts", "test": "vitest" },
+  "dependencies": {
+    "@mindscript/openspec-types": "workspace:*"
+  },
+  "publishConfig": { "access": "public" }
+}

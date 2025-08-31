@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mindscript/openspec-types": ["packages/openspec-types/src"],
+      "@mindscript/openspec-runtime": ["packages/openspec-runtime/src"],
+      "@mindscript/openspec-cli": ["packages/openspec-cli/src"],
+      "@mindscript/openspec-plugin-mindql": ["packages/openspec-plugin-mindql/src"],
+      "@mindscript/openspec-plugin-mindgraphql": ["packages/openspec-plugin-mindgraphql/src"],
+      "@mindscript/mindql-core": ["packages/mindql-core/src"],
+      "@mindscript/mindgraphql-core": ["packages/mindgraphql-core/src"]
+    }
+  }
+}

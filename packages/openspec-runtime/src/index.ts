@@ -1,7 +1,7 @@
 // OpenSPI Core Entry Point
 // Re-export types, validators, merge, and verify utilities.
 
-export * from "./types";
+export * from '@mindscript/openspec-types';
 export * from "./validators";
 export * from "./merge";
 export * from "./verify";

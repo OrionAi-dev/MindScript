@@ -1,7 +1,7 @@
 // OpenSPI Verify (ES5-compatible)
 // Synchronous acceptance-criteria checking (no Promise, no Map/Set).
 
-import { AcceptanceCriterion } from "./types";
+import { AcceptanceCriterion } from '@mindscript/openspec-types';
 
 // Result type for each verifier
 export interface VerifierResult {
