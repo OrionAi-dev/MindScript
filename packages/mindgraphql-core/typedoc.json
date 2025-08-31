@@ -1,1 +1,3 @@
-{ "extends": "../../typedoc.base.json", "entryPoints": ["src/index.ts"], "tsconfig": "tsconfig.json", "out": "../../docs/api/mindgraphql-core" }
+{
+  "extends": "../../typedoc.base.json"
+}

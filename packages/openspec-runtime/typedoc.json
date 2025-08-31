@@ -1,1 +1,3 @@
-{ "extends": "../../typedoc.base.json", "entryPoints": ["src/index.ts"], "tsconfig": "tsconfig.json", "out": "../../docs/api/openspec-runtime" }
+{
+  "extends": "../../typedoc.base.json"
+}
