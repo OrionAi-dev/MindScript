@@ -1,4 +1,4 @@
-# OpenSpec Docs
+# MindScript Docs
 
 - [OpenSpec Types](api/openspec-types)
 - [OpenSpec Runtime](api/openspec-runtime)
