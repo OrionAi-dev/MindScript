@@ -1,6 +1,5 @@
 {
   "plugin": ["typedoc-plugin-markdown"],
-  "entryPoints": ["./dist/index.d.ts"],
   "readme": "none",
   "categorizeByGroup": false,
   "excludeExternals": true,
