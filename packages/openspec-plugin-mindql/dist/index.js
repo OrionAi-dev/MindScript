@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // src/index.ts
 import { parseMindQL } from "@mindscript/mindql-core";
 import { writeFileSync, mkdirSync } from "fs";

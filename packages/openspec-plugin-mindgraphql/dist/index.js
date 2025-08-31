@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // src/index.ts
 import { normalizeMindGraphQL } from "@mindscript/mindgraphql-core";
 import { writeFileSync, mkdirSync } from "fs";

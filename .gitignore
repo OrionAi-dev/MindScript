@@ -27,3 +27,8 @@ pnpm-lock.yaml
 # Logs
 *.log
 logs/
+# --- OpenSpec ---
+.venv/
+**/.venv/
+site/           # mkdocs build output
+.DS_Store
