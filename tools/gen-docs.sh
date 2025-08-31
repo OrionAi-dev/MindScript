@@ -1,26 +1,25 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-OUT_DIR="$ROOT_DIR/docs/api"
-
-rm -rf "$OUT_DIR"
-mkdir -p "$OUT_DIR"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT="$ROOT/docs/api"
+rm -rf "$OUT"
+mkdir -p "$OUT"
 
 gen() {
-  local pkg="$1"
+  local pkgdir="$1"
   local sub="$2"
-  pnpm --filter "$pkg" exec typedoc --options typedoc.json --out "$OUT_DIR/$sub"
+  cd "$ROOT/packages/$pkgdir"
+  pnpm exec typedoc --options typedoc.json --out "$OUT/$sub"
 }
 
-gen @mindscript/openspec-types openspec-types
-gen @mindscript/openspec-runtime openspec-runtime
-gen @mindscript/mindql-core mindql-core
-gen @mindscript/mindgraphql-core mindgraphql-core
-gen @mindscript/openspec-plugin-mindql openspec-plugin-mindql
-gen @mindscript/openspec-plugin-mindgraphql openspec-plugin-mindgraphql
+gen openspec-types openspec-types
+gen openspec-runtime openspec-runtime
+gen mindql-core mindql-core
+gen mindgraphql-core mindgraphql-core
+gen openspec-plugin-mindql openspec-plugin-mindql
+gen openspec-plugin-mindgraphql openspec-plugin-mindgraphql
 
-cat > "$ROOT_DIR/docs/index.md" <<'MD'
+cat > "$ROOT/docs/index.md" <<'MD'
 # OpenSpec Docs
 
 - [OpenSpec Types](api/openspec-types)
