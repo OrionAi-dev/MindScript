@@ -1,8 +1,9 @@
 import { defineConfig } from 'tsup';
+
 export default defineConfig({
   entry: ['src/index.ts'],
-  format: ['esm', 'cjs'],
   dts: true,
+  format: ['esm', 'cjs'],
   target: 'es2022',
-  banner: { js: '// @ts-nocheck' },
+  clean: true,
 });
