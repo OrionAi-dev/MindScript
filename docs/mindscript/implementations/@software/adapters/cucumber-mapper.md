@@ -75,7 +75,7 @@ Mapper output (traceability index):
   "mappings": [
     {
       "criteria_id": "FEATURE-101.1.1",
-      "feature": "docs/openspec/implementations/@software/examples/FEATURE-LOGIN.feature",
+      "feature": "docs/mindscript/implementations/@software/examples/FEATURE-LOGIN.feature",
       "scenario": "Valid credentials produce a successful session"
     }
   ]
@@ -96,7 +96,7 @@ OpenSpec → Cucumber
 ## File layout
 
 **Inputs**
-- OpenSpec specs: anywhere (examples under `docs/openspec/implementations/@software/examples/`)
+- OpenSpec specs: anywhere (examples under `docs/mindscript/implementations/@software/examples/`)
 - Cucumber features: wherever your test suite keeps them; examples live alongside the YAML
 
 **Outputs**

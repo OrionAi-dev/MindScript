@@ -129,7 +129,7 @@ requirements:
 
 ## Tips
 
-- Store examples under `docs/openspec/implementations/@software/examples/`
+- Store examples under `docs/mindscript/implementations/@software/examples/`
 - Keep your OpenAPI file (if used) next to the spec or at a stable URL
 - Use CI to validate:
   1) Schema validate specs  

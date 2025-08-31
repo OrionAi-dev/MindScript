@@ -81,7 +81,7 @@ Mapper output (traceability index):
   "mappings": [
     {
       "criteria_id": "ROBOT-601.1.1",
-      "file": "docs/openspec/implementations/@software/examples/ROBOT-LOGIN.robot",
+      "file": "docs/mindscript/implementations/@software/examples/ROBOT-LOGIN.robot",
       "test_case": "Valid credentials produce a successful session"
     }
   ]
@@ -102,7 +102,7 @@ OpenSpec → Robot
 ## File layout
 
 **Inputs**
-- OpenSpec specs: anywhere (examples under `docs/openspec/implementations/@software/examples/`)
+- OpenSpec specs: anywhere (examples under `docs/mindscript/implementations/@software/examples/`)
 - Robot tests: wherever your suite keeps them (often `tests/`); examples live alongside the YAML
 
 **Outputs**

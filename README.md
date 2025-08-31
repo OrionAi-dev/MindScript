@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](./LICENSE)
 [![Release](https://img.shields.io/github/v/release/YourOrg/openspec)](../../releases/latest)
-[![Docs](https://img.shields.io/badge/docs-whitepaper-success)](./docs/openspec/whitepaper.md)
+[![Docs](https://img.shields.io/badge/docs-whitepaper-success)](./docs/mindscript/whitepaper.md)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](../../issues)
 
 ---
@@ -11,7 +11,7 @@
 
 🔭 Clarity before creation • ✅ Acceptance criteria first • 🌐 Cross-domain  
 
-📄 [Read the white paper (Markdown)](./docs/openspec/whitepaper.md)  
+📄 [Read the white paper (Markdown)](./docs/mindscript/whitepaper.md)  
 ⬇️ [Get the latest release](../../releases/latest)
 
 ---
@@ -87,9 +87,9 @@ OpenSpec references executable scenarios through `bdd_ref`. Use any supported pr
 - Robot  
 - SpecFlow  
 - **OpenSpec Core**: a minimal YAML BDD format for domains without a native BDD stack, and for teams that want a flexible, schema-validated BDD language.  
-  - Docs: `docs/openspec/spec-bdd-openspec-core.md`  
-  - Schema: `docs/openspec/implementations/bdd/openspec.core/schema.yaml`  
-  - Example: `docs/openspec/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml`
+  - Docs: `docs/mindscript/spec-bdd-openspec-core.md`  
+  - Schema: `docs/mindscript/implementations/bdd/openspec.core/schema.yaml`  
+  - Example: `docs/mindscript/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml`
 
 **Example: referencing `openspec.core` from a spec**
 ```yaml
@@ -110,21 +110,21 @@ requirements:
         text: Valid credentials produce a successful session
         bdd_ref:
           source: https://openspec.dev/profiles/bdd/openspec.core
-          path: docs/openspec/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml
+          path: docs/mindscript/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml
           scenario: auth-login-success
 ```
 
 ---
 
 ## Quick start
-1. Read the white paper: [docs/openspec/whitepaper.md](./docs/openspec/whitepaper.md).  
+1. Read the white paper: [docs/mindscript/whitepaper.md](./docs/mindscript/whitepaper.md).  
 2. (Optional) Build a PDF locally with Pandoc:  
    ```bash
-   pandoc docs/openspec/whitepaper.md -o docs/openspec/whitepaper.pdf
+   pandoc docs/mindscript/whitepaper.md -o docs/mindscript/whitepaper.pdf
    ```  
 3. Create a release with GitHub CLI:  
    ```bash
-   gh release create v0.1.0 docs/openspec/whitepaper.pdf 
+   gh release create v0.1.0 docs/mindscript/whitepaper.pdf 
      --title "OpenSpec v0.1.0" 
      --notes "Initial publication of the OpenSpec white paper."
    ```  

@@ -76,7 +76,7 @@ Mapper output (traceability index):
   "mappings": [
     {
       "criteria_id": "SPECFLOW-201.1.1",
-      "feature": "docs/openspec/implementations/@software/examples/SPECFLOW-LOGIN.feature",
+      "feature": "docs/mindscript/implementations/@software/examples/SPECFLOW-LOGIN.feature",
       "scenario": "Valid credentials produce a successful session"
     }
   ]
@@ -97,7 +97,7 @@ OpenSpec → SpecFlow
 ## File layout
 
 **Inputs**
-- OpenSpec specs: anywhere (examples under `docs/openspec/implementations/@software/examples/`)
+- OpenSpec specs: anywhere (examples under `docs/mindscript/implementations/@software/examples/`)
 - SpecFlow features: usually under `Features/` in your .NET test project; examples live alongside the YAML
 
 **Outputs**

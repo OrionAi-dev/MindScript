@@ -56,7 +56,7 @@ scenarios:
 ## Referencing from `@software`
 
 ```yaml
-# inside docs/openspec/implementations/@software/examples/AUTH-101.context-turn.yaml
+# inside docs/mindscript/implementations/@software/examples/AUTH-101.context-turn.yaml
 profile: https://openspec.dev/profiles/@software
 kind: software
 meta: { id: AUTH-101, title: User can log in, owner: app-auth, priority: P0 }
@@ -80,8 +80,8 @@ requirements:
 ```bash
 # Validate an openspec.core file
 ajv validate \
-  -s <(yq -o=json docs/openspec/implementations/bdd/openspec.core/schema.yaml) \
-  -d <(yq -o=json docs/openspec/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml)
+  -s <(yq -o=json docs/mindscript/implementations/bdd/openspec.core/schema.yaml) \
+  -d <(yq -o=json docs/mindscript/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml)
 ```
 
 ---
@@ -104,9 +104,9 @@ ajv validate \
 
 ## Where the files live in this repo
 
-* Schema and examples: `docs/openspec/implementations/bdd/openspec.core/`
-* `@software` BDD registry: `docs/openspec/implementations/@software/bdd-registry.yaml`
-* This page: `docs/openspec/spec-bdd-openspec-core.md`
+* Schema and examples: `docs/mindscript/implementations/bdd/openspec.core/`
+* `@software` BDD registry: `docs/mindscript/implementations/@software/bdd-registry.yaml`
+* This page: `docs/mindscript/spec-bdd-openspec-core.md`
 
 ---
 

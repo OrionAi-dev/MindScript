@@ -65,7 +65,7 @@ Key fields:
 Point a criterion to an `openspec.core` scenario the same way you would point to Cucumber.
 
 ```yaml
-# docs/openspec/implementations/@software/examples/AUTH-101.context-turn.yaml
+# docs/mindscript/implementations/@software/examples/AUTH-101.context-turn.yaml
 profile: https://openspec.dev/profiles/@software
 kind: software
 meta: { id: AUTH-101, title: User can log in, owner: app-auth, priority: P0 }
@@ -86,7 +86,7 @@ requirements:
 Add `openspec.core` to the `@software` BDD registry:
 
 ```yaml
-# docs/openspec/implementations/@software/bdd-registry.yaml
+# docs/mindscript/implementations/@software/bdd-registry.yaml
 version: 1
 supported:
   - id: cucumber
@@ -113,8 +113,8 @@ supported:
 
 ```bash
 ajv validate 
-  -s <(yq -o=json docs/openspec/implementations/bdd/openspec.core/schema.yaml) 
-  -d <(yq -o=json docs/openspec/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml)
+  -s <(yq -o=json docs/mindscript/implementations/bdd/openspec.core/schema.yaml) 
+  -d <(yq -o=json docs/mindscript/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml)
 ```
 
 ---
@@ -145,4 +145,4 @@ This repository uses **Apache-2.0**. See `LICENSE`.
 
 - Keep `openspec.core` small and stable.  
 - Changes should be backward compatible when possible.  
-- Add examples and update the root doc at `docs/openspec/spec-bdd-context-turn.md`.
+- Add examples and update the root doc at `docs/mindscript/spec-bdd-context-turn.md`.

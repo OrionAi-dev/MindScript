@@ -74,7 +74,7 @@ Mapper output (traceability index):
   "mappings": [
     {
       "criteria_id": "JBEHAVE-401.1.1",
-      "story": "docs/openspec/implementations/@software/examples/JBEHAVE-LOGIN.story",
+      "story": "docs/mindscript/implementations/@software/examples/JBEHAVE-LOGIN.story",
       "scenario": "Valid credentials produce a successful session"
     }
   ]
@@ -95,7 +95,7 @@ OpenSpec → JBehave
 ## File layout
 
 **Inputs**
-- OpenSpec specs: anywhere (examples under `docs/openspec/implementations/@software/examples/`)
+- OpenSpec specs: anywhere (examples under `docs/mindscript/implementations/@software/examples/`)
 - JBehave stories: wherever your test suite keeps them; examples live alongside the YAML
 
 **Outputs**

@@ -9,7 +9,7 @@ Thank you for your interest in contributing!
 
 ## Development Setup
 1. Clone the repo
-2. Create or edit specs in `docs/openspec/`
+2. Create or edit specs in `docs/mindscript/`
 3. Follow the guidelines in the white paper
 
 ## Code of Conduct

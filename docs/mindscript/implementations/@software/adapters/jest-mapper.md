@@ -104,7 +104,7 @@ OpenSpec → Jest
 ## File layout
 
 **Inputs**
-- OpenSpec specs: anywhere (examples under `docs/openspec/implementations/@software/examples/`)
+- OpenSpec specs: anywhere (examples under `docs/mindscript/implementations/@software/examples/`)
 - Jest tests: typically `src/**/__tests__/**` or `tests/**`
 
 **Outputs**
@@ -133,7 +133,7 @@ OpenSpec → Jest
   3. Optionally fail the build if there are **uncovered** criteria for `P0/P1` items
 - Jest command examples:
   - `npx jest --runInBand`
-  - `node tools/jest-mapper scan --spec docs/openspec/implementations/@software/examples --tests tests --out dist/jest`
+  - `node tools/jest-mapper scan --spec docs/mindscript/implementations/@software/examples --tests tests --out dist/jest`
 
 ## Limitations
 

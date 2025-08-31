@@ -75,7 +75,7 @@ Mapper output (traceability index):
   "mappings": [
     {
       "criteria_id": "BEHAT-501.1.1",
-      "feature": "docs/openspec/implementations/@software/examples/BEHAT-LOGIN.feature",
+      "feature": "docs/mindscript/implementations/@software/examples/BEHAT-LOGIN.feature",
       "scenario": "Valid credentials produce a successful session"
     }
   ]
@@ -96,7 +96,7 @@ OpenSpec → Behat
 ## File layout
 
 **Inputs**
-- OpenSpec specs: anywhere (examples live under `docs/openspec/implementations/@software/examples/`)
+- OpenSpec specs: anywhere (examples live under `docs/mindscript/implementations/@software/examples/`)
 - Behat features: wherever your test suite keeps them; examples live alongside the YAML
 
 **Outputs**

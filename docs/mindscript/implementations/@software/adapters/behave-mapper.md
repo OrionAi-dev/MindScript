@@ -75,7 +75,7 @@ Mapper output (traceability index):
   "mappings": [
     {
       "criteria_id": "BEHAVE-301.1.1",
-      "feature": "docs/openspec/implementations/@software/examples/BEHAVE-LOGIN.feature",
+      "feature": "docs/mindscript/implementations/@software/examples/BEHAVE-LOGIN.feature",
       "scenario": "Valid credentials produce a successful session"
     }
   ]
@@ -96,7 +96,7 @@ OpenSpec → Behave
 ## File layout
 
 **Inputs**
-- OpenSpec specs: anywhere (examples under `docs/openspec/implementations/@software/examples/`)
+- OpenSpec specs: anywhere (examples under `docs/mindscript/implementations/@software/examples/`)
 - Behave features: wherever your test suite keeps them; examples live alongside the YAML
 
 **Outputs**

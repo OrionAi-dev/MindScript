@@ -77,7 +77,7 @@ Mapper output (traceability index):
   "mappings": [
     {
       "criteria_id": "KARATE-701.1.1",
-      "feature": "docs/openspec/implementations/@software/examples/KARATE-LOGIN.feature",
+      "feature": "docs/mindscript/implementations/@software/examples/KARATE-LOGIN.feature",
       "scenario": "Valid credentials produce a successful session"
     }
   ]
@@ -98,7 +98,7 @@ OpenSpec to Karate
 ## File layout
 
 Inputs
-- OpenSpec specs: anywhere. Examples are under `docs/openspec/implementations/@software/examples/`.
+- OpenSpec specs: anywhere. Examples are under `docs/mindscript/implementations/@software/examples/`.
 - Karate features: wherever your test suite keeps them. Examples live alongside the YAML.
 
 Outputs

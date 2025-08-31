@@ -38,7 +38,7 @@ Validation ensures specs are consistent, complete, and unambiguous before they a
 
 ```bash
 # Validate a spec file
-openspec validate docs/openspec/examples/ctx-telescope.yaml
+openspec validate docs/mindscript/examples/ctx-telescope.yaml
 ```
 
 ---
