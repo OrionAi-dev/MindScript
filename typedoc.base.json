@@ -1,0 +1,8 @@
+{
+  "plugin": ["typedoc-plugin-markdown"],
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "hideBreadcrumbs": true,
+  "hidePageHeader": true,
+  "readme": "none"
+}

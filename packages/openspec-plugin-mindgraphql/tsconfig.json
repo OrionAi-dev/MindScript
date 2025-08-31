@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": { "composite": true },
+  "compilerOptions": { "composite": true, "types": ["node"] },
   "references": [{ "path": "../mindgraphql-core" }],
   "include": ["src"]
 }
