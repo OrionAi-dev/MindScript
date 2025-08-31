@@ -2,7 +2,7 @@
   "name": "@mindscript/openspec-monorepo",
   "private": true,
   "workspaces": ["packages/*"],
-  "packageManager": "pnpm@9",
+  "packageManager": "pnpm@10.13.1",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",

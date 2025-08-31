@@ -1,0 +1,14 @@
+{
+  "name": "@mindscript/mindgraphql-core",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": { "build": "tsup src/index.ts --dts" },
+  "dependencies": {
+    "@mindscript/openspec-types": "workspace:*",
+    "graphql": "^16.9.0"
+  },
+  "publishConfig": { "access": "public" }
+}

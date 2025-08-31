@@ -1,0 +1,13 @@
+{
+  "name": "@mindscript/openspec-cli",
+  "version": "0.0.0",
+  "type": "module",
+  "bin": { "openspec": "dist/cli.js" },
+  "main": "dist/cli.js",
+  "files": ["dist"],
+  "scripts": { "build": "tsup src/cli.ts --format esm,cjs" },
+  "dependencies": {
+    "@mindscript/openspec-types": "workspace:*"
+  },
+  "publishConfig": { "access": "public" }
+}

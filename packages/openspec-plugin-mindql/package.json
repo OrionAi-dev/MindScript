@@ -1,0 +1,13 @@
+{
+  "name": "@mindscript/openspec-plugin-mindql",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": { "build": "tsup src/index.ts --dts" },
+  "dependencies": {
+    "@mindscript/mindql-core": "workspace:*"
+  },
+  "publishConfig": { "access": "public" }
+}
