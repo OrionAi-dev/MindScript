@@ -15,7 +15,6 @@ yarn-error.log*
 pnpm-debug.log*
 package-lock.json
 yarn.lock
-pnpm-lock.yaml
 
 # Build artifacts
 *.pdf
@@ -38,3 +37,5 @@ site/           # mkdocs build output
 
 # Python
 .venv/
+
+!pnpm-lock.yaml
