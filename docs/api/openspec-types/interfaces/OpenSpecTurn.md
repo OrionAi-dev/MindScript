@@ -6,7 +6,7 @@
 
 # Interface: OpenSpecTurn\<F\>
 
-Defined in: [packages/openspec-types/dist/index.d.ts:103](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L103)
+Defined in: [packages/openspec-types/dist/index.d.ts:103](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L103)
 
 ## Extends
 
@@ -24,7 +24,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:103](https://github.com/Ori
 
 > **acceptanceCriteria**: readonly [`AcceptanceCriterion`](AcceptanceCriterion.md)[]
 
-Defined in: [packages/openspec-types/dist/index.d.ts:84](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L84)
+Defined in: [packages/openspec-types/dist/index.d.ts:84](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L84)
 
 #### Inherited from
 
@@ -36,7 +36,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:84](https://github.com/Orio
 
 > **fields**: `F`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:83](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L83)
+Defined in: [packages/openspec-types/dist/index.d.ts:83](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L83)
 
 #### Inherited from
 
@@ -48,7 +48,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:83](https://github.com/Orio
 
 > **id**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:81](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L81)
+Defined in: [packages/openspec-types/dist/index.d.ts:81](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L81)
 
 #### Inherited from
 
@@ -60,7 +60,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:81](https://github.com/Orio
 
 > **inheritsFrom**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:105](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L105)
+Defined in: [packages/openspec-types/dist/index.d.ts:105](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L105)
 
 ***
 
@@ -68,7 +68,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:105](https://github.com/Ori
 
 > **intent**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:82](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L82)
+Defined in: [packages/openspec-types/dist/index.d.ts:82](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L82)
 
 #### Inherited from
 
@@ -80,7 +80,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:82](https://github.com/Orio
 
 > **kind**: `"turn"`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:104](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L104)
+Defined in: [packages/openspec-types/dist/index.d.ts:104](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L104)
 
 #### Overrides
 
@@ -92,7 +92,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:104](https://github.com/Ori
 
 > **lockedAt**: [`ISODateTime`](../type-aliases/ISODateTime.md)
 
-Defined in: [packages/openspec-types/dist/index.d.ts:86](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L86)
+Defined in: [packages/openspec-types/dist/index.d.ts:86](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L86)
 
 #### Inherited from
 
@@ -104,7 +104,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:86](https://github.com/Orio
 
 > `optional` **meta**: `Record`\<`string`, [`JsonValue`](../type-aliases/JsonValue.md)\>
 
-Defined in: [packages/openspec-types/dist/index.d.ts:89](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L89)
+Defined in: [packages/openspec-types/dist/index.d.ts:89](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L89)
 
 #### Inherited from
 
@@ -116,7 +116,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:89](https://github.com/Orio
 
 > `optional` **provenance**: readonly [`Provenance`](Provenance.md)[]
 
-Defined in: [packages/openspec-types/dist/index.d.ts:85](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L85)
+Defined in: [packages/openspec-types/dist/index.d.ts:85](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L85)
 
 #### Inherited from
 
@@ -128,7 +128,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:85](https://github.com/Orio
 
 > `optional` **signature**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:88](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L88)
+Defined in: [packages/openspec-types/dist/index.d.ts:88](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L88)
 
 #### Inherited from
 
@@ -140,7 +140,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:88](https://github.com/Orio
 
 > `optional` **version**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:87](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L87)
+Defined in: [packages/openspec-types/dist/index.d.ts:87](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L87)
 
 #### Inherited from
 

@@ -8,7 +8,7 @@
 
 > **applyPatches**(`fields`, `patches`): `object`
 
-Defined in: [packages/openspec-runtime/dist/index.d.ts:234](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-runtime/dist/index.d.ts#L234)
+Defined in: [packages/openspec-runtime/dist/index.d.ts:554](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-runtime/dist/index.d.ts#L554)
 
 Apply RFC6902-like patches to a flat fields object.
 Supported paths (flat): "/fields/<key>"

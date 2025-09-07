@@ -8,7 +8,7 @@
 
 > **MindQLNode** = `object`
 
-Defined in: [index.d.ts:1](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/mindql-core/dist/index.d.ts#L1)
+Defined in: [index.d.ts:1](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/mindql-core/dist/index.d.ts#L1)
 
 ## Properties
 
@@ -16,7 +16,7 @@ Defined in: [index.d.ts:1](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed
 
 > **body**: `string`
 
-Defined in: [index.d.ts:3](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/mindql-core/dist/index.d.ts#L3)
+Defined in: [index.d.ts:3](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/mindql-core/dist/index.d.ts#L3)
 
 ***
 
@@ -24,4 +24,4 @@ Defined in: [index.d.ts:3](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed
 
 > **kind**: `"Program"`
 
-Defined in: [index.d.ts:2](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/mindql-core/dist/index.d.ts#L2)
+Defined in: [index.d.ts:2](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/mindql-core/dist/index.d.ts#L2)

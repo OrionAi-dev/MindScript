@@ -6,7 +6,7 @@
 
 # Interface: BaseField\<T\>
 
-Defined in: [packages/openspec-types/dist/index.d.ts:24](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L24)
+Defined in: [packages/openspec-types/dist/index.d.ts:24](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L24)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:24](https://github.com/Orio
 
 > `optional` **confidence**: `number`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:37](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L37)
+Defined in: [packages/openspec-types/dist/index.d.ts:37](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L37)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:37](https://github.com/Orio
 
 > `optional` **default**: `T`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:34](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L34)
+Defined in: [packages/openspec-types/dist/index.d.ts:34](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L34)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:34](https://github.com/Orio
 
 > `optional` **description**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:35](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L35)
+Defined in: [packages/openspec-types/dist/index.d.ts:35](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L35)
 
 ***
 
@@ -44,7 +44,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:35](https://github.com/Orio
 
 > `optional` **enum**: readonly `T`[]
 
-Defined in: [packages/openspec-types/dist/index.d.ts:30](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L30)
+Defined in: [packages/openspec-types/dist/index.d.ts:30](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L30)
 
 ***
 
@@ -52,7 +52,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:30](https://github.com/Orio
 
 > `optional` **ext**: `Record`\<`string`, [`JsonValue`](../type-aliases/JsonValue.md)\>
 
-Defined in: [packages/openspec-types/dist/index.d.ts:40](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L40)
+Defined in: [packages/openspec-types/dist/index.d.ts:40](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L40)
 
 ***
 
@@ -60,7 +60,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:40](https://github.com/Orio
 
 > `optional` **many**: `boolean`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:32](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L32)
+Defined in: [packages/openspec-types/dist/index.d.ts:32](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L32)
 
 ***
 
@@ -68,7 +68,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:32](https://github.com/Orio
 
 > `optional` **max**: `number`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:29](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L29)
+Defined in: [packages/openspec-types/dist/index.d.ts:29](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L29)
 
 ***
 
@@ -76,7 +76,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:29](https://github.com/Orio
 
 > `optional` **min**: `number`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:28](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L28)
+Defined in: [packages/openspec-types/dist/index.d.ts:28](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L28)
 
 ***
 
@@ -84,7 +84,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:28](https://github.com/Orio
 
 > `optional` **noneAllowed**: `boolean`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:33](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L33)
+Defined in: [packages/openspec-types/dist/index.d.ts:33](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L33)
 
 ***
 
@@ -92,7 +92,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:33](https://github.com/Orio
 
 > `optional` **pattern**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:31](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L31)
+Defined in: [packages/openspec-types/dist/index.d.ts:31](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L31)
 
 ***
 
@@ -100,7 +100,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:31](https://github.com/Orio
 
 > `optional` **rationale**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:38](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L38)
+Defined in: [packages/openspec-types/dist/index.d.ts:38](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L38)
 
 ***
 
@@ -108,7 +108,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:38](https://github.com/Orio
 
 > `optional` **required**: `boolean`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:27](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L27)
+Defined in: [packages/openspec-types/dist/index.d.ts:27](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L27)
 
 ***
 
@@ -116,15 +116,15 @@ Defined in: [packages/openspec-types/dist/index.d.ts:27](https://github.com/Orio
 
 > `optional` **scope**: [`FieldScope`](../type-aliases/FieldScope.md)
 
-Defined in: [packages/openspec-types/dist/index.d.ts:39](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L39)
+Defined in: [packages/openspec-types/dist/index.d.ts:39](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L39)
 
 ***
 
 ### source?
 
-> `optional` **source**: `"default"` \| `"user"` \| `"context"` \| `"memory"` \| `"model"`
+> `optional` **source**: `"user"` \| `"context"` \| `"default"` \| `"memory"` \| `"model"`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:36](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L36)
+Defined in: [packages/openspec-types/dist/index.d.ts:36](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L36)
 
 ***
 
@@ -132,7 +132,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:36](https://github.com/Orio
 
 > **type**: [`FieldType`](../type-aliases/FieldType.md)
 
-Defined in: [packages/openspec-types/dist/index.d.ts:25](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L25)
+Defined in: [packages/openspec-types/dist/index.d.ts:25](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L25)
 
 ***
 
@@ -140,4 +140,4 @@ Defined in: [packages/openspec-types/dist/index.d.ts:25](https://github.com/Orio
 
 > `optional` **value**: `T`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:26](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L26)
+Defined in: [packages/openspec-types/dist/index.d.ts:26](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L26)

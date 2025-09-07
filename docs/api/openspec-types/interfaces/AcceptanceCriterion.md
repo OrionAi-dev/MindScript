@@ -6,7 +6,7 @@
 
 # Interface: AcceptanceCriterion
 
-Defined in: [packages/openspec-types/dist/index.d.ts:68](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L68)
+Defined in: [packages/openspec-types/dist/index.d.ts:68](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L68)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:68](https://github.com/Orio
 
 > **description**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:70](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L70)
+Defined in: [packages/openspec-types/dist/index.d.ts:70](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L70)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:70](https://github.com/Orio
 
 > **id**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:69](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L69)
+Defined in: [packages/openspec-types/dist/index.d.ts:69](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L69)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:69](https://github.com/Orio
 
 > `optional` **params**: [`JsonObject`](JsonObject.md)
 
-Defined in: [packages/openspec-types/dist/index.d.ts:72](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L72)
+Defined in: [packages/openspec-types/dist/index.d.ts:72](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L72)
 
 ***
 
@@ -38,4 +38,4 @@ Defined in: [packages/openspec-types/dist/index.d.ts:72](https://github.com/Orio
 
 > **verifier**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:71](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L71)
+Defined in: [packages/openspec-types/dist/index.d.ts:71](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L71)

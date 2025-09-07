@@ -2,220 +2,540 @@ import { OpenSpecContext, OpenSpecTurn, SpecField, AcceptanceCriterion } from '@
 export * from '@mindscript/openspec-types';
 import { z } from 'zod';
 
-declare const zFieldScope: z.ZodUnion<readonly [z.ZodObject<{
+declare const zFieldScope: z.ZodUnion<[z.ZodObject<{
     kind: z.ZodLiteral<"filetype">;
     value: z.ZodString;
-}, z.core.$strip>, z.ZodObject<{
+}, "strip", z.ZodTypeAny, {
+    value: string;
+    kind: "filetype";
+}, {
+    value: string;
+    kind: "filetype";
+}>, z.ZodObject<{
     kind: z.ZodLiteral<"project">;
     id: z.ZodString;
-}, z.core.$strip>, z.ZodObject<{
+}, "strip", z.ZodTypeAny, {
+    kind: "project";
+    id: string;
+}, {
+    kind: "project";
+    id: string;
+}>, z.ZodObject<{
     kind: z.ZodLiteral<"intent">;
     value: z.ZodString;
-}, z.core.$strip>, z.ZodObject<{
+}, "strip", z.ZodTypeAny, {
+    value: string;
+    kind: "intent";
+}, {
+    value: string;
+    kind: "intent";
+}>, z.ZodObject<{
     kind: z.ZodLiteral<"global">;
-}, z.core.$strip>]>;
+}, "strip", z.ZodTypeAny, {
+    kind: "global";
+}, {
+    kind: "global";
+}>]>;
 declare const zAcceptance: z.ZodObject<{
     id: z.ZodString;
     description: z.ZodString;
     verifier: z.ZodString;
     params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, z.core.$strip>;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    description: string;
+    verifier: string;
+    params?: Record<string, unknown> | undefined;
+}, {
+    id: string;
+    description: string;
+    verifier: string;
+    params?: Record<string, unknown> | undefined;
+}>;
 declare const zBaseField: z.ZodObject<{
-    type: z.ZodEnum<{
-        string: "string";
-        number: "number";
-        boolean: "boolean";
-        object: "object";
-        any: "any";
-        array: "array";
-        enum: "enum";
-    }>;
+    type: z.ZodEnum<["string", "number", "boolean", "enum", "object", "array", "any"]>;
     value: z.ZodOptional<z.ZodUnknown>;
     required: z.ZodOptional<z.ZodBoolean>;
     min: z.ZodOptional<z.ZodNumber>;
     max: z.ZodOptional<z.ZodNumber>;
-    enum: z.ZodOptional<z.ZodArray<z.ZodUnknown>>;
+    enum: z.ZodOptional<z.ZodArray<z.ZodUnknown, "many">>;
     pattern: z.ZodOptional<z.ZodString>;
     many: z.ZodOptional<z.ZodBoolean>;
     noneAllowed: z.ZodOptional<z.ZodBoolean>;
     default: z.ZodOptional<z.ZodUnknown>;
     description: z.ZodOptional<z.ZodString>;
-    source: z.ZodOptional<z.ZodEnum<{
-        default: "default";
-        user: "user";
-        context: "context";
-        memory: "memory";
-        model: "model";
-    }>>;
+    source: z.ZodOptional<z.ZodEnum<["user", "context", "default", "memory", "model"]>>;
     confidence: z.ZodOptional<z.ZodNumber>;
     rationale: z.ZodOptional<z.ZodString>;
-    scope: z.ZodOptional<z.ZodUnion<readonly [z.ZodObject<{
+    scope: z.ZodOptional<z.ZodUnion<[z.ZodObject<{
         kind: z.ZodLiteral<"filetype">;
         value: z.ZodString;
-    }, z.core.$strip>, z.ZodObject<{
+    }, "strip", z.ZodTypeAny, {
+        value: string;
+        kind: "filetype";
+    }, {
+        value: string;
+        kind: "filetype";
+    }>, z.ZodObject<{
         kind: z.ZodLiteral<"project">;
         id: z.ZodString;
-    }, z.core.$strip>, z.ZodObject<{
+    }, "strip", z.ZodTypeAny, {
+        kind: "project";
+        id: string;
+    }, {
+        kind: "project";
+        id: string;
+    }>, z.ZodObject<{
         kind: z.ZodLiteral<"intent">;
         value: z.ZodString;
-    }, z.core.$strip>, z.ZodObject<{
+    }, "strip", z.ZodTypeAny, {
+        value: string;
+        kind: "intent";
+    }, {
+        value: string;
+        kind: "intent";
+    }>, z.ZodObject<{
         kind: z.ZodLiteral<"global">;
-    }, z.core.$strip>]>>;
+    }, "strip", z.ZodTypeAny, {
+        kind: "global";
+    }, {
+        kind: "global";
+    }>]>>;
     ext: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, z.core.$strip>;
+}, "strip", z.ZodTypeAny, {
+    type: "string" | "number" | "boolean" | "object" | "array" | "enum" | "any";
+    value?: unknown;
+    many?: boolean | undefined;
+    description?: string | undefined;
+    enum?: unknown[] | undefined;
+    required?: boolean | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
+    pattern?: string | undefined;
+    noneAllowed?: boolean | undefined;
+    default?: unknown;
+    source?: "default" | "user" | "context" | "memory" | "model" | undefined;
+    confidence?: number | undefined;
+    rationale?: string | undefined;
+    scope?: {
+        value: string;
+        kind: "filetype";
+    } | {
+        kind: "project";
+        id: string;
+    } | {
+        value: string;
+        kind: "intent";
+    } | {
+        kind: "global";
+    } | undefined;
+    ext?: Record<string, unknown> | undefined;
+}, {
+    type: "string" | "number" | "boolean" | "object" | "array" | "enum" | "any";
+    value?: unknown;
+    many?: boolean | undefined;
+    description?: string | undefined;
+    enum?: unknown[] | undefined;
+    required?: boolean | undefined;
+    min?: number | undefined;
+    max?: number | undefined;
+    pattern?: string | undefined;
+    noneAllowed?: boolean | undefined;
+    default?: unknown;
+    source?: "default" | "user" | "context" | "memory" | "model" | undefined;
+    confidence?: number | undefined;
+    rationale?: string | undefined;
+    scope?: {
+        value: string;
+        kind: "filetype";
+    } | {
+        kind: "project";
+        id: string;
+    } | {
+        value: string;
+        kind: "intent";
+    } | {
+        kind: "global";
+    } | undefined;
+    ext?: Record<string, unknown> | undefined;
+}>;
 declare const zSpecField: z.ZodType<any>;
 declare const zProvenance: z.ZodObject<{
     field: z.ZodString;
-    source: z.ZodEnum<{
-        default: "default";
-        user: "user";
-        context: "context";
-        memory: "memory";
-        model: "model";
-    }>;
+    source: z.ZodEnum<["user", "context", "default", "memory", "model"]>;
     rationale: z.ZodOptional<z.ZodString>;
-}, z.core.$strip>;
+}, "strip", z.ZodTypeAny, {
+    source: "default" | "user" | "context" | "memory" | "model";
+    field: string;
+    rationale?: string | undefined;
+}, {
+    source: "default" | "user" | "context" | "memory" | "model";
+    field: string;
+    rationale?: string | undefined;
+}>;
 declare const zISODateTime: z.ZodString;
 declare const zOpenSpecBase: z.ZodObject<{
-    kind: z.ZodEnum<{
-        context: "context";
-        turn: "turn";
-    }>;
+    kind: z.ZodEnum<["context", "turn"]>;
     id: z.ZodString;
     intent: z.ZodString;
-    fields: z.ZodRecord<z.ZodString, z.ZodType<any, unknown, z.core.$ZodTypeInternals<any, unknown>>>;
+    fields: z.ZodRecord<z.ZodString, z.ZodType<any, z.ZodTypeDef, any>>;
     acceptanceCriteria: z.ZodDefault<z.ZodArray<z.ZodObject<{
         id: z.ZodString;
         description: z.ZodString;
         verifier: z.ZodString;
         params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-    }, z.core.$strip>>>;
+    }, "strip", z.ZodTypeAny, {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }, {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }>, "many">>;
     provenance: z.ZodOptional<z.ZodArray<z.ZodObject<{
         field: z.ZodString;
-        source: z.ZodEnum<{
-            default: "default";
-            user: "user";
-            context: "context";
-            memory: "memory";
-            model: "model";
-        }>;
+        source: z.ZodEnum<["user", "context", "default", "memory", "model"]>;
         rationale: z.ZodOptional<z.ZodString>;
-    }, z.core.$strip>>>;
+    }, "strip", z.ZodTypeAny, {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }, {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }>, "many">>;
     lockedAt: z.ZodString;
     version: z.ZodOptional<z.ZodString>;
     signature: z.ZodOptional<z.ZodString>;
     meta: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-}, z.core.$strip>;
+}, "strip", z.ZodTypeAny, {
+    kind: "context" | "turn";
+    id: string;
+    intent: string;
+    fields: Record<string, any>;
+    acceptanceCriteria: {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }[];
+    lockedAt: string;
+    provenance?: {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }[] | undefined;
+    version?: string | undefined;
+    signature?: string | undefined;
+    meta?: Record<string, unknown> | undefined;
+}, {
+    kind: "context" | "turn";
+    id: string;
+    intent: string;
+    fields: Record<string, any>;
+    lockedAt: string;
+    acceptanceCriteria?: {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }[] | undefined;
+    provenance?: {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }[] | undefined;
+    version?: string | undefined;
+    signature?: string | undefined;
+    meta?: Record<string, unknown> | undefined;
+}>;
 declare const zOpenSpecContext: z.ZodObject<{
     id: z.ZodString;
     intent: z.ZodString;
-    fields: z.ZodRecord<z.ZodString, z.ZodType<any, unknown, z.core.$ZodTypeInternals<any, unknown>>>;
+    fields: z.ZodRecord<z.ZodString, z.ZodType<any, z.ZodTypeDef, any>>;
     acceptanceCriteria: z.ZodDefault<z.ZodArray<z.ZodObject<{
         id: z.ZodString;
         description: z.ZodString;
         verifier: z.ZodString;
         params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-    }, z.core.$strip>>>;
+    }, "strip", z.ZodTypeAny, {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }, {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }>, "many">>;
     provenance: z.ZodOptional<z.ZodArray<z.ZodObject<{
         field: z.ZodString;
-        source: z.ZodEnum<{
-            default: "default";
-            user: "user";
-            context: "context";
-            memory: "memory";
-            model: "model";
-        }>;
+        source: z.ZodEnum<["user", "context", "default", "memory", "model"]>;
         rationale: z.ZodOptional<z.ZodString>;
-    }, z.core.$strip>>>;
+    }, "strip", z.ZodTypeAny, {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }, {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }>, "many">>;
     lockedAt: z.ZodString;
     version: z.ZodOptional<z.ZodString>;
     signature: z.ZodOptional<z.ZodString>;
     meta: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
+} & {
     kind: z.ZodLiteral<"context">;
     scope: z.ZodObject<{
-        type: z.ZodEnum<{
-            project: "project";
-            global: "global";
-            session: "session";
-            workspace: "workspace";
-        }>;
+        type: z.ZodEnum<["session", "project", "workspace", "global"]>;
         id: z.ZodOptional<z.ZodString>;
-    }, z.core.$strip>;
+    }, "strip", z.ZodTypeAny, {
+        type: "project" | "global" | "session" | "workspace";
+        id?: string | undefined;
+    }, {
+        type: "project" | "global" | "session" | "workspace";
+        id?: string | undefined;
+    }>;
     lifespan: z.ZodObject<{
-        mode: z.ZodEnum<{
-            session: "session";
-            rolling: "rolling";
-            pinned: "pinned";
-        }>;
+        mode: z.ZodEnum<["session", "rolling", "pinned"]>;
         ttlDays: z.ZodOptional<z.ZodNumber>;
         maxUses: z.ZodOptional<z.ZodNumber>;
-    }, z.core.$strip>;
-}, z.core.$strip>;
+    }, "strip", z.ZodTypeAny, {
+        mode: "session" | "rolling" | "pinned";
+        ttlDays?: number | undefined;
+        maxUses?: number | undefined;
+    }, {
+        mode: "session" | "rolling" | "pinned";
+        ttlDays?: number | undefined;
+        maxUses?: number | undefined;
+    }>;
+}, "strip", z.ZodTypeAny, {
+    kind: "context";
+    id: string;
+    intent: string;
+    scope: {
+        type: "project" | "global" | "session" | "workspace";
+        id?: string | undefined;
+    };
+    fields: Record<string, any>;
+    acceptanceCriteria: {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }[];
+    lockedAt: string;
+    lifespan: {
+        mode: "session" | "rolling" | "pinned";
+        ttlDays?: number | undefined;
+        maxUses?: number | undefined;
+    };
+    provenance?: {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }[] | undefined;
+    version?: string | undefined;
+    signature?: string | undefined;
+    meta?: Record<string, unknown> | undefined;
+}, {
+    kind: "context";
+    id: string;
+    intent: string;
+    scope: {
+        type: "project" | "global" | "session" | "workspace";
+        id?: string | undefined;
+    };
+    fields: Record<string, any>;
+    lockedAt: string;
+    lifespan: {
+        mode: "session" | "rolling" | "pinned";
+        ttlDays?: number | undefined;
+        maxUses?: number | undefined;
+    };
+    acceptanceCriteria?: {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }[] | undefined;
+    provenance?: {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }[] | undefined;
+    version?: string | undefined;
+    signature?: string | undefined;
+    meta?: Record<string, unknown> | undefined;
+}>;
 declare const zOpenSpecTurn: z.ZodObject<{
     id: z.ZodString;
     intent: z.ZodString;
-    fields: z.ZodRecord<z.ZodString, z.ZodType<any, unknown, z.core.$ZodTypeInternals<any, unknown>>>;
+    fields: z.ZodRecord<z.ZodString, z.ZodType<any, z.ZodTypeDef, any>>;
     acceptanceCriteria: z.ZodDefault<z.ZodArray<z.ZodObject<{
         id: z.ZodString;
         description: z.ZodString;
         verifier: z.ZodString;
         params: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
-    }, z.core.$strip>>>;
+    }, "strip", z.ZodTypeAny, {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }, {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }>, "many">>;
     provenance: z.ZodOptional<z.ZodArray<z.ZodObject<{
         field: z.ZodString;
-        source: z.ZodEnum<{
-            default: "default";
-            user: "user";
-            context: "context";
-            memory: "memory";
-            model: "model";
-        }>;
+        source: z.ZodEnum<["user", "context", "default", "memory", "model"]>;
         rationale: z.ZodOptional<z.ZodString>;
-    }, z.core.$strip>>>;
+    }, "strip", z.ZodTypeAny, {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }, {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }>, "many">>;
     lockedAt: z.ZodString;
     version: z.ZodOptional<z.ZodString>;
     signature: z.ZodOptional<z.ZodString>;
     meta: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnknown>>;
+} & {
     kind: z.ZodLiteral<"turn">;
     inheritsFrom: z.ZodString;
-}, z.core.$strip>;
+}, "strip", z.ZodTypeAny, {
+    kind: "turn";
+    id: string;
+    intent: string;
+    fields: Record<string, any>;
+    acceptanceCriteria: {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }[];
+    lockedAt: string;
+    inheritsFrom: string;
+    provenance?: {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }[] | undefined;
+    version?: string | undefined;
+    signature?: string | undefined;
+    meta?: Record<string, unknown> | undefined;
+}, {
+    kind: "turn";
+    id: string;
+    intent: string;
+    fields: Record<string, any>;
+    lockedAt: string;
+    inheritsFrom: string;
+    acceptanceCriteria?: {
+        id: string;
+        description: string;
+        verifier: string;
+        params?: Record<string, unknown> | undefined;
+    }[] | undefined;
+    provenance?: {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }[] | undefined;
+    version?: string | undefined;
+    signature?: string | undefined;
+    meta?: Record<string, unknown> | undefined;
+}>;
 declare const zJsonPatch: z.ZodObject<{
-    op: z.ZodEnum<{
-        replace: "replace";
-        add: "add";
-        remove: "remove";
-    }>;
+    op: z.ZodEnum<["add", "replace", "remove"]>;
     path: z.ZodString;
     value: z.ZodOptional<z.ZodUnknown>;
-}, z.core.$strip>;
+}, "strip", z.ZodTypeAny, {
+    path: string;
+    op: "add" | "replace" | "remove";
+    value?: unknown;
+}, {
+    path: string;
+    op: "add" | "replace" | "remove";
+    value?: unknown;
+}>;
 declare const zDerivedSpec: z.ZodObject<{
     baseId: z.ZodString;
     patches: z.ZodArray<z.ZodObject<{
-        op: z.ZodEnum<{
-            replace: "replace";
-            add: "add";
-            remove: "remove";
-        }>;
+        op: z.ZodEnum<["add", "replace", "remove"]>;
         path: z.ZodString;
         value: z.ZodOptional<z.ZodUnknown>;
-    }, z.core.$strip>>;
+    }, "strip", z.ZodTypeAny, {
+        path: string;
+        op: "add" | "replace" | "remove";
+        value?: unknown;
+    }, {
+        path: string;
+        op: "add" | "replace" | "remove";
+        value?: unknown;
+    }>, "many">;
     provenance: z.ZodArray<z.ZodObject<{
         field: z.ZodString;
-        source: z.ZodEnum<{
-            default: "default";
-            user: "user";
-            context: "context";
-            memory: "memory";
-            model: "model";
-        }>;
+        source: z.ZodEnum<["user", "context", "default", "memory", "model"]>;
         rationale: z.ZodOptional<z.ZodString>;
-    }, z.core.$strip>>;
-}, z.core.$strip>;
+    }, "strip", z.ZodTypeAny, {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }, {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }>, "many">;
+}, "strip", z.ZodTypeAny, {
+    provenance: {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }[];
+    baseId: string;
+    patches: {
+        path: string;
+        op: "add" | "replace" | "remove";
+        value?: unknown;
+    }[];
+}, {
+    provenance: {
+        source: "default" | "user" | "context" | "memory" | "model";
+        field: string;
+        rationale?: string | undefined;
+    }[];
+    baseId: string;
+    patches: {
+        path: string;
+        op: "add" | "replace" | "remove";
+        value?: unknown;
+    }[];
+}>;
 declare const zToolBinding: z.ZodObject<{
     intent: z.ZodString;
     tool: z.ZodString;
     paramMap: z.ZodRecord<z.ZodString, z.ZodString>;
-}, z.core.$strip>;
+}, "strip", z.ZodTypeAny, {
+    intent: string;
+    tool: string;
+    paramMap: Record<string, string>;
+}, {
+    intent: string;
+    tool: string;
+    paramMap: Record<string, string>;
+}>;
 type ZContext = z.infer<typeof zOpenSpecContext>;
 type ZTurn = z.infer<typeof zOpenSpecTurn>;
 type ZField = z.infer<typeof zSpecField>;

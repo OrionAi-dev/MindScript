@@ -8,7 +8,7 @@
 
 > **normalizeMindGraphQL**(`sdl`): `string`
 
-Defined in: [index.d.ts:1](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/mindgraphql-core/dist/index.d.ts#L1)
+Defined in: [index.d.ts:1](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/mindgraphql-core/dist/index.d.ts#L1)
 
 ## Parameters
 

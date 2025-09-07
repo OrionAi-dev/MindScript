@@ -6,11 +6,11 @@
 
 # Interface: VerifierFn()
 
-Defined in: [packages/openspec-runtime/dist/index.d.ts:248](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-runtime/dist/index.d.ts#L248)
+Defined in: [packages/openspec-runtime/dist/index.d.ts:568](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-runtime/dist/index.d.ts#L568)
 
 > **VerifierFn**(`output`, `params?`): [`VerifierResult`](VerifierResult.md)
 
-Defined in: [packages/openspec-runtime/dist/index.d.ts:249](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-runtime/dist/index.d.ts#L249)
+Defined in: [packages/openspec-runtime/dist/index.d.ts:569](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-runtime/dist/index.d.ts#L569)
 
 ## Parameters
 

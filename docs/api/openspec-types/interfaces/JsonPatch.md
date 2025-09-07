@@ -6,7 +6,7 @@
 
 # Interface: JsonPatch
 
-Defined in: [packages/openspec-types/dist/index.d.ts:108](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L108)
+Defined in: [packages/openspec-types/dist/index.d.ts:108](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L108)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:108](https://github.com/Ori
 
 > **op**: [`JsonPatchOp`](../type-aliases/JsonPatchOp.md)
 
-Defined in: [packages/openspec-types/dist/index.d.ts:109](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L109)
+Defined in: [packages/openspec-types/dist/index.d.ts:109](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L109)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:109](https://github.com/Ori
 
 > **path**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:110](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L110)
+Defined in: [packages/openspec-types/dist/index.d.ts:110](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L110)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [packages/openspec-types/dist/index.d.ts:110](https://github.com/Ori
 
 > `optional` **value**: [`JsonValue`](../type-aliases/JsonValue.md)
 
-Defined in: [packages/openspec-types/dist/index.d.ts:111](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L111)
+Defined in: [packages/openspec-types/dist/index.d.ts:111](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L111)

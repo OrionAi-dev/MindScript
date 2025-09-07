@@ -6,7 +6,7 @@
 
 # Interface: VerifierResult
 
-Defined in: [packages/openspec-runtime/dist/index.d.ts:244](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-runtime/dist/index.d.ts#L244)
+Defined in: [packages/openspec-runtime/dist/index.d.ts:564](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-runtime/dist/index.d.ts#L564)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [packages/openspec-runtime/dist/index.d.ts:244](https://github.com/O
 
 > `optional` **details**: `string`
 
-Defined in: [packages/openspec-runtime/dist/index.d.ts:246](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-runtime/dist/index.d.ts#L246)
+Defined in: [packages/openspec-runtime/dist/index.d.ts:566](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-runtime/dist/index.d.ts#L566)
 
 ***
 
@@ -22,4 +22,4 @@ Defined in: [packages/openspec-runtime/dist/index.d.ts:246](https://github.com/O
 
 > **pass**: `boolean`
 
-Defined in: [packages/openspec-runtime/dist/index.d.ts:245](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-runtime/dist/index.d.ts#L245)
+Defined in: [packages/openspec-runtime/dist/index.d.ts:565](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-runtime/dist/index.d.ts#L565)

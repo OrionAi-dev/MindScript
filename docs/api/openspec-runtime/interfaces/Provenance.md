@@ -6,7 +6,7 @@
 
 # Interface: Provenance
 
-Defined in: [packages/openspec-types/dist/index.d.ts:74](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L74)
+Defined in: [packages/openspec-types/dist/index.d.ts:74](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L74)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:74](https://github.com/Orio
 
 > **field**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:75](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L75)
+Defined in: [packages/openspec-types/dist/index.d.ts:75](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L75)
 
 ***
 
@@ -22,12 +22,12 @@ Defined in: [packages/openspec-types/dist/index.d.ts:75](https://github.com/Orio
 
 > `optional` **rationale**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:77](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L77)
+Defined in: [packages/openspec-types/dist/index.d.ts:77](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L77)
 
 ***
 
 ### source
 
-> **source**: `"default"` \| `"user"` \| `"context"` \| `"memory"` \| `"model"`
+> **source**: `"user"` \| `"context"` \| `"default"` \| `"memory"` \| `"model"`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:76](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L76)
+Defined in: [packages/openspec-types/dist/index.d.ts:76](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L76)

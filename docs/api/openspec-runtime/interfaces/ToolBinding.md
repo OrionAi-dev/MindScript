@@ -6,7 +6,7 @@
 
 # Interface: ToolBinding\<P\>
 
-Defined in: [packages/openspec-types/dist/index.d.ts:118](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L118)
+Defined in: [packages/openspec-types/dist/index.d.ts:118](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L118)
 
 ## Type Parameters
 
@@ -20,7 +20,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:118](https://github.com/Ori
 
 > **intent**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:119](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L119)
+Defined in: [packages/openspec-types/dist/index.d.ts:119](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L119)
 
 ***
 
@@ -28,7 +28,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:119](https://github.com/Ori
 
 > **paramMap**: \{ \[K in string \| number \| symbol\]?: string \} & `Record`\<`string`, `string`\>
 
-Defined in: [packages/openspec-types/dist/index.d.ts:121](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L121)
+Defined in: [packages/openspec-types/dist/index.d.ts:121](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L121)
 
 ***
 
@@ -36,4 +36,4 @@ Defined in: [packages/openspec-types/dist/index.d.ts:121](https://github.com/Ori
 
 > **tool**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:120](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L120)
+Defined in: [packages/openspec-types/dist/index.d.ts:120](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L120)

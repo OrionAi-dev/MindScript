@@ -1,4 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["dist/index.d.ts", "dist/**/*.d.ts"]
+  "include": [
+    "dist/index.d.ts",
+    "dist/**/*.d.ts"
+  ],
+  "exclude": [
+    "../../node_modules"
+  ]
 }

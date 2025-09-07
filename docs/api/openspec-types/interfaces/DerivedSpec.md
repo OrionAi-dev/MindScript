@@ -6,7 +6,7 @@
 
 # Interface: DerivedSpec
 
-Defined in: [packages/openspec-types/dist/index.d.ts:113](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L113)
+Defined in: [packages/openspec-types/dist/index.d.ts:113](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L113)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:113](https://github.com/Ori
 
 > **baseId**: `string`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:114](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L114)
+Defined in: [packages/openspec-types/dist/index.d.ts:114](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L114)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:114](https://github.com/Ori
 
 > **patches**: readonly [`JsonPatch`](JsonPatch.md)[]
 
-Defined in: [packages/openspec-types/dist/index.d.ts:115](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L115)
+Defined in: [packages/openspec-types/dist/index.d.ts:115](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L115)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [packages/openspec-types/dist/index.d.ts:115](https://github.com/Ori
 
 > **provenance**: readonly [`Provenance`](Provenance.md)[]
 
-Defined in: [packages/openspec-types/dist/index.d.ts:116](https://github.com/OrionAi-dev/OpenSpec/blob/dbe3b1ed23423a8f783ae3f4c96dd1618ccf38a6/packages/openspec-types/dist/index.d.ts#L116)
+Defined in: [packages/openspec-types/dist/index.d.ts:116](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L116)
