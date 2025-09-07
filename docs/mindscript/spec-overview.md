@@ -46,4 +46,4 @@ This requirement maps to an OpenSpec Turn contract with `fields` (`username`, `p
 
 * [context-turn.md](./context-turn.md) → Context vs Turn model
 * [verification.md](./verification.md) → how acceptance criteria are validated
-* [spec-bdd-context-turn.md](./spec-bdd-context-turn.md) → portable BDD profile for non-software domains
+* [spec-bdd-context-turn.md](./context-turn.md) → portable BDD profile for non-software domains

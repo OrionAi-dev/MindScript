@@ -81,6 +81,6 @@ scenarios:
 
 ## Cross-References
 
-* [spec-bdd-context-turn.md](../../../spec-bdd-context-turn.md) → portable BDD format
+* [spec-bdd-context-turn.md](../../../context-turn.md) → portable BDD format
 * [context-turn.md](../../../context-turn.md) → Context/Turn model
 * [verification.md](../../../verification.md) → how verifiers validate acceptance criteria

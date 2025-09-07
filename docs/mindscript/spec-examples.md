@@ -93,4 +93,4 @@ acceptanceCriteria:
 
 * [quickstart.md](./quickstart.md) → end-to-end setup example
 * [context-turn.md](./context-turn.md) → Context vs Turn lifecycle
-* [spec-bdd-context-turn.md](./spec-bdd-context-turn.md) → BDD scenarios in YAML
+* [spec-bdd-context-turn.md](./context-turn.md) → BDD scenarios in YAML

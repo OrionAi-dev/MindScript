@@ -31,13 +31,13 @@ The **infrastructure layer** (formerly called OpenSPI) defines Context, Turn, Sp
 ---
 
 ## Documentation Map
-- [spec-language.md](./spec-language.md) — canonical spec language (fields, contracts, prefs, patches).  
-- [context-turn.md](./context-turn.md) — scopes, inheritance, lifespan.  
-- [typescript.md](./typescript.md) — typed bindings + validation.  
-- [verification.md](./verification.md) — acceptance check stdlib + verifier API.  
-- [templates.md](./templates.md) — templates & librarian rules.  
-- [quickstart.md](./quickstart.md) — 5-step setup.  
-- [roadmap.md](./roadmap.md) — unified milestones.  
+- [spec-language.md](../mindscript/spec-language.md) — canonical spec language (fields, contracts, prefs, patches).  
+- [context-turn.md](../mindscript/context-turn.md) — scopes, inheritance, lifespan.  
+- [typescript.md](../mindscript/typescript.md) — typed bindings + validation.  
+- [verification.md](../mindscript/verification.md) — acceptance check stdlib + verifier API.  
+- [templates.md](../mindscript/templates.md) — templates & librarian rules.  
+- [quickstart.md](../mindscript/quickstart.md) — 5-step setup.  
+- [roadmap.md](../mindscript/roadmap.md) — unified milestones.  
 
 ---
 
