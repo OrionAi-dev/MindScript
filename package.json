@@ -8,7 +8,8 @@
     "dev": "turbo run dev --parallel",
     "test": "turbo run test --parallel",
     "lint": "turbo run lint --parallel",
-    "docs": "tools/gen-docs.sh"
+    "docs": "tools/gen-docs.sh",
+    "fix:doc-links": "node tools/clean-doc-links.mjs --write"
   },
   "devDependencies": {
     "@changesets/cli": "2.29.6",

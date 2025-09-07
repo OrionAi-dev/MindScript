@@ -112,6 +112,6 @@ ajv validate \
 
 ## Cross-References
 
-* [overview.md](./openspec/overview.md) → OpenSpec entrypoint
-* [spec-language.md](./openspec/spec-language.md) → core Context/Turn spec language
-* [templates.md](./openspec/templates.md) → librarian & promotion rules
+* [overview.md](mindscript/overview.md) → OpenSpec entrypoint
+* [spec-language.md](mindscript/spec-language.md) → core Context/Turn spec language
+* [templates.md](mindscript/templates.md) → librarian & promotion rules

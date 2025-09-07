@@ -25,7 +25,7 @@ plugins:
   - search
   - redirects:
       redirect_maps:
-        # TypeDoc landing pages moved from modules.md -> README.md
+        # TypeDoc landing pages -> README.md (fixes "modules.md not found")
         api/openspec-types/modules.md: api/openspec-types/README.md
         api/openspec-runtime/modules.md: api/openspec-runtime/README.md
         api/mindql-core/modules.md: api/mindql-core/README.md
@@ -33,10 +33,7 @@ plugins:
         api/openspec-plugin-mindql/modules.md: api/openspec-plugin-mindql/README.md
         api/openspec-plugin-mindgraphql/modules.md: api/openspec-plugin-mindgraphql/README.md
 
-        # Fixed moved/renamed spec pages
-        mindscript/spec-bdd-context-turn.md: mindscript/context-turn.md
-
-        # Old "openspi" paths -> canonical "mindscript" paths
+        # Old "openspi" paths -> canonical "mindscript" paths (fixes openspi/* links)
         openspi/spec-language.md: mindscript/spec-language.md
         openspi/context-turn.md: mindscript/context-turn.md
         openspi/typescript.md: mindscript/typescript.md
@@ -44,6 +41,17 @@ plugins:
         openspi/templates.md: mindscript/templates.md
         openspi/quickstart.md: mindscript/quickstart.md
         openspi/roadmap.md: mindscript/roadmap.md
+
+        # Old "openspec" links referenced by spec-bdd-openspec-core.md
+        openspec/overview.md: mindscript/spec-overview.md
+        openspec/spec-language.md: mindscript/spec-language.md
+        openspec/templates.md: mindscript/templates.md
+
+        # Context Turn page was renamed
+        spec-bdd-context-turn.md: mindscript/context-turn.md
+
+        # Stragglers used in implementations
+        mindscript/implementations/@software/examples.md: mindscript/implementations/@software/template.md
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
