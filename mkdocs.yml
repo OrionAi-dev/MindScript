@@ -26,32 +26,32 @@ plugins:
   - redirects:
       redirect_maps:
         # TypeDoc landing pages -> README.md (fixes "modules.md not found")
-        api/openspec-types/modules.md: api/openspec-types/README.md
-        api/openspec-runtime/modules.md: api/openspec-runtime/README.md
-        api/mindql-core/modules.md: api/mindql-core/README.md
-        api/mindgraphql-core/modules.md: api/mindgraphql-core/README.md
-        api/openspec-plugin-mindql/modules.md: api/openspec-plugin-mindql/README.md
-        api/openspec-plugin-mindgraphql/modules.md: api/openspec-plugin-mindgraphql/README.md
+        "api/openspec-types/modules.md": "api/openspec-types/README.md"
+        "api/openspec-runtime/modules.md": "api/openspec-runtime/README.md"
+        "api/mindql-core/modules.md": "api/mindql-core/README.md"
+        "api/mindgraphql-core/modules.md": "api/mindgraphql-core/README.md"
+        "api/openspec-plugin-mindql/modules.md": "api/openspec-plugin-mindql/README.md"
+        "api/openspec-plugin-mindgraphql/modules.md": "api/openspec-plugin-mindgraphql/README.md"
 
-        # Old "openspi" paths -> canonical "mindscript" paths (fixes openspi/* links)
-        openspi/spec-language.md: mindscript/spec-language.md
-        openspi/context-turn.md: mindscript/context-turn.md
-        openspi/typescript.md: mindscript/typescript.md
-        openspi/verification.md: mindscript/verification.md
-        openspi/templates.md: mindscript/templates.md
-        openspi/quickstart.md: mindscript/quickstart.md
-        openspi/roadmap.md: mindscript/roadmap.md
+        # Old "openspi" paths -> canonical "mindscript" paths
+        "openspi/spec-language.md": "mindscript/spec-language.md"
+        "openspi/context-turn.md": "mindscript/context-turn.md"
+        "openspi/typescript.md": "mindscript/typescript.md"
+        "openspi/verification.md": "mindscript/verification.md"
+        "openspi/templates.md": "mindscript/templates.md"
+        "openspi/quickstart.md": "mindscript/quickstart.md"
+        "openspi/roadmap.md": "mindscript/roadmap.md"
 
-        # Old "openspec" links referenced by spec-bdd-openspec-core.md
-        openspec/overview.md: mindscript/spec-overview.md
-        openspec/spec-language.md: mindscript/spec-language.md
-        openspec/templates.md: mindscript/templates.md
+        # Old "openspec" links referenced by spec docs
+        "openspec/overview.md": "mindscript/spec-overview.md"
+        "openspec/spec-language.md": "mindscript/spec-language.md"
+        "openspec/templates.md": "mindscript/templates.md"
 
         # Context Turn page was renamed
-        spec-bdd-context-turn.md: mindscript/context-turn.md
+        "spec-bdd-context-turn.md": "mindscript/context-turn.md"
 
         # Stragglers used in implementations
-        mindscript/implementations/@software/examples.md: mindscript/implementations/@software/template.md
+        "mindscript/implementations/@software/examples.md": "mindscript/implementations/@software/template.md"
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
@@ -68,17 +68,139 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
       linenums: true
-  # Use the new Material emoji paths (silences deprecation)
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 nav:
   - Home: index.md
+
+  - MindScript Spec:
+      - Overview: mindscript/spec-overview.md
+      - Language: mindscript/spec-language.md
+      - Schema: mindscript/spec-schema.md
+      - Validation: mindscript/spec-validation.md
+      - Context Turn: mindscript/context-turn.md
+      - Templates: mindscript/templates.md
+      - TypeScript: mindscript/typescript.md
+      - Verification: mindscript/verification.md
+      - Examples: mindscript/spec-examples.md
+      - Quickstart: mindscript/quickstart.md
+      - Roadmap: mindscript/roadmap.md
+      - Whitepaper: mindscript/whitepaper.md
+      - OpenSpec (BDD Core): mindscript/spec-bdd-openspec-core.md
+
+  - Implementations:
+      - "@software":
+          - Overview: "mindscript/implementations/@software/README.md"
+          - Adapters:
+              - Behat: "mindscript/implementations/@software/adapters/behat-mapper.md"
+              - Behave: "mindscript/implementations/@software/adapters/behave-mapper.md"
+              - Context Turn Mapper: "mindscript/implementations/@software/adapters/context-turn-mapper.md"
+              - Cucumber: "mindscript/implementations/@software/adapters/cucumber-mapper.md"
+              - JBehave: "mindscript/implementations/@software/adapters/jbehave-mapper.md"
+              - Jest: "mindscript/implementations/@software/adapters/jest-mapper.md"
+              - Karate: "mindscript/implementations/@software/adapters/karate-mapper.md"
+              - Robot: "mindscript/implementations/@software/adapters/robot-mapper.md"
+              - SpecFlow: "mindscript/implementations/@software/adapters/specflow-mapper.md"
+          - Template: "mindscript/implementations/@software/template.md"
+      - "BDD / openspec.core":
+          - Overview: mindscript/implementations/bdd/openspec.core/README.md
+
+  - Legacy:
+      - OpenSPI Overview: openspi/overview.md
+      - (Root) OpenSpec BDD Core: spec-bdd-openspec-core.md
+
   - API Reference:
-      - openspec-types: api/openspec-types/README.md
-      - openspec-runtime: api/openspec-runtime/README.md
-      - mindql-core: api/mindql-core/README.md
-      - mindgraphql-core: api/mindgraphql-core/README.md
-      - openspec-plugin-mindql: api/openspec-plugin-mindql/README.md
-      - openspec-plugin-mindgraphql: api/openspec-plugin-mindgraphql/README.md
+      - openspec-types:
+          - Overview: api/openspec-types/README.md
+          - Interfaces:
+              - AcceptanceCriterion: api/openspec-types/interfaces/AcceptanceCriterion.md
+              - BaseField: api/openspec-types/interfaces/BaseField.md
+              - DerivedSpec: api/openspec-types/interfaces/DerivedSpec.md
+              - JsonArray: api/openspec-types/interfaces/JsonArray.md
+              - JsonObject: api/openspec-types/interfaces/JsonObject.md
+              - JsonPatch: api/openspec-types/interfaces/JsonPatch.md
+              - OpenSpecBase: api/openspec-types/interfaces/OpenSpecBase.md
+              - OpenSpecContext: api/openspec-types/interfaces/OpenSpecContext.md
+              - OpenSpecTurn: api/openspec-types/interfaces/OpenSpecTurn.md
+              - Provenance: api/openspec-types/interfaces/Provenance.md
+              - ToolBinding: api/openspec-types/interfaces/ToolBinding.md
+          - Type Aliases:
+              - DeepReadonly: api/openspec-types/type-aliases/DeepReadonly.md
+              - FieldScope: api/openspec-types/type-aliases/FieldScope.md
+              - FieldType: api/openspec-types/type-aliases/FieldType.md
+              - ISODateTime: api/openspec-types/type-aliases/ISODateTime.md
+              - JsonPatchOp: api/openspec-types/type-aliases/JsonPatchOp.md
+              - JsonPrimitive: api/openspec-types/type-aliases/JsonPrimitive.md
+              - JsonValue: api/openspec-types/type-aliases/JsonValue.md
+              - SpecField: api/openspec-types/type-aliases/SpecField.md
+
+      - openspec-runtime:
+          - Overview: api/openspec-runtime/README.md
+          - Functions:
+              - applyPatches: api/openspec-runtime/functions/applyPatches.md
+              - mergeContextIntoTurn: api/openspec-runtime/functions/mergeContextIntoTurn.md
+              - registerVerifier: api/openspec-runtime/functions/registerVerifier.md
+              - verifyOutput: api/openspec-runtime/functions/verifyOutput.md
+          - Interfaces:
+              - AcceptanceCriterion: api/openspec-runtime/interfaces/AcceptanceCriterion.md
+              - BaseField: api/openspec-runtime/interfaces/BaseField.md
+              - DerivedSpec: api/openspec-runtime/interfaces/DerivedSpec.md
+              - JsonArray: api/openspec-runtime/interfaces/JsonArray.md
+              - JsonObject: api/openspec-runtime/interfaces/JsonObject.md
+              - JsonPatch: api/openspec-runtime/interfaces/JsonPatch.md
+              - OpenSpecBase: api/openspec-runtime/interfaces/OpenSpecBase.md
+              - OpenSpecContext: api/openspec-runtime/interfaces/OpenSpecContext.md
+              - OpenSpecTurn: api/openspec-runtime/interfaces/OpenSpecTurn.md
+              - Provenance: api/openspec-runtime/interfaces/Provenance.md
+              - ToolBinding: api/openspec-runtime/interfaces/ToolBinding.md
+              - VerifierFn: api/openspec-runtime/interfaces/VerifierFn.md
+              - VerifierResult: api/openspec-runtime/interfaces/VerifierResult.md
+          - Type Aliases:
+              - DeepReadonly: api/openspec-runtime/type-aliases/DeepReadonly.md
+              - FieldScope: api/openspec-runtime/type-aliases/FieldScope.md
+              - FieldType: api/openspec-runtime/type-aliases/FieldType.md
+              - ISODateTime: api/openspec-runtime/type-aliases/ISODateTime.md
+              - JsonPatchOp: api/openspec-runtime/type-aliases/JsonPatchOp.md
+              - JsonPrimitive: api/openspec-runtime/type-aliases/JsonPrimitive.md
+              - JsonValue: api/openspec-runtime/type-aliases/JsonValue.md
+              - SpecField: api/openspec-runtime/type-aliases/SpecField.md
+              - ZContext: api/openspec-runtime/type-aliases/ZContext.md
+              - ZField: api/openspec-runtime/type-aliases/ZField.md
+              - ZTurn: api/openspec-runtime/type-aliases/ZTurn.md
+          - Variables:
+              - zAcceptance: api/openspec-runtime/variables/zAcceptance.md
+              - zBaseField: api/openspec-runtime/variables/zBaseField.md
+              - zDerivedSpec: api/openspec-runtime/variables/zDerivedSpec.md
+              - zFieldScope: api/openspec-runtime/variables/zFieldScope.md
+              - zISODateTime: api/openspec-runtime/variables/zISODateTime.md
+              - zJsonPatch: api/openspec-runtime/variables/zJsonPatch.md
+              - zOpenSpecBase: api/openspec-runtime/variables/zOpenSpecBase.md
+              - zOpenSpecContext: api/openspec-runtime/variables/zOpenSpecContext.md
+              - zOpenSpecTurn: api/openspec-runtime/variables/zOpenSpecTurn.md
+              - zProvenance: api/openspec-runtime/variables/zProvenance.md
+              - zSpecField: api/openspec-runtime/variables/zSpecField.md
+              - zToolBinding: api/openspec-runtime/variables/zToolBinding.md
+
+      - mindql-core:
+          - Overview: api/mindql-core/README.md
+          - Functions:
+              - parseMindQL: api/mindql-core/functions/parseMindQL.md
+          - Type Aliases:
+              - MindQLNode: api/mindql-core/type-aliases/MindQLNode.md
+
+      - mindgraphql-core:
+          - Overview: api/mindgraphql-core/README.md
+          - Functions:
+              - normalizeMindGraphQL: api/mindgraphql-core/functions/normalizeMindGraphQL.md
+
+      - openspec-plugin-mindql:
+          - Overview: api/openspec-plugin-mindql/README.md
+          - Functions:
+              - default: api/openspec-plugin-mindql/functions/default.md
+
+      - openspec-plugin-mindgraphql:
+          - Overview: api/openspec-plugin-mindgraphql/README.md
+          - Functions:
+              - default: api/openspec-plugin-mindgraphql/functions/default.md
