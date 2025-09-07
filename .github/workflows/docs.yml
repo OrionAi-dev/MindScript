@@ -23,16 +23,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # needed for git-revision-date-localized-plugin
 
-      # 1) Install pnpm from the version pinned in package.json: "packageManager": "pnpm@x.y.z"
-      #    (Do NOT pass 'version:' here to avoid the multiple-versions error.)
+      # 1) Install pnpm pinned in package.json ("packageManager": "pnpm@x.y.z")
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           package_json_file: package.json
           run_install: false
 
-      # 2) Install Node (no built-in cache to avoid needing pnpm pre-installed)
+      # 2) Node
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:

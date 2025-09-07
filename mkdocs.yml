@@ -5,7 +5,6 @@ site_url: https://orionai-dev.github.io/MindScript
 repo_url: https://github.com/OrionAi-dev/MindScript
 repo_name: OrionAi-dev/MindScript
 edit_uri: ""
-
 docs_dir: docs
 
 theme:
@@ -24,10 +23,31 @@ theme:
 
 plugins:
   - search
-  - redirects
+  - redirects:
+      redirect_maps:
+        # TypeDoc landing pages moved from modules.md -> README.md
+        api/openspec-types/modules.md: api/openspec-types/README.md
+        api/openspec-runtime/modules.md: api/openspec-runtime/README.md
+        api/mindql-core/modules.md: api/mindql-core/README.md
+        api/mindgraphql-core/modules.md: api/mindgraphql-core/README.md
+        api/openspec-plugin-mindql/modules.md: api/openspec-plugin-mindql/README.md
+        api/openspec-plugin-mindgraphql/modules.md: api/openspec-plugin-mindgraphql/README.md
+
+        # Fixed moved/renamed spec pages
+        mindscript/spec-bdd-context-turn.md: mindscript/context-turn.md
+
+        # Old "openspi" paths -> canonical "mindscript" paths
+        openspi/spec-language.md: mindscript/spec-language.md
+        openspi/context-turn.md: mindscript/context-turn.md
+        openspi/typescript.md: mindscript/typescript.md
+        openspi/verification.md: mindscript/verification.md
+        openspi/templates.md: mindscript/templates.md
+        openspi/quickstart.md: mindscript/quickstart.md
+        openspi/roadmap.md: mindscript/roadmap.md
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
+      fallback_to_build_date: true
 
 markdown_extensions:
   - admonition
@@ -40,16 +60,17 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
       linenums: true
+  # Use the new Material emoji paths (silences deprecation)
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 nav:
   - Home: index.md
   - API Reference:
-      - openspec-types: api/openspec-types/modules.md
-      - openspec-runtime: api/openspec-runtime/modules.md
-      - mindql-core: api/mindql-core/modules.md
-      - mindgraphql-core: api/mindgraphql-core/modules.md
-      - openspec-plugin-mindql: api/openspec-plugin-mindql/modules.md
-      - openspec-plugin-mindgraphql: api/openspec-plugin-mindgraphql/modules.md
+      - openspec-types: api/openspec-types/README.md
+      - openspec-runtime: api/openspec-runtime/README.md
+      - mindql-core: api/mindql-core/README.md
+      - mindgraphql-core: api/mindgraphql-core/README.md
+      - openspec-plugin-mindql: api/openspec-plugin-mindql/README.md
+      - openspec-plugin-mindgraphql: api/openspec-plugin-mindgraphql/README.md
