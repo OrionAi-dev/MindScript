@@ -1,1 +1,6 @@
-# (paste the YAML above)
+# MindScript
+
+Welcome! This site hosts the MindScript / OpenSpec documentation.
+
+- **API Reference** is generated from the packages in this repo and lives under the left-hand navigation.
+- Specs and guides will be added here as they stabilize.
