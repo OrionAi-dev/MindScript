@@ -1,6 +1,55 @@
-# MindScript
+site_name: MindScript
+site_description: MindScript / OpenSpec — specs, runtime, and plugins
+site_url: https://orionai-dev.github.io/MindScript
 
-Welcome! This site hosts the MindScript / OpenSpec documentation.
+repo_url: https://github.com/OrionAi-dev/MindScript
+repo_name: OrionAi-dev/MindScript
+edit_uri: ""
 
-- **API Reference** is generated from the packages in this repo and lives under the left-hand navigation.
-- Specs and guides will be added here as they stabilize.
+docs_dir: docs
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - toc.integrate
+    - content.code.copy
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+  - redirects
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - API Reference:
+      - openspec-types: api/openspec-types/modules.md
+      - openspec-runtime: api/openspec-runtime/modules.md
+      - mindql-core: api/mindql-core/modules.md
+      - mindgraphql-core: api/mindgraphql-core/modules.md
+      - openspec-plugin-mindql: api/openspec-plugin-mindql/modules.md
+      - openspec-plugin-mindgraphql: api/openspec-plugin-mindgraphql/modules.md
