@@ -24,22 +24,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Install pnpm (version taken from package.json "packageManager")
+      # Install pnpm (uses version from package.json "packageManager")
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
 
-      # Node (for caching & node itself)
+      # Node (NO built-in caching here)
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
 
-      - name: Show pnpm version
-        run: pnpm --version
+      # Manual pnpm store cache
+      - name: Derive pnpm store path
+        id: pnpm-store
+        run: |
+          STORE_PATH="$(pnpm store path --silent)"
+          echo "STORE_PATH=$STORE_PATH" >> "$GITHUB_OUTPUT"
+          mkdir -p "$STORE_PATH"
+          echo "pnpm store path: $STORE_PATH"
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-store.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
 
       - name: Install deps
         run: pnpm install --frozen-lockfile=false
