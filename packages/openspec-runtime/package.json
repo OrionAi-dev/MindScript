@@ -12,10 +12,22 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
-  "scripts": { "build": "tsup src/index.ts --dts --format esm,cjs" },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs"
+  },
   "dependencies": {
     "@mindscript/openspec-types": "workspace:*"
   },
-  "publishConfig": { "access": "public" }
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "zod": "^3.25.76"
+  },
+  "peerDependencies": {
+    "zod": ">=3.23 <5"
+  }
 }
