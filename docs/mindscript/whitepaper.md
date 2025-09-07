@@ -53,7 +53,7 @@ Today’s AI systems often assume context, preferences, or intent without asking
 * **TypeScript bindings** → canonical reference ([typescript.md](./typescript.md))
 * **Verifiers stdlib** → common checks ([verification.md](./verification.md))
 * **Librarian** → template promotion and governance ([templates.md](./templates.md))
-* **Adapters** → BDD frameworks and domain tools ([implementations](./implementations))
+* **Adapters** → BDD frameworks and domain tools ([implementations](./implementations/@software/README.md))
 
 ---
 

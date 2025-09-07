@@ -39,3 +39,4 @@ site/           # mkdocs build output
 .venv/
 
 !pnpm-lock.yaml
+.venv

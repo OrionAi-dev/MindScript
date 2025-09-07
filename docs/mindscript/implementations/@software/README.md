@@ -35,7 +35,7 @@ The list of supported BDD schema families and their metadata lives in [`bdd-regi
 Currently supported: Gherkin (Cucumber family), SpecFlow, Behave, JBehave, Behat, Robot Framework, and Karate.  
 
 ## Examples
-End-to-end examples are provided in the [`examples/`](./examples) directory, including:  
+End-to-end examples are provided in the [`examples/`](./examples/BUG-RESET-PASSWORD.yaml) directory, including:  
 
 - Gherkin (`FEATURE-LOGIN.yaml`)  
 - SpecFlow (`SPECFLOW-LOGIN.yaml`)  
