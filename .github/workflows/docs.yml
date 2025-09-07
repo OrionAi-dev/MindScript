@@ -24,6 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Node + Corepack (uses the pnpm version from package.json -> "packageManager")
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -31,15 +32,13 @@ jobs:
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
 
-      # Use the pnpm version pinned in package.json ("packageManager")
-      - name: Setup pnpm (respect packageManager)
-        uses: pnpm/action-setup@v4
-        with:
-          # do NOT set "version" here; it will read from package.json
-          package_json_path: ./package.json
-          run_install: false
+      - name: Enable Corepack (installs pinned pnpm)
+        run: |
+          corepack enable
+          pnpm --version
 
-      - name: Install Node deps
+      - name: Install deps
+        # use --frozen-lockfile=false if lockfile can be regenerated in CI
         run: pnpm install --frozen-lockfile=false
 
       - name: Build workspace packages
@@ -48,6 +47,7 @@ jobs:
       - name: Generate API Markdown (TypeDoc)
         run: ./tools/gen-docs.sh
 
+      # Python / MkDocs
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -61,6 +61,7 @@ jobs:
       - name: Build MkDocs site
         run: mkdocs build --strict --site-dir site
 
+      # Artifacts
       - name: Upload site (PR preview)
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v4
