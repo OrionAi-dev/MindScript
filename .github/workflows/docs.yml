@@ -6,7 +6,6 @@ on:
   pull_request:
   workflow_dispatch:
 
-# Minimal permissions for the whole workflow (OK to keep at job-level if you prefer)
 permissions:
   contents: read
   pages: write
@@ -25,17 +24,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Node / pnpm for TypeDoc
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      # Use the pnpm version pinned in package.json ("packageManager")
+      - name: Setup pnpm (respect packageManager)
+        uses: pnpm/action-setup@v4
+        with:
+          # do NOT set "version" here; it will read from package.json
+          package_json_path: ./package.json
+          run_install: false
 
       - name: Install Node deps
         run: pnpm install --frozen-lockfile=false
@@ -46,7 +48,6 @@ jobs:
       - name: Generate API Markdown (TypeDoc)
         run: ./tools/gen-docs.sh
 
-      # Python / MkDocs
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
@@ -60,7 +61,6 @@ jobs:
       - name: Build MkDocs site
         run: mkdocs build --strict --site-dir site
 
-      # Artifacts
       - name: Upload site (PR preview)
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v4
@@ -82,7 +82,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Configure Pages (auto-enable if missing)
         uses: actions/configure-pages@v5
