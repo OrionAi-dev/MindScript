@@ -24,26 +24,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ---- Node / pnpm ----
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
-          cache-dependency-path: |
-            pnpm-lock.yaml
-            **/pnpm-lock.yaml
-
-      # Install pnpm matching package.json: "packageManager": "pnpm@x.y.z"
+      # 1) Install pnpm from the version pinned in package.json: "packageManager": "pnpm@x.y.z"
+      #    (Do NOT pass 'version:' here to avoid the multiple-versions error.)
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
+          package_json_file: package.json
           run_install: false
 
-      - name: Show pnpm version
-        run: pnpm -v
+      # 2) Install Node (no built-in cache to avoid needing pnpm pre-installed)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: Install Node deps
+      - name: Show tool versions
+        run: |
+          node -v
+          pnpm -v
+
+      - name: Install deps
         run: pnpm install --frozen-lockfile
 
       - name: Build workspace packages
@@ -57,8 +57,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
-          cache-dependency-path: docs/requirements.txt
 
       - name: Install MkDocs deps
         run: pip install -r docs/requirements.txt
