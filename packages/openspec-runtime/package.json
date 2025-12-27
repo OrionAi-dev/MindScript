@@ -1,6 +1,7 @@
 {
   "name": "@mindscript/openspec-runtime",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -12,22 +13,15 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs"
+    "build": "tsup src/index.ts --dts --format esm,cjs",
+    "typecheck": "pnpm exec tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@mindscript/openspec-types": "workspace:*"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
-    "zod": "^3.25.76"
-  },
-  "peerDependencies": {
-    "zod": ">=3.23 <5"
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
   }
 }

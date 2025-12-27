@@ -1,6 +1,7 @@
 {
   "name": "@mindscript/openspec-types",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -12,7 +13,12 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
-  "scripts": { "build": "tsup src/index.ts --dts --format esm,cjs", "test": "vitest" },
-  "publishConfig": { "access": "public" }
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs",
+    "typecheck": "pnpm exec tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  }
 }

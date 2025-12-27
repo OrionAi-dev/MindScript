@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      graphql:
+        specifier: ^16.11.0
+        version: 16.11.0
     devDependencies:
       '@changesets/cli':
         specifier: 2.29.6
@@ -38,18 +42,25 @@ importers:
 
   packages/mindgraphql-core:
     dependencies:
-      '@mindscript/openspec-types':
-        specifier: workspace:*
-        version: link:../openspec-types
       graphql:
-        specifier: ^16.9.0
+        specifier: ^16.11.0
         version: 16.11.0
+    devDependencies:
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(postcss@8.5.6)(typescript@5.9.2)(yaml@2.8.1)
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
 
   packages/mindql-core:
-    dependencies:
-      '@mindscript/openspec-types':
-        specifier: workspace:*
-        version: link:../openspec-types
+    devDependencies:
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(postcss@8.5.6)(typescript@5.9.2)(yaml@2.8.1)
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
 
   packages/openspec-cli:
     dependencies:
@@ -68,12 +79,51 @@ importers:
       '@mindscript/mindgraphql-core':
         specifier: workspace:*
         version: link:../mindgraphql-core
+      '@mindscript/openspec-types':
+        specifier: workspace:*
+        version: link:../openspec-types
+    devDependencies:
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(postcss@8.5.6)(typescript@5.9.2)(yaml@2.8.1)
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
 
   packages/openspec-plugin-mindql:
     dependencies:
       '@mindscript/mindql-core':
         specifier: workspace:*
         version: link:../mindql-core
+      '@mindscript/openspec-types':
+        specifier: workspace:*
+        version: link:../openspec-types
+    devDependencies:
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(postcss@8.5.6)(typescript@5.9.2)(yaml@2.8.1)
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
+
+  packages/openspec-plugin-mindscript:
+    dependencies:
+      '@mindscript/mindql-core':
+        specifier: workspace:*
+        version: link:../mindql-core
+      '@mindscript/openspec-runtime':
+        specifier: workspace:*
+        version: link:../openspec-runtime
+      '@mindscript/openspec-types':
+        specifier: workspace:*
+        version: link:../openspec-types
+    devDependencies:
+      tsup:
+        specifier: ^8.0.0
+        version: 8.5.0(postcss@8.5.6)(typescript@5.9.2)(yaml@2.8.1)
+      typescript:
+        specifier: ^5.9.0
+        version: 5.9.2
 
   packages/openspec-runtime:
     dependencies:
@@ -81,11 +131,21 @@ importers:
         specifier: workspace:*
         version: link:../openspec-types
     devDependencies:
-      zod:
-        specifier: ^3.25.76
-        version: 3.25.76
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(postcss@8.5.6)(typescript@5.9.2)(yaml@2.8.1)
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
 
-  packages/openspec-types: {}
+  packages/openspec-types:
+    devDependencies:
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(postcss@8.5.6)(typescript@5.9.2)(yaml@2.8.1)
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
 
 packages:
 

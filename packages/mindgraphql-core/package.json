@@ -1,6 +1,7 @@
 {
   "name": "@mindscript/mindgraphql-core",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
@@ -12,11 +13,15 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist"],
-  "scripts": { "build": "tsup src/index.ts --dts --format esm,cjs" },
-  "dependencies": {
-    "@mindscript/openspec-types": "workspace:*",
-    "graphql": "^16.9.0"
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs",
+    "typecheck": "pnpm exec tsc -p tsconfig.json --noEmit"
   },
-  "publishConfig": { "access": "public" }
+  "dependencies": {
+    "graphql": "^16.11.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  }
 }
