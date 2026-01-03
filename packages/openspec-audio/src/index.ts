@@ -1,88 +1,61 @@
-import type { JsonValue, ISODateTime } from "@mindscript/openspec-types";
+import type { JsonValue } from "@mindscript/openspec-types";
 
-/**
- * OpenSpec Audio (public, stable, boring)
- * --------------------------------------
- * Defines vendor-neutral audio + transcription contracts.
- *
- * Private repos implement:
- * - Whisper (API or local)
- * - Other ASR providers
- * - Diarization, alignment, enrichment
- */
+/** ---------- Strong-ish IDs (branded strings) ---------- */
+export type AudioId = string & { __brand: "AudioId" };
+export type TranscriptId = string & { __brand: "TranscriptId" };
+export type LanguageTag = string & { __brand: "LanguageTag" };
 
-/* ---------- Branded IDs ---------- */
-export type AudioId = string & { readonly __brand: "AudioId" };
-export type TranscriptId = string & { readonly __brand: "TranscriptId" };
-export type LanguageTag = string & { readonly __brand: "LanguageTag" };
+/** ---------- Inputs ---------- */
+export type AudioInput = {
+  kind: "path";
+  /** absolute or relative path */
+  path: string;
+  /** optional mime hint */
+  mime?: string;
+};
 
-/* ---------- Audio Input ---------- */
-export interface AudioInput {
-  id?: AudioId;
-  kind: string; // "file" | "bytes" | "url" | "stream" | ...
-
-  path?: string;
-  url?: string;
-  bytes?: Uint8Array;
-
-  mimeType?: string;
-  durationMs?: number;
-
-  ext?: Record<string, JsonValue>;
-}
-
-/* ---------- Transcription Options ---------- */
+/** ---------- Options ---------- */
 export interface TranscriptionOptions {
-  language?: LanguageTag;
-  diarization?: boolean;
-  wordTimestamps?: boolean;
-  segmentTimestamps?: boolean;
+  /**
+   * "auto" lets provider detect language; otherwise a BCP-47 tag like "en", "es", "pt-BR"
+   */
+  language?: "auto" | LanguageTag;
+
+  /** Provider-specific model name */
+  model?: string;
+
+  /** Optional prompt/context */
   prompt?: string;
 
+  /** Output format preference */
+  format?: "text" | "json";
+
+  /** Provider-specific extension */
   ext?: Record<string, JsonValue>;
 }
 
-/* ---------- Timing ---------- */
-export interface WordTiming {
-  text: string;
+/** ---------- Transcript ---------- */
+export interface TranscriptSegment {
   startMs?: number;
   endMs?: number;
+  text: string;
   confidence?: number;
   ext?: Record<string, JsonValue>;
 }
 
-export interface Segment {
-  text: string;
-  startMs?: number;
-  endMs?: number;
-  speaker?: string;
-  confidence?: number;
-  words?: ReadonlyArray<WordTiming>;
-  ext?: Record<string, JsonValue>;
-}
-
-/* ---------- Transcript ---------- */
 export interface Transcript {
   id: TranscriptId;
-  createdAt: ISODateTime;
-
-  audio: AudioInput;
+  audioId?: AudioId;
 
   text: string;
   language?: LanguageTag;
 
-  segments?: ReadonlyArray<Segment>;
+  segments?: TranscriptSegment[];
 
-  model?: {
-    id?: string;
-    version?: string;
-    ext?: Record<string, JsonValue>;
-  };
-
-  rawRef?: {
-    kind: string;
-    ref: string;
-    checksum?: string;
+  provider: {
+    id: string;     // e.g. "openai"
+    model?: string; // e.g. "whisper-1"
+    requestId?: string;
   };
 
   confidence?: number;
@@ -91,16 +64,13 @@ export interface Transcript {
   ext?: Record<string, JsonValue>;
 }
 
-/* ---------- Adapter Interface ---------- */
+/** ---------- Adapter Interface ---------- */
 export interface AudioTranscriptionAdapter {
-  id: string; // generic, e.g. "transcription.adapter"
-  transcribe(
-    audio: AudioInput,
-    options?: TranscriptionOptions
-  ): Promise<Transcript>;
+  id: string; // e.g. "openai.transcribe"
+  transcribe(audio: AudioInput, options?: TranscriptionOptions): Promise<Transcript>;
 }
 
-/* ---------- Helpers ---------- */
+/** ---------- Helpers ---------- */
 export function makeAudioId(s: string): AudioId {
   return s as AudioId;
 }
@@ -110,3 +80,5 @@ export function makeTranscriptId(s: string): TranscriptId {
 export function makeLanguageTag(s: string): LanguageTag {
   return s as LanguageTag;
 }
+
+export * from "./adapters/openai";

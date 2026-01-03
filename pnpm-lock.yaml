@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@mindscript/openspec-audio':
+        specifier: workspace:*
+        version: link:packages/openspec-audio
       graphql:
         specifier: ^16.11.0
         version: 16.12.0
+      openai:
+        specifier: ^6.15.0
+        version: 6.15.0(zod@3.25.76)
     devDependencies:
       '@changesets/cli':
         specifier: 2.29.6
@@ -61,6 +67,22 @@ importers:
       '@mindscript/openspec-types':
         specifier: workspace:*
         version: link:../openspec-types
+    devDependencies:
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(postcss@8.5.6)(typescript@5.9.2)(yaml@2.8.2)
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
+
+  packages/openspec-audio:
+    dependencies:
+      '@mindscript/openspec-types':
+        specifier: workspace:*
+        version: link:../openspec-types
+      openai:
+        specifier: ^6.15.0
+        version: 6.15.0(zod@3.25.76)
     devDependencies:
       tsup:
         specifier: ^8.5.0
@@ -1057,6 +1079,18 @@ packages:
   object-assign@4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
+
+  openai@6.15.0:
+    resolution: {integrity: sha512-F1Lvs5BoVvmZtzkUEVyh8mDQPPFolq4F+xdsx/DO8Hee8YF3IGAlZqUIsF+DVGhqf4aU0a3bTghsxB6OIsRy1g==}
+    hasBin: true
+    peerDependencies:
+      ws: ^8.18.0
+      zod: ^3.25 || ^4.0
+    peerDependenciesMeta:
+      ws:
+        optional: true
+      zod:
+        optional: true
 
   outdent@0.5.0:
     resolution: {integrity: sha512-/jHxFIzoMXdqPzTaCpFzAAWhpkSjZPF4Vsn6jAfNpmbH/ymsmd7Qc6VE9BGn0L6YMj6uwpQLxCECpus4ukKS9Q==}
@@ -2287,6 +2321,10 @@ snapshots:
   nanoid@3.3.11: {}
 
   object-assign@4.1.1: {}
+
+  openai@6.15.0(zod@3.25.76):
+    optionalDependencies:
+      zod: 3.25.76
 
   outdent@0.5.0: {}
 

@@ -11,14 +11,23 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./adapters/openai": {
+      "types": "./dist/adapters/openai.d.ts",
+      "import": "./dist/adapters/openai.js",
+      "require": "./dist/adapters/openai.cjs"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs"
+    "build": "tsup src/index.ts --dts --format esm,cjs",
+    "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
-    "@mindscript/openspec-types": "workspace:*"
+    "@mindscript/openspec-types": "workspace:*",
+    "openai": "^6.15.0"
   },
   "devDependencies": {
     "tsup": "^8.5.0",

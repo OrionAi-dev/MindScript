@@ -23,6 +23,8 @@
     "zod": "^3.25.76"
   },
   "dependencies": {
-    "graphql": "^16.11.0"
+    "@mindscript/openspec-audio": "workspace:*",
+    "graphql": "^16.11.0",
+    "openai": "^6.15.0"
   }
 }
