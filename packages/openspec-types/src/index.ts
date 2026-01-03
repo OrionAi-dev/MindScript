@@ -119,3 +119,8 @@ export interface ToolBinding<P extends Record<string, SpecField> = Record<string
 export type DeepReadonly<T> = {
   readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K]
 };
+/**
+ * Runtime marker export.
+ * This package is primarily types; this constant exists so the JS output is non-empty.
+ */
+export const OPENSPEC_TYPES_RUNTIME = true as const;

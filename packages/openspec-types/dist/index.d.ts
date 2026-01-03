@@ -125,5 +125,10 @@ interface ToolBinding<P extends Record<string, SpecField> = Record<string, SpecF
 type DeepReadonly<T> = {
     readonly [K in keyof T]: T[K] extends object ? DeepReadonly<T[K]> : T[K];
 };
+/**
+ * Runtime marker export.
+ * This package is primarily types; this constant exists so the JS output is non-empty.
+ */
+declare const OPENSPEC_TYPES_RUNTIME: true;
 
-export type { AcceptanceCriterion, BaseField, DeepReadonly, DerivedSpec, FieldScope, FieldType, ISODateTime, JsonArray, JsonObject, JsonPatch, JsonPatchOp, JsonPrimitive, JsonValue, OpenSpecBase, OpenSpecContext, OpenSpecTurn, Provenance, SpecField, ToolBinding };
+export { type AcceptanceCriterion, type BaseField, type DeepReadonly, type DerivedSpec, type FieldScope, type FieldType, type ISODateTime, type JsonArray, type JsonObject, type JsonPatch, type JsonPatchOp, type JsonPrimitive, type JsonValue, OPENSPEC_TYPES_RUNTIME, type OpenSpecBase, type OpenSpecContext, type OpenSpecTurn, type Provenance, type SpecField, type ToolBinding };
