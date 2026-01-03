@@ -1,45 +1,72 @@
-# macOS system files
+cat > .gitignore <<'EOF'
+# ------------------------------
+# macOS
+# ------------------------------
 .DS_Store
 .AppleDouble
 .LSOverride
 
-# VS Code settings
+# ------------------------------
+# Editors
+# ------------------------------
 .vscode/
 .history/
 
-# Node.js (if you later add tooling)
+# ------------------------------
+# Node / Package managers
+# ------------------------------
 node_modules/
+**/node_modules/
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
 package-lock.json
 yarn.lock
 
-# Build artifacts
+# Keep pnpm lockfile tracked
+!pnpm-lock.yaml
+
+# ------------------------------
+# Turbo / Task runners
+# ------------------------------
+.turbo/
+**/.turbo/
+
+# ------------------------------
+# Build outputs
+# ------------------------------
+dist/
+**/dist/
+build/
+**/build/
+out/
+**/out/
+
+*.tsbuildinfo
+
+# Docs / artifacts (optional; keep if you generate these locally)
 *.pdf
 *.docx
 *.rtf
 *.odt
 *.tmp
 
+# ------------------------------
 # Logs
+# ------------------------------
 *.log
 logs/
-# --- OpenSpec ---
+
+# ------------------------------
+# Python / virtualenv
+# ------------------------------
 .venv/
 **/.venv/
-site/           # mkdocs build output
-.DS_Store
-
-# Python
-.venv/
-
-# Python
-.venv/
-
-!pnpm-lock.yaml
 .venv
 
-# Turbo build cache
-.turbo/
+# MkDocs / static site output
+site/
+EOF
