@@ -40,3 +40,6 @@ site/           # mkdocs build output
 
 !pnpm-lock.yaml
 .venv
+
+# Turbo build cache
+.turbo/

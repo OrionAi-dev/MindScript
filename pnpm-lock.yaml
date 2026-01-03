@@ -81,6 +81,19 @@ importers:
         specifier: workspace:*
         version: link:../openspec-types
 
+  packages/openspec-events:
+    dependencies:
+      '@mindscript/openspec-types':
+        specifier: workspace:*
+        version: link:../openspec-types
+    devDependencies:
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(postcss@8.5.6)(typescript@5.9.2)(yaml@2.8.2)
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.2
+
   packages/openspec-plugin-mindgraphql:
     dependencies:
       '@mindscript/mindgraphql-core':
