@@ -16,7 +16,6 @@
   "scripts": {
     "pretypecheck": "pnpm -w -F @mindscript/openspec-types build",
     "typecheck": "pnpm exec tsc -p tsconfig.json --noEmit",
-    "prebuild": "pnpm -w -F @mindscript/openspec-types build",
     "build": "pnpm exec tsup"
   },
   "dependencies": {
