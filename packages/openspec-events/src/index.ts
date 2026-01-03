@@ -172,6 +172,13 @@ export interface EventEnvelope<
   /** Where the event came from */
   source: SourceDescriptor;
 
+  /**
+   * Optional additional sources supporting this event (attachments, exports, secondary evidence).
+   * Use this when an event is corroborated by multiple inputs (e.g., export + screenshot + audio).
+   */
+  sources?: ReadonlyArray<SourceDescriptor>;
+
+
   /** Event-specific payload (consumer-defined) */
   payload: TPayload;
 
