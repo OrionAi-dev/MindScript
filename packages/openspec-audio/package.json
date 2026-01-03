@@ -24,7 +24,8 @@
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm,cjs",
     "smoke": "node scripts/smoke.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "smoke:import": "node scripts/smoke-import.mjs"
   },
   "dependencies": {
     "@mindscript/openspec-types": "workspace:*",
