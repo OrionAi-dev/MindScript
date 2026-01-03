@@ -1,18 +1,16 @@
-import type { OpenSpecContext, OpenSpecTurn, DerivedSpec } from "@mindscript/openspec-types";
+import type { DerivedSpec } from "@mindscript/openspec-types";
 
-export type MindscriptPluginOptions = {
-  name?: string;
+export const mindscriptDerivedSpec: DerivedSpec = {
+  // which base spec we are deriving from
+  baseId: "openspec",
+
+  // JSON-Patch operations (as before)
+  patches: [
+    { op: "add", path: "/fields/mindscript", value: { type: "string", required: false } }
+  ],
+
+  // keep runtime validators happy (they expect provenance to exist for DerivedSpec)
+  provenance: []
 };
 
-export default function mindscriptPlugin(_opts: MindscriptPluginOptions = {}) {
-  return function derive(_ctx: OpenSpecContext, _turn: OpenSpecTurn): DerivedSpec {
-    return {
-      id: "mindscript",
-      name: "MindScript Plugin",
-      version: "0.1.0",
-      fields: [],
-      acceptance: [],
-      toolBindings: []
-    };
-  };
-}
+export default mindscriptDerivedSpec;
