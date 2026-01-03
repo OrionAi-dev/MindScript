@@ -18,7 +18,8 @@
     "typecheck": "pnpm exec tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "graphql": "^16.11.0"
+    "graphql": "^16.11.0",
+    "@mindscript/openspec-types": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^8.5.0",
