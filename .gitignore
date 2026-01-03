@@ -70,3 +70,6 @@ logs/
 # MkDocs / static site output
 site/
 EOF
+
+# TypeScript build info
+*.tsbuildinfo
