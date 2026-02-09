@@ -1,17 +1,17 @@
 # Karate Mapper
 
-This adapter connects OpenSpec `@software` criteria to **Karate** by referencing external artifacts only. It does not embed or generate Karate tests from OpenSpec. It verifies links to Karate `.feature` files and scenarios you reference, and produces a traceability index.
+This adapter connects MindScript `@software` criteria to **Karate** by referencing external artifacts only. It does not embed or generate Karate tests from MindScript. It verifies links to Karate `.feature` files and scenarios you reference, and produces a traceability index.
 
 ## Design principles
 
-- OpenSpec stays agnostic. We only link to Karate, we do not copy its DSL into OpenSpec.
+- MindScript stays agnostic. We only link to Karate, we do not copy its DSL into MindScript.
 - References over generation. The mapper verifies and indexes your references, it does not author tests.
 - Profiles by URL. `bdd_ref.source` must be a URL listed in `bdd-registry.yaml` for Karate.
 
 ## What it does
 
-- Reads an OpenSpec YAML that declares:
-  - `profile: https://openspec.dev/profiles/@software`
+- Reads an MindScript YAML that declares:
+  - `profile: https://mindscript.dev/profiles/@software`
   - One or more criteria with `bdd_ref` pointing to Karate artifacts
 - For each criterion with `bdd_ref`:
   - Validates `bdd_ref.source` matches the Karate profile URL from your registry
@@ -23,18 +23,18 @@ This adapter connects OpenSpec `@software` criteria to **Karate** by referencing
 ## Inputs (required fields)
 
 - `criteria[].bdd_ref.source` → Karate profile URL  
-  Example: `https://openspec.dev/profiles/bdd/karate`
+  Example: `https://mindscript.dev/profiles/bdd/karate`
 - `criteria[].bdd_ref.path` → path or URL to the `.feature`
 - `criteria[].bdd_ref.scenario` → scenario name inside that feature
 
 Note: Inline step fields like `given`, `when`, `then` are not used. The mapper ignores them if present.
 
-## Minimal example (OpenSpec to Karate reference)
+## Minimal example (MindScript to Karate reference)
 
-OpenSpec input:
+MindScript input:
 
 ```yaml
-profile: https://openspec.dev/profiles/@software
+profile: https://mindscript.dev/profiles/@software
 kind: software
 meta:
   id: KARATE-701
@@ -51,7 +51,7 @@ requirements:
         type: functional
         text: Karate test executes and passes
         bdd_ref:
-          source: https://openspec.dev/profiles/bdd/karate
+          source: https://mindscript.dev/profiles/bdd/karate
           path: ./KARATE-LOGIN.feature
           scenario: Valid credentials produce a successful session
 ```
@@ -72,7 +72,7 @@ Mapper output (traceability index):
 
 ```json
 {
-  "profile": "https://openspec.dev/profiles/@software",
+  "profile": "https://mindscript.dev/profiles/@software",
   "tool": "karate",
   "mappings": [
     {
@@ -86,7 +86,7 @@ Mapper output (traceability index):
 
 ## Field mapping (reference only)
 
-OpenSpec to Karate
+MindScript to Karate
 
 - `meta.id`, `meta.title` are used for discovery and file naming. No content is generated.
 - `requirements[].id`, `requirements[].statement` are used for grouping in the index.
@@ -98,7 +98,7 @@ OpenSpec to Karate
 ## File layout
 
 Inputs
-- OpenSpec specs: anywhere. Examples are under `docs/mindscript/implementations/@software/examples/`.
+- MindScript specs: anywhere. Examples are under `docs/mindscript/implementations/@software/examples/`.
 - Karate features: wherever your test suite keeps them. Examples live alongside the YAML.
 
 Outputs
@@ -107,11 +107,11 @@ Outputs
 
 ## Validation rules applied
 
-- OpenSpec file must validate against `@software` schema.
+- MindScript file must validate against `@software` schema.
 - `bdd_ref.source` must be a URL listed for Karate in `bdd-registry.yaml`.
 - `bdd_ref.path` must resolve to an existing `.feature` (local or reachable URL).
 - `bdd_ref.scenario` must exist in the target `.feature`.
-- Inline step fields are ignored. OpenSpec does not define steps.
+- Inline step fields are ignored. MindScript does not define steps.
 
 ## Naming guidance
 
@@ -123,10 +123,10 @@ Outputs
 - Typical Karate execution:
   - Maven: `mvn -Dtest=KarateRunner test` or `mvn test -Dkarate.options="--tags @smoke"`
   - Standalone jar: `java -jar karate.jar -p 8080 -t @smoke classpath:features`
-- Tag scenarios with OpenSpec IDs for back references:
+- Tag scenarios with MindScript IDs for back references:
 
 ```gherkin
-@openspec(KARATE-701.1.1)
+@mindscript(KARATE-701.1.1)
 Scenario: Valid credentials produce a successful session
 ```
 
@@ -140,7 +140,7 @@ Scenario: Valid credentials produce a successful session
 
 ## Quick checklist
 
-- [ ] OpenSpec YAML validates against `@software` schema  
+- [ ] MindScript YAML validates against `@software` schema  
 - [ ] `bdd-registry.yaml` includes the Karate profile URL  
 - [ ] External `.feature` file exists and contains the named Scenario  
 - [ ] `dist/karate/index.json` produced for traceability  

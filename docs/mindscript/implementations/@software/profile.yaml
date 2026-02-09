@@ -1,9 +1,9 @@
 id: "@software"
-namespace: "openspec"
-url: "https://openspec.dev/profiles/@software"
+namespace: "mindscript"
+url: "https://mindscript.dev/profiles/@software"
 version: "1.0"
-description: "OpenSpec profile for software delivery"
-schema: "https://openspec.dev/schemas/@software-1.0.json"
+description: "MindScript profile for software delivery"
+schema: "https://mindscript.dev/schemas/@software-1.0.json"
 registry: "../profiles-registry.yaml"
 maintainers:
   - name: "OrionAI / Telescope"

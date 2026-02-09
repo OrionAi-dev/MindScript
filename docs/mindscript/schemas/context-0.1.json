@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://openspec.dev/schemas/mindscript/context-0.1.json",
+  "$id": "https://mindscript.dev/schemas/mindscript/context-0.1.json",
   "title": "MindScript Context",
   "description": "Shared contract that frames multiple Turns. Versions follow SemVer; increment major for breaking changes, minor for additive changes, and patch for clarifications.",
   "type": "object",

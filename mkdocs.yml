@@ -1,5 +1,5 @@
 site_name: MindScript
-site_description: MindScript (formerly OpenSpec) — specs, runtime, and plugins
+site_description: MindScript — specs, runtime, and plugins
 site_url: https://orionai-dev.github.io/MindScript
 
 repo_url: https://github.com/OrionAi-dev/MindScript
@@ -222,4 +222,4 @@ nav:
 
   - Legacy:
       - OpenSPI Overview: openspi/overview.md
-      - (Root) OpenSpec BDD Core: spec-bdd-openspec-core.md
+      - (Root) Legacy BDD Core (openspec.core): spec-bdd-openspec-core.md

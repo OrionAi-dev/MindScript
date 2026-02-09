@@ -19,8 +19,7 @@ npm install @mindscript/openspec-types zod
 Define an environment contract.
 
 ```ts
-import { OpenSpecContext } from "@openspi/core";
-import type { AcceptanceCriteria } from "@mindscript/openspec-types";
+import type { AcceptanceCriteria, MindScriptContext } from "@mindscript/openspec-types";
 
 const criteria: AcceptanceCriteria = [
   {
@@ -101,9 +100,9 @@ Check against acceptance criteria.
 Send Context + Turn in a single API payload.
 
 ```ts
-import type { OpenSpecRequestEnvelope } from "@mindscript/openspec-types";
+import type { MindScriptRequestEnvelope } from "@mindscript/openspec-types";
 
-const request: OpenSpecRequestEnvelope = {
+const request: MindScriptRequestEnvelope = {
   context: ctx,
   turn,
   input: { format: "html" },

@@ -1,17 +1,17 @@
 # Robot Framework Mapper
 
-This adapter connects OpenSpec `@software` criteria to **Robot Framework** by **referencing external artifacts only**. It does **not** generate `.robot` files or embed Robot syntax into OpenSpec. It verifies links to `.robot` test cases you reference and produces a traceability index.
+This adapter connects MindScript `@software` criteria to **Robot Framework** by **referencing external artifacts only**. It does **not** generate `.robot` files or embed Robot syntax into MindScript. It verifies links to `.robot` test cases you reference and produces a traceability index.
 
 ## Design principles
 
-- **OpenSpec stays agnostic.** We only link to Robot; no Robot semantics live in the OpenSpec schema.
+- **MindScript stays agnostic.** We only link to Robot; no Robot semantics live in the MindScript schema.
 - **References over generation.** The mapper verifies and indexes your references; it does not author tests or keywords.
 - **Profiles by URL.** `bdd_ref.source` must be a URL listed in `bdd-registry.yaml` for Robot.
 
 ## What it does
 
-- Reads an OpenSpec YAML that declares:
-  - `profile: https://openspec.dev/profiles/@software`
+- Reads an MindScript YAML that declares:
+  - `profile: https://mindscript.dev/profiles/@software`
   - One or more criteria with `bdd_ref` pointing to Robot artifacts
 - For each criterion with `bdd_ref`:
   - Validates `bdd_ref.source` matches the Robot profile URL from your registry
@@ -23,18 +23,18 @@ This adapter connects OpenSpec `@software` criteria to **Robot Framework** by **
 ## Inputs (required fields)
 
 - `criteria[].bdd_ref.source` → Robot profile URL  
-  Example: `https://openspec.dev/profiles/bdd/robot`
+  Example: `https://mindscript.dev/profiles/bdd/robot`
 - `criteria[].bdd_ref.path` → path/URL to the `.robot` file
 - `criteria[].bdd_ref.scenario` → **Test Case** name inside that file
 
-> Note: Inline step fields (e.g., `given`, `when`, `then`) are **not used**. OpenSpec does not define step syntax.
+> Note: Inline step fields (e.g., `given`, `when`, `then`) are **not used**. MindScript does not define step syntax.
 
-## Minimal example (OpenSpec → Robot reference)
+## Minimal example (MindScript → Robot reference)
 
-OpenSpec input:
+MindScript input:
 
 ```yaml
-profile: https://openspec.dev/profiles/@software
+profile: https://mindscript.dev/profiles/@software
 kind: software
 meta:
   id: ROBOT-601
@@ -51,7 +51,7 @@ requirements:
         type: functional
         text: Robot test executes and passes
         bdd_ref:
-          source: https://openspec.dev/profiles/bdd/robot
+          source: https://mindscript.dev/profiles/bdd/robot
           path: ./ROBOT-LOGIN.robot
           scenario: Valid credentials produce a successful session
 ```
@@ -76,7 +76,7 @@ Mapper output (traceability index):
 
 ```json
 {
-  "profile": "https://openspec.dev/profiles/@software",
+  "profile": "https://mindscript.dev/profiles/@software",
   "tool": "robot",
   "mappings": [
     {
@@ -90,7 +90,7 @@ Mapper output (traceability index):
 
 ## Field mapping (reference-only)
 
-OpenSpec → Robot
+MindScript → Robot
 
 - `meta.id`, `meta.title` → used for discovery and optional copied filenames; **no content is generated**
 - `requirements[].id`, `requirements[].statement` → grouping in the index
@@ -102,7 +102,7 @@ OpenSpec → Robot
 ## File layout
 
 **Inputs**
-- OpenSpec specs: anywhere (examples under `docs/mindscript/implementations/@software/examples/`)
+- MindScript specs: anywhere (examples under `docs/mindscript/implementations/@software/examples/`)
 - Robot tests: wherever your suite keeps them (often `tests/`); examples live alongside the YAML
 
 **Outputs**
@@ -111,11 +111,11 @@ OpenSpec → Robot
 
 ## Validation rules applied
 
-- OpenSpec file must validate against `@software` schema
+- MindScript file must validate against `@software` schema
 - `bdd_ref.source` must be a URL listed for Robot in `bdd-registry.yaml`
 - `bdd_ref.path` must resolve to an existing `.robot` file (local or reachable URL)
 - `bdd_ref.scenario` must match an existing **Test Case** name in that file
-- Inline step fields are ignored; OpenSpec does **not** define Robot keywords
+- Inline step fields are ignored; MindScript does **not** define Robot keywords
 
 ## Naming guidance
 
@@ -127,7 +127,7 @@ OpenSpec → Robot
 - Typical Robot commands:
   - `robot -d output tests/` (runs tests; outputs logs/reports under `output/`)
   - `rebot --merge output/*.xml` (merges result files)
-  - Include tags to ease filtering by OpenSpec ID: `[Tags]    openspec:ROBOT-601.1.1`
+  - Include tags to ease filtering by MindScript ID: `[Tags]    openspec:ROBOT-601.1.1`
   - Run by tag: `robot -i openspec:ROBOT-601.1.1 tests/`
 - Persist `dist/robot/index.json` as a CI artifact for traceability
 
@@ -139,7 +139,7 @@ OpenSpec → Robot
 
 ## Quick checklist
 
-- [ ] OpenSpec YAML validates against `@software` schema  
+- [ ] MindScript YAML validates against `@software` schema  
 - [ ] `bdd-registry.yaml` includes the Robot profile URL  
 - [ ] External `.robot` file exists and contains the named Test Case  
 - [ ] `dist/robot/index.json` produced for traceability  

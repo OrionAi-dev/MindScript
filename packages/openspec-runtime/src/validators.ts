@@ -1,4 +1,4 @@
-// OpenSPI Validators
+// MindScript validators
 // Runtime validation using zod; schema export for interoperability
 
 import { z } from "zod";

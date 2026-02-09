@@ -1,17 +1,17 @@
 # Behat Mapper
 
-This adapter connects OpenSpec `@software` criteria to **Behat** by **referencing external artifacts only**. It does **not** embed or generate Gherkin steps from OpenSpec. Instead, it looks up the Behat `.feature` file and `Scenario` you reference and produces a traceability index.
+This adapter connects MindScript `@software` criteria to **Behat** by **referencing external artifacts only**. It does **not** embed or generate Gherkin steps from MindScript. Instead, it looks up the Behat `.feature` file and `Scenario` you reference and produces a traceability index.
 
 ## Design principles
 
-- **OpenSpec stays agnostic.** We only link to Behat; we do not copy Gherkin semantics into OpenSpec.
+- **MindScript stays agnostic.** We only link to Behat; we do not copy Gherkin semantics into MindScript.
 - **References over generation.** The mapper verifies and indexes your references; it does not author steps.
 - **Profiles by URL.** `bdd_ref.source` must be a URL listed in `bdd-registry.yaml` (e.g., Behat).
 
 ## What it does
 
-- Reads an OpenSpec YAML that declares:
-  - `profile: https://openspec.dev/profiles/@software`
+- Reads an MindScript YAML that declares:
+  - `profile: https://mindscript.dev/profiles/@software`
   - One or more criteria with `bdd_ref` pointing to Behat artifacts
 - For each criterion with `bdd_ref`:
   - Validates `bdd_ref.source` is the Behat profile URL from your registry
@@ -23,18 +23,18 @@ This adapter connects OpenSpec `@software` criteria to **Behat** by **referencin
 ## Inputs (required fields)
 
 - `criteria[].bdd_ref.source` → Behat profile URL  
-  Example: `https://openspec.dev/profiles/bdd/behat`
+  Example: `https://mindscript.dev/profiles/bdd/behat`
 - `criteria[].bdd_ref.path` → path/URL to the `.feature`
 - `criteria[].bdd_ref.scenario` → scenario name inside that feature
 
 > Note: Inline step fields such as `given`, `when`, `then` are **not used**. The mapper ignores them if present.
 
-## Minimal example (OpenSpec → Behat reference)
+## Minimal example (MindScript → Behat reference)
 
-OpenSpec input:
+MindScript input:
 
 ```yaml
-profile: https://openspec.dev/profiles/@software
+profile: https://mindscript.dev/profiles/@software
 kind: software
 meta:
   id: BEHAT-501
@@ -51,7 +51,7 @@ requirements:
         type: functional
         text: Valid credentials produce a successful session
         bdd_ref:
-          source: https://openspec.dev/profiles/bdd/behat
+          source: https://mindscript.dev/profiles/bdd/behat
           path: ./BEHAT-LOGIN.feature
           scenario: Valid credentials produce a successful session
 ```
@@ -70,7 +70,7 @@ Mapper output (traceability index):
 
 ```json
 {
-  "profile": "https://openspec.dev/profiles/@software",
+  "profile": "https://mindscript.dev/profiles/@software",
   "tool": "behat",
   "mappings": [
     {
@@ -84,7 +84,7 @@ Mapper output (traceability index):
 
 ## Field mapping (reference-only)
 
-OpenSpec → Behat
+MindScript → Behat
 
 - `meta.id`, `meta.title` → used for discovery and file naming; **no content is generated**
 - `requirements[].id`, `requirements[].statement` → used for grouping in the index
@@ -96,7 +96,7 @@ OpenSpec → Behat
 ## File layout
 
 **Inputs**
-- OpenSpec specs: anywhere (examples live under `docs/mindscript/implementations/@software/examples/`)
+- MindScript specs: anywhere (examples live under `docs/mindscript/implementations/@software/examples/`)
 - Behat features: wherever your test suite keeps them; examples live alongside the YAML
 
 **Outputs**
@@ -105,11 +105,11 @@ OpenSpec → Behat
 
 ## Validation rules applied
 
-- OpenSpec file must validate against `@software` schema
+- MindScript file must validate against `@software` schema
 - `bdd_ref.source` must be a URL listed under Behat in `bdd-registry.yaml`
 - `bdd_ref.path` must resolve to an existing `.feature` (local or reachable URL)
 - `bdd_ref.scenario` must exist in the target `.feature`
-- Inline step fields are ignored; OpenSpec does **not** define steps
+- Inline step fields are ignored; MindScript does **not** define steps
 
 ## Naming guidance
 
@@ -119,10 +119,10 @@ OpenSpec → Behat
 ## Integration tips
 
 - Keep your Behat context classes under `tests/Behat/Context/`
-- Tag scenarios with OpenSpec IDs for easier back-references:
+- Tag scenarios with MindScript IDs for easier back-references:
 
 ```gherkin
-@openspec(BEHAT-501.1.1)
+@mindscript(BEHAT-501.1.1)
 Scenario: Valid credentials produce a successful session
 ```
 
@@ -136,7 +136,7 @@ Scenario: Valid credentials produce a successful session
 
 ## Quick checklist
 
-- [ ] OpenSpec YAML validates against `@software` schema  
+- [ ] MindScript YAML validates against `@software` schema  
 - [ ] `bdd-registry.yaml` includes the Behat profile URL  
 - [ ] External `.feature` file exists and contains the named Scenario  
 - [ ] `dist/behat/index.json` produced for traceability  

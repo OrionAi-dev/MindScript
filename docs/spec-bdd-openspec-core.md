@@ -1,8 +1,8 @@
-# OpenSpec BDD: `openspec.core` (Legacy)
+# MindScript BDD: `openspec.core` (Legacy)
 
 This page is kept for backward compatibility. The canonical documentation now lives under the MindScript spec section:
 
-- [OpenSpec BDD Core (canonical)](mindscript/spec-bdd-openspec-core.md)
+- [MindScript BDD Core (canonical)](mindscript/spec-bdd-openspec-core.md)
 - [MindScript docs index](index.md)
 
 ---

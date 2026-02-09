@@ -12,7 +12,7 @@
 
 ## v0.3.0
 
-* Introduce OpenSPI: Context + Turn contracts
+* Introduce Context + Turn contracts (infrastructure layer)
 * TypeScript bindings + validators package
 * Initial verifier stdlib
 * Template + librarian design
@@ -26,7 +26,7 @@
 
 ## v1.0.0
 
-* Stable specification (MindScript + OpenSPI unified)
+* Stable specification (spec + infrastructure unified)
 * Reference implementations in multiple languages
 * Full verifier stdlib hardened
 * Community-contributed template registry

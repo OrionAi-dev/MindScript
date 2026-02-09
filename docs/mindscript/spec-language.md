@@ -1,7 +1,7 @@
 # MindScript: Spec Language
 
 MindScript (formerly OpenSpec) defines a consistent contract language for AI interactions.
-The **infrastructure layer** (previously called OpenSPI) provides the primitives: Contexts, Turns, Fields, and Contracts.
+The infrastructure layer provides the primitives: Contexts, Turns, Fields, and Contracts.
 
 ---
 

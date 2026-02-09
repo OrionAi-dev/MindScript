@@ -1,4 +1,4 @@
-# OpenSpec Protocol (HTTP)
+# MindScript Protocol (HTTP)
 
 This document defines a minimal, HTTP-friendly protocol for creating Contexts, drafting Turns, and verifying results.
 It focuses on predictable request/response envelopes so multiple runtimes can interoperate.
@@ -7,7 +7,7 @@ It focuses on predictable request/response envelopes so multiple runtimes can in
 
 ## Conventions
 
-* **Base URL**: implementation-defined (e.g., `https://api.example.com/openspec`).
+* **Base URL**: implementation-defined (e.g., `https://api.example.com/mindscript`).
 * **Content-Type**: `application/json` for all requests/responses.
 * **Timestamps**: ISO-8601 strings (UTC) with milliseconds.
 * **IDs**: `ctx:<id>` for Contexts, `turn:<id>` for Turns.
@@ -202,10 +202,12 @@ Implementations can choose API keys, OAuth, or mTLS. The minimal guidance below 
 * **Authorization**: `Authorization: Bearer <token>` (recommended default).
 * **Request signing** (optional but recommended for integrity):
 
-  * `X-OpenSpec-KeyId`: key identifier
-  * `X-OpenSpec-Timestamp`: ISO-8601 timestamp
-  * `X-OpenSpec-Signature`: `base64(HMAC-SHA256(secret, "<timestamp>.<raw_body>"))`
+  * `X-MindScript-KeyId`: key identifier
+  * `X-MindScript-Timestamp`: ISO-8601 timestamp
+  * `X-MindScript-Signature`: `base64(HMAC-SHA256(secret, "<timestamp>.<raw_body>"))`
   * Servers should reject requests with timestamps outside a short window (e.g., ±5 minutes) to prevent replay.
+
+  Compatibility note: servers MAY also accept `X-OpenSpec-*` header names as legacy aliases.
 
 * **Contract signatures**: Once a Turn is locked, include its deterministic signature in the contract (`signature`) and return it on every fetch/verify call.
 
@@ -218,8 +220,8 @@ Clients can opt into a compatibility mode and the server must echo what it appli
 
 **Request headers**
 
-* `X-OpenSpec-Version`: semantic version of the protocol (e.g., `1.0`).
-* `X-OpenSpec-Compat`: compatibility strategy.
+* `X-MindScript-Version`: semantic version of the protocol (e.g., `1.0`).
+* `X-MindScript-Compat`: compatibility strategy.
 
 **Compatibility strategies**
 
@@ -229,7 +231,7 @@ Clients can opt into a compatibility mode and the server must echo what it appli
 
 **Response headers**
 
-* `X-OpenSpec-Compat-Applied`: the strategy actually used by the server.
+* `X-MindScript-Compat-Applied`: the strategy actually used by the server.
 
 If a requested version cannot be honored, respond with `409 Conflict` and `error.code: "version_mismatch"`.
 

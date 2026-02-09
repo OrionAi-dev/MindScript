@@ -1,4 +1,4 @@
-profile: https://openspec.dev/profiles/bdd/openspec.core
+profile: https://mindscript.dev/profiles/bdd/openspec.core
 kind: bdd-core
 meta:
   id: AUTH-101.core

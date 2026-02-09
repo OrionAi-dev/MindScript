@@ -35,6 +35,10 @@
 MindScript (formerly OpenSpec) provides a clear way to define requirements and acceptance criteria before any document, code, or policy is created.  
 It borrows proven ideas from behavior driven and requirements driven development, then applies them across domains where precision and alignment matter.
 
+### Naming note
+
+This repository is a specification/contract framework for requirements and acceptance criteria. It is not affiliated with the separate “MindScript” programming language project (and its `msg` CLI) from Daios.
+
 ---
 
 ## Core Principles

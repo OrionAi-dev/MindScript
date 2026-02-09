@@ -1,17 +1,17 @@
 # Cucumber Mapper
 
-This adapter connects OpenSpec `@software` criteria to **Cucumber** by **referencing external artifacts only**. It does **not** embed or generate Gherkin steps from OpenSpec. Instead, it verifies links to Cucumber `.feature` files and `Scenario`s you reference, and produces a traceability index.
+This adapter connects MindScript `@software` criteria to **Cucumber** by **referencing external artifacts only**. It does **not** embed or generate Gherkin steps from MindScript. Instead, it verifies links to Cucumber `.feature` files and `Scenario`s you reference, and produces a traceability index.
 
 ## Design principles
 
-- **OpenSpec stays agnostic.** We only link to Cucumber; we do not copy Gherkin semantics into OpenSpec.
+- **MindScript stays agnostic.** We only link to Cucumber; we do not copy Gherkin semantics into MindScript.
 - **References over generation.** The mapper verifies and indexes your references; it does not author features or steps.
 - **Profiles by URL.** `bdd_ref.source` must be a URL listed in `bdd-registry.yaml` (e.g., Cucumber).
 
 ## What it does
 
-- Reads an OpenSpec YAML that declares:
-  - `profile: https://openspec.dev/profiles/@software`
+- Reads an MindScript YAML that declares:
+  - `profile: https://mindscript.dev/profiles/@software`
   - One or more criteria with `bdd_ref` pointing to Cucumber artifacts
 - For each criterion with `bdd_ref`:
   - Validates `bdd_ref.source` matches the Cucumber profile URL from your registry
@@ -23,18 +23,18 @@ This adapter connects OpenSpec `@software` criteria to **Cucumber** by **referen
 ## Inputs (required fields)
 
 - `criteria[].bdd_ref.source` → Cucumber profile URL  
-  Example: `https://openspec.dev/profiles/bdd/cucumber`
+  Example: `https://mindscript.dev/profiles/bdd/cucumber`
 - `criteria[].bdd_ref.path` → path/URL to the `.feature`
 - `criteria[].bdd_ref.scenario` → scenario name inside that feature
 
 > Note: Inline step fields such as `given`, `when`, `then` are **not used**. The mapper ignores them if present.
 
-## Minimal example (OpenSpec → Cucumber reference)
+## Minimal example (MindScript → Cucumber reference)
 
-OpenSpec input:
+MindScript input:
 
 ```yaml
-profile: https://openspec.dev/profiles/@software
+profile: https://mindscript.dev/profiles/@software
 kind: software
 meta:
   id: FEATURE-101
@@ -51,7 +51,7 @@ requirements:
         type: functional
         text: Valid credentials produce a successful session
         bdd_ref:
-          source: https://openspec.dev/profiles/bdd/cucumber
+          source: https://mindscript.dev/profiles/bdd/cucumber
           path: ./FEATURE-LOGIN.feature
           scenario: Valid credentials produce a successful session
 ```
@@ -70,7 +70,7 @@ Mapper output (traceability index):
 
 ```json
 {
-  "profile": "https://openspec.dev/profiles/@software",
+  "profile": "https://mindscript.dev/profiles/@software",
   "tool": "cucumber",
   "mappings": [
     {
@@ -84,7 +84,7 @@ Mapper output (traceability index):
 
 ## Field mapping (reference-only)
 
-OpenSpec → Cucumber
+MindScript → Cucumber
 
 - `meta.id`, `meta.title` → used for discovery and file naming; **no content is generated**
 - `requirements[].id`, `requirements[].statement` → used for grouping in the index
@@ -96,7 +96,7 @@ OpenSpec → Cucumber
 ## File layout
 
 **Inputs**
-- OpenSpec specs: anywhere (examples under `docs/mindscript/implementations/@software/examples/`)
+- MindScript specs: anywhere (examples under `docs/mindscript/implementations/@software/examples/`)
 - Cucumber features: wherever your test suite keeps them; examples live alongside the YAML
 
 **Outputs**
@@ -105,11 +105,11 @@ OpenSpec → Cucumber
 
 ## Validation rules applied
 
-- OpenSpec file must validate against `@software` schema
+- MindScript file must validate against `@software` schema
 - `bdd_ref.source` must be a URL listed under Cucumber in `bdd-registry.yaml`
 - `bdd_ref.path` must resolve to an existing `.feature` (local or reachable URL)
 - `bdd_ref.scenario` must exist in the target `.feature`
-- Inline step fields are ignored; OpenSpec does **not** define steps
+- Inline step fields are ignored; MindScript does **not** define steps
 
 ## Naming guidance
 
@@ -119,10 +119,10 @@ OpenSpec → Cucumber
 ## Integration tips
 
 - Place step definitions where your Cucumber implementation expects them (e.g., `features/step_definitions/` for Ruby, `features/step_definitions/*.ts` for cucumber-js)
-- Tag scenarios with OpenSpec IDs for easier back-references:
+- Tag scenarios with MindScript IDs for easier back-references:
 
 ```gherkin
-@openspec(FEATURE-101.1.1)
+@mindscript(FEATURE-101.1.1)
 Scenario: Valid credentials produce a successful session
 ```
 
@@ -137,7 +137,7 @@ Scenario: Valid credentials produce a successful session
 
 ## Quick checklist
 
-- [ ] OpenSpec YAML validates against `@software` schema  
+- [ ] MindScript YAML validates against `@software` schema  
 - [ ] `bdd-registry.yaml` includes the Cucumber profile URL  
 - [ ] External `.feature` file exists and contains the named Scenario  
 - [ ] `dist/cucumber/index.json` produced for traceability  

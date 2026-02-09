@@ -1,11 +1,11 @@
-# Contributing to OpenSpec
+# Contributing to MindScript
 
 Thank you for your interest in contributing!
 
 ## How to Contribute
 - Open issues for bugs or feature requests
 - Submit pull requests for improvements
-- Share examples of OpenSpec in practice
+- Share examples of MindScript in practice
 
 ## Development Setup
 ### Prerequisites
@@ -73,7 +73,7 @@ CI runs a doc-drift check after generation. If it fails, rerun the steps above
 and ensure `git diff -- docs/` is clean before pushing.
 ## Generated Artifacts
 - Package builds output to each package's `dist/` directory (for example `packages/mindql-core/dist/`).
-- OpenSpec CLI runs (see `tools/verify-monorepo.sh`) emit artifacts under `generated/`, including:
+- MindScript CLI runs (see `tools/verify-monorepo.sh`) emit artifacts under `generated/`, including:
   - `generated/mindql/ast.json`
   - `generated/graphql/schema.graphql`
 

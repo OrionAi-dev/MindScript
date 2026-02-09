@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://openspec.dev/schemas/mindscript/acceptance-criteria-0.1.json",
+  "$id": "https://mindscript.dev/schemas/mindscript/acceptance-criteria-0.1.json",
   "title": "MindScript Acceptance Criteria",
   "description": "Structured, verifiable conditions attached to a Context or Turn. Versions follow SemVer; increment major for breaking changes, minor for additive changes, and patch for clarifications.",
   "type": "array",

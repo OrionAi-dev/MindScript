@@ -1,4 +1,4 @@
-// OpenSPI Core Entry Point
+// MindScript runtime entry point
 // Re-export types, validators, merge, and verify utilities.
 
 export * from '@mindscript/openspec-types';

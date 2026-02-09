@@ -2,7 +2,7 @@
 
 **What it is:** a minimal, portable BDD scenario format (YAML) you can use in domains that do not already have a native BDD stack.  
 **How it is used:** just like Cucumber or Behave; your MindScript specs reference it via `bdd_ref.source` and `bdd_ref.path`.
-MindScript (formerly OpenSpec) retains the `openspec.core` profile identifier for compatibility.
+MindScript (formerly MindScript) retains the `openspec.core` profile identifier for compatibility.
 
 ---
 

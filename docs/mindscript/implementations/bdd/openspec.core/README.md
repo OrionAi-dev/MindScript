@@ -1,7 +1,7 @@
-# OpenSpec BDD: `openspec.core`
+# MindScript BDD: `openspec.core`
 
 **What it is:** a minimal, portable BDD scenario format in YAML.  
-**How it is used:** like any other BDD provider. Your OpenSpec specs point to it with `bdd_ref.source` and `bdd_ref.path`.
+**How it is used:** like any other BDD provider. Your MindScript specs point to it with `bdd_ref.source` and `bdd_ref.path`.
 
 ---
 
@@ -35,7 +35,7 @@ docs/
 ## Minimal scenario file
 
 ```yaml
-profile: https://openspec.dev/profiles/bdd/openspec.core
+profile: https://mindscript.dev/profiles/bdd/openspec.core
 kind: bdd-core
 meta:
   id: AUTH-101.core
@@ -54,7 +54,7 @@ scenarios:
 ```
 
 Key fields:
-- `profile` must be `https://openspec.dev/profiles/bdd/openspec.core`  
+- `profile` must be `https://mindscript.dev/profiles/bdd/openspec.core`  
 - `kind` is `bdd-core`  
 - Steps use `keyword` in `Given`, `When`, `Then`, `And`, `But`
 
@@ -66,7 +66,7 @@ Point a criterion to an `openspec.core` scenario the same way you would point to
 
 ```yaml
 # docs/mindscript/implementations/@software/examples/AUTH-101.context-turn.yaml
-profile: https://openspec.dev/profiles/@software
+profile: https://mindscript.dev/profiles/@software
 kind: software
 meta: { id: AUTH-101, title: User can log in, owner: app-auth, priority: P0 }
 
@@ -78,7 +78,7 @@ requirements:
         type: functional
         text: Valid credentials produce a successful session
         bdd_ref:
-          source: https://openspec.dev/profiles/bdd/openspec.core
+          source: https://mindscript.dev/profiles/bdd/openspec.core
           path: ../../bdd/openspec.core/examples/AUTH-101.core.yaml
           scenario: auth-login-success
 ```
@@ -90,21 +90,21 @@ Add `openspec.core` to the `@software` BDD registry:
 version: 1
 supported:
   - id: cucumber
-    url: https://openspec.dev/profiles/bdd/cucumber
+    url: https://mindscript.dev/profiles/bdd/cucumber
   - id: behave
-    url: https://openspec.dev/profiles/bdd/behave
+    url: https://mindscript.dev/profiles/bdd/behave
   - id: behat
-    url: https://openspec.dev/profiles/bdd/behat
+    url: https://mindscript.dev/profiles/bdd/behat
   - id: jbehave
-    url: https://openspec.dev/profiles/bdd/jbehave
+    url: https://mindscript.dev/profiles/bdd/jbehave
   - id: karate
-    url: https://openspec.dev/profiles/bdd/karate
+    url: https://mindscript.dev/profiles/bdd/karate
   - id: robot
-    url: https://openspec.dev/profiles/bdd/robot
+    url: https://mindscript.dev/profiles/bdd/robot
   - id: specflow
-    url: https://openspec.dev/profiles/bdd/specflow
+    url: https://mindscript.dev/profiles/bdd/specflow
   - id: openspec.core
-    url: https://openspec.dev/profiles/bdd/openspec.core
+    url: https://mindscript.dev/profiles/bdd/openspec.core
 ```
 
 ---
@@ -129,8 +129,8 @@ ajv validate
 
 ## Versioning
 
-- Profile URL: `https://openspec.dev/profiles/bdd/openspec.core`  
-- Schema URL: `https://openspec.dev/schemas/bdd/openspec.core-1.0.json`  
+- Profile URL: `https://mindscript.dev/profiles/bdd/openspec.core`  
+- Schema URL: `https://mindscript.dev/schemas/bdd/openspec.core-1.0.json`  
 - Use SemVer for schema changes.
 
 ---

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://openspec.dev/schemas/mindscript/provenance-0.1.json",
+  "$id": "https://mindscript.dev/schemas/mindscript/provenance-0.1.json",
   "title": "MindScript Provenance",
   "description": "Audit trail entries that describe how data was produced. Versions follow SemVer; increment major for breaking changes, minor for additive changes, and patch for clarifications.",
   "type": "array",

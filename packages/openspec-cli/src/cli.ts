@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { readFileSync } from "node:fs";
-import { resolve, extname } from "node:path";
+import { resolve, extname, basename } from "node:path";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 
@@ -20,9 +20,10 @@ function loadPlugins(): Plugin[] {
 }
 
 async function main() {
+  const cmd = basename(process.argv[1] ?? "mindscript");
   const input = process.argv[2];
   const outDir = process.argv[3] ?? "generated";
-  if (!input) { console.error("Usage: openspec <file> [outDir]"); process.exit(1); }
+  if (!input) { console.error(`Usage: ${cmd} <file> [outDir]`); process.exit(1); }
   const text = readFileSync(resolve(input), "utf8");
   const ext = extname(input);
   const registry = loadPlugins();

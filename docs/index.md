@@ -1,6 +1,6 @@
 # MindScript Docs
 
-Welcome to the canonical entry point for MindScript and OpenSpec documentation. This page is the single source of truth for where to start and how the docs are organized.
+Welcome to the canonical entry point for MindScript documentation. (Formerly OpenSpec.)
 
 ## Start here
 
@@ -12,8 +12,8 @@ Welcome to the canonical entry point for MindScript and OpenSpec documentation. 
 ## Documentation map
 
 - **MindScript Spec** — The canonical spec language, schema, templates, and verification model. Start with the [spec overview](mindscript/spec-overview.md).
-- **Implementations** — Concrete adapters, templates, and reference examples for real-world stacks like `@software` and OpenSpec BDD. See the [implementations overview](mindscript/implementations/@software/README.md).
-- **API Reference** — Generated TypeDoc references for OpenSpec Types, Runtime, and plugins. Jump to the [API landing page](api/openspec-types/README.md).
+- **Implementations** — Concrete adapters, templates, and reference examples for real-world stacks like `@software` and BDD. See the [implementations overview](mindscript/implementations/@software/README.md).
+- **API Reference** — Generated TypeDoc references for the TypeScript packages. Jump to the [API landing page](api/openspec-types/README.md).
 - **Legacy** — Historical OpenSPI/OpenSpec pages preserved for compatibility. See [legacy overview](openspi/overview.md).
 
 ## Looking for something specific?
@@ -22,4 +22,4 @@ Welcome to the canonical entry point for MindScript and OpenSpec documentation. 
 - **Templates & promotion rules:** [templates](mindscript/templates.md)
 - **Verification:** [verification](mindscript/verification.md)
 - **Context & Turn lifecycle:** [context turn](mindscript/context-turn.md)
-- **OpenSpec BDD Core:** [openspec.core](mindscript/spec-bdd-openspec-core.md)
+- **MindScript BDD Core (legacy id `openspec.core`):** [openspec.core](mindscript/spec-bdd-openspec-core.md)

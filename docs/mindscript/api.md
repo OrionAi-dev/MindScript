@@ -136,7 +136,7 @@ Schema `$id` values embed the schema version, ensuring model-to-model exchange c
   "exchangeId": "ex-2024-09-08-legal",
   "schemaVersion": "0.1.0",
   "context": {
-    "$ref": "https://openspec.dev/schemas/mindscript/context-0.1.json",
+    "$ref": "https://mindscript.dev/schemas/mindscript/context-0.1.json",
     "payload": {
       "kind": "context",
       "id": "ctx-legal-2024-09",
@@ -148,7 +148,7 @@ Schema `$id` values embed the schema version, ensuring model-to-model exchange c
     }
   },
   "turn": {
-    "$ref": "https://openspec.dev/schemas/mindscript/turn-0.1.json",
+    "$ref": "https://mindscript.dev/schemas/mindscript/turn-0.1.json",
     "payload": {
       "kind": "turn",
       "id": "turn-legal-2024-09-08-01",
