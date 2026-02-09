@@ -1,5 +1,5 @@
 site_name: MindScript
-site_description: MindScript / OpenSpec — specs, runtime, and plugins
+site_description: MindScript (formerly OpenSpec) — specs, runtime, and plugins
 site_url: https://orionai-dev.github.io/MindScript
 
 repo_url: https://github.com/OrionAi-dev/MindScript
@@ -107,7 +107,7 @@ nav:
       - Quickstart: mindscript/quickstart.md
       - Roadmap: mindscript/roadmap.md
       - Whitepaper: mindscript/whitepaper.md
-      - OpenSpec (BDD Core): mindscript/spec-bdd-openspec-core.md
+      - MindScript (BDD Core): mindscript/spec-bdd-openspec-core.md
 
   - Implementations:
       - "@software":
@@ -136,9 +136,9 @@ nav:
               - JsonArray: api/openspec-types/interfaces/JsonArray.md
               - JsonObject: api/openspec-types/interfaces/JsonObject.md
               - JsonPatch: api/openspec-types/interfaces/JsonPatch.md
-              - OpenSpecBase: api/openspec-types/interfaces/OpenSpecBase.md
-              - OpenSpecContext: api/openspec-types/interfaces/OpenSpecContext.md
-              - OpenSpecTurn: api/openspec-types/interfaces/OpenSpecTurn.md
+              - MindScriptBase: api/openspec-types/interfaces/MindScriptBase.md
+              - MindScriptContext: api/openspec-types/interfaces/MindScriptContext.md
+              - MindScriptTurn: api/openspec-types/interfaces/MindScriptTurn.md
               - Provenance: api/openspec-types/interfaces/Provenance.md
               - ToolBinding: api/openspec-types/interfaces/ToolBinding.md
           - Type Aliases:
@@ -165,9 +165,9 @@ nav:
               - JsonArray: api/openspec-runtime/interfaces/JsonArray.md
               - JsonObject: api/openspec-runtime/interfaces/JsonObject.md
               - JsonPatch: api/openspec-runtime/interfaces/JsonPatch.md
-              - OpenSpecBase: api/openspec-runtime/interfaces/OpenSpecBase.md
-              - OpenSpecContext: api/openspec-runtime/interfaces/OpenSpecContext.md
-              - OpenSpecTurn: api/openspec-runtime/interfaces/OpenSpecTurn.md
+              - MindScriptBase: api/openspec-runtime/interfaces/MindScriptBase.md
+              - MindScriptContext: api/openspec-runtime/interfaces/MindScriptContext.md
+              - MindScriptTurn: api/openspec-runtime/interfaces/MindScriptTurn.md
               - Provenance: api/openspec-runtime/interfaces/Provenance.md
               - ToolBinding: api/openspec-runtime/interfaces/ToolBinding.md
               - VerifierFn: api/openspec-runtime/interfaces/VerifierFn.md
@@ -191,9 +191,9 @@ nav:
               - zFieldScope: api/openspec-runtime/variables/zFieldScope.md
               - zISODateTime: api/openspec-runtime/variables/zISODateTime.md
               - zJsonPatch: api/openspec-runtime/variables/zJsonPatch.md
-              - zOpenSpecBase: api/openspec-runtime/variables/zOpenSpecBase.md
-              - zOpenSpecContext: api/openspec-runtime/variables/zOpenSpecContext.md
-              - zOpenSpecTurn: api/openspec-runtime/variables/zOpenSpecTurn.md
+              - zMindScriptBase: api/openspec-runtime/variables/zMindScriptBase.md
+              - zMindScriptContext: api/openspec-runtime/variables/zMindScriptContext.md
+              - zMindScriptTurn: api/openspec-runtime/variables/zMindScriptTurn.md
               - zProvenance: api/openspec-runtime/variables/zProvenance.md
               - zSpecField: api/openspec-runtime/variables/zSpecField.md
               - zToolBinding: api/openspec-runtime/variables/zToolBinding.md

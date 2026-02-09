@@ -1,5 +1,5 @@
-// OpenSPI Core Types
-// Strict, TypeScript-first bindings for OpenSpec.Context and OpenSpec.Turn
+// MindScript Core Types
+// Strict, TypeScript-first bindings for MindScript.Context and MindScript.Turn
 
 // ---------- JSON primitives ----------
 export type JsonPrimitive = string | number | boolean | null;
@@ -72,7 +72,7 @@ export interface Provenance {
 }
 
 // ---------- Base spec ----------
-export interface OpenSpecBase<F extends Record<string, SpecField> = Record<string, SpecField>> {
+export interface MindScriptBase<F extends Record<string, SpecField> = Record<string, SpecField>> {
   kind: "context" | "turn";
   id: string;                        // unique ID for traceability
   intent: string;                    // purpose
@@ -86,8 +86,8 @@ export interface OpenSpecBase<F extends Record<string, SpecField> = Record<strin
 }
 
 // ---------- Context spec ----------
-export interface OpenSpecContext<F extends Record<string, SpecField> = Record<string, SpecField>>
-  extends OpenSpecBase<F> {
+export interface MindScriptContext<F extends Record<string, SpecField> = Record<string, SpecField>>
+  extends MindScriptBase<F> {
   kind: "context";
   scope: { type: "session" | "project" | "workspace" | "global"; id?: string };
   lifespan: { mode: "session" | "rolling" | "pinned"; ttlDays?: number; maxUses?: number };
@@ -96,8 +96,8 @@ export interface OpenSpecContext<F extends Record<string, SpecField> = Record<st
 export type Context<F extends Record<string, SpecField> = Record<string, SpecField>> = OpenSpecContext<F>;
 
 // ---------- Turn spec ----------
-export interface OpenSpecTurn<F extends Record<string, SpecField> = Record<string, SpecField>>
-  extends OpenSpecBase<F> {
+export interface MindScriptTurn<F extends Record<string, SpecField> = Record<string, SpecField>>
+  extends MindScriptBase<F> {
   kind: "turn";
   inheritsFrom: string;              // context id
 }
@@ -158,4 +158,4 @@ export type DeepReadonly<T> = {
  * Runtime marker export.
  * This package is primarily types; this constant exists so the JS output is non-empty.
  */
-export const OPENSPEC_TYPES_RUNTIME = true as const;
+export const MINDSCRIPT_TYPES_RUNTIME = true as const;

@@ -1,8 +1,8 @@
-// OpenSPI Merge
-// Merge OpenSpec.Context into OpenSpec.Turn with precedence and safe deep merge.
+// MindScript Merge
+// Merge MindScript.Context into MindScript.Turn with precedence and safe deep merge.
 // ES5-compatible (no Map/Set/Promise).
 
-import { OpenSpecContext, OpenSpecTurn, SpecField } from '@mindscript/openspec-types';
+import { MindScriptContext, MindScriptTurn, SpecField } from '@mindscript/openspec-types';
 
 /**
  * Source precedence (highest wins on conflict).
@@ -139,9 +139,9 @@ function safeKey(v: any): string {
  * - If in both → resolve via mergeField (deep merge + precedence).
  */
 export function mergeContextIntoTurn(
-  ctx: OpenSpecContext,
-  turn: OpenSpecTurn
-): OpenSpecTurn {
+  ctx: MindScriptContext,
+  turn: MindScriptTurn
+): MindScriptTurn {
   var merged: { [k: string]: SpecField } = {};
 
   // union of keys

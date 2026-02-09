@@ -62,7 +62,7 @@ export const zISODateTime = z
   .string()
   .regex(/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z?/, "ISO datetime expected");
 
-export const zOpenSpecBase = z.object({
+export const zMindScriptBase = z.object({
   kind: z.enum(["context", "turn"]),
   id: z.string().min(1),
   intent: z.string().min(1),
@@ -76,7 +76,7 @@ export const zOpenSpecBase = z.object({
 });
 
 // ---------- Context & Turn ----------
-export const zOpenSpecContext = zOpenSpecBase.extend({
+export const zMindScriptContext = zMindScriptBase.extend({
   kind: z.literal("context"),
   scope: z.object({
     type: z.enum(["session", "project", "workspace", "global"]),
@@ -89,7 +89,7 @@ export const zOpenSpecContext = zOpenSpecBase.extend({
   })
 });
 
-export const zOpenSpecTurn = zOpenSpecBase.extend({
+export const zMindScriptTurn = zMindScriptBase.extend({
   kind: z.literal("turn"),
   inheritsFrom: z.string().min(1)
 });
@@ -115,6 +115,6 @@ export const zToolBinding = z.object({
 });
 
 // ---------- Helpers (inferred types) ----------
-export type ZContext = z.infer<typeof zOpenSpecContext>;
-export type ZTurn = z.infer<typeof zOpenSpecTurn>;
+export type ZContext = z.infer<typeof zMindScriptContext>;
+export type ZTurn = z.infer<typeof zMindScriptTurn>;
 export type ZField = z.infer<typeof zSpecField>;

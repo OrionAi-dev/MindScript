@@ -1,4 +1,4 @@
-# OpenSpec
+# MindScript (formerly OpenSpec)
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](./LICENSE)
 [![Release](https://img.shields.io/github/v/release/YourOrg/openspec)](../../releases/latest)
@@ -17,7 +17,7 @@
 ---
 
 ## Table of Contents
-- [What is OpenSpec](#what-is-openspec)
+- [What is MindScript](#what-is-mindscript)
 - [Core Principles](#core-principles)
 - [Benefits](#benefits)
 - [Technical Alignment](#technical-alignment)
@@ -30,9 +30,9 @@
 
 ---
 
-## What is OpenSpec
+## What is MindScript
 
-OpenSpec provides a clear way to define requirements and acceptance criteria before any document, code, or policy is created.  
+MindScript (formerly OpenSpec) provides a clear way to define requirements and acceptance criteria before any document, code, or policy is created.  
 It borrows proven ideas from behavior driven and requirements driven development, then applies them across domains where precision and alignment matter.
 
 ---
@@ -58,7 +58,7 @@ It borrows proven ideas from behavior driven and requirements driven development
 ---
 
 ## Technical Alignment
-OpenSpec unifies and extends behavioral driven specification platforms into a cross domain framework.  
+MindScript unifies and extends behavioral driven specification platforms into a cross domain framework.  
 
 - **Structured nodes**: requirements are expressed in a clear, linked format.  
 - **Interoperability**: layers on top of existing workflows.  
@@ -78,7 +78,7 @@ OpenSpec unifies and extends behavioral driven specification platforms into a cr
 
 ## BDD providers
 
-OpenSpec references executable scenarios through `bdd_ref`. Use any supported provider:
+MindScript references executable scenarios through `bdd_ref`. Use any supported provider:
 
 - Cucumber  
 - Behave  
@@ -87,14 +87,14 @@ OpenSpec references executable scenarios through `bdd_ref`. Use any supported pr
 - Karate  
 - Robot  
 - SpecFlow  
-- **OpenSpec Core**: a minimal YAML BDD format for domains without a native BDD stack, and for teams that want a flexible, schema-validated BDD language.  
+- **MindScript Core (formerly OpenSpec Core)**: a minimal YAML BDD format for domains without a native BDD stack, and for teams that want a flexible, schema-validated BDD language.  
   - Docs: `docs/mindscript/spec-bdd-openspec-core.md`  
   - Schema: `docs/mindscript/implementations/bdd/openspec.core/schema.yaml`  
   - Example: `docs/mindscript/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml`
 
 **Example: referencing `openspec.core` from a spec**
 ```yaml
-profile: https://openspec.dev/profiles/@software
+profile: https://mindscript.dev/profiles/@software
 kind: software
 meta:
   id: AUTH-101
@@ -110,7 +110,7 @@ requirements:
         type: functional
         text: Valid credentials produce a successful session
         bdd_ref:
-          source: https://openspec.dev/profiles/bdd/openspec.core
+          source: https://mindscript.dev/profiles/bdd/openspec.core
           path: docs/mindscript/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml
           scenario: auth-login-success
 ```
@@ -126,8 +126,8 @@ requirements:
 3. Create a release with GitHub CLI:  
    ```bash
    gh release create v0.1.0 docs/mindscript/whitepaper.pdf 
-     --title "OpenSpec v0.1.0" 
-     --notes "Initial publication of the OpenSpec white paper."
+     --title "MindScript v0.1.0" 
+     --notes "Initial publication of the MindScript (formerly OpenSpec) white paper."
    ```  
 
 ---
@@ -156,7 +156,7 @@ CI validates that `docs/` stays in sync with generated output, so ensure
 
 ## Contributing
 Ideas, issues, and pull requests are welcome.  
-Good first contributions include example specs, validation rules for acceptance criteria, and adapters that map OpenSpec requirements into existing tools.
+Good first contributions include example specs, validation rules for acceptance criteria, and adapters that map MindScript requirements into existing tools.
 
 ---
 

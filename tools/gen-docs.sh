@@ -20,12 +20,12 @@ gen openspec-plugin-mindql openspec-plugin-mindql
 gen openspec-plugin-mindgraphql openspec-plugin-mindgraphql
 
 cat > "$ROOT/docs/index.md" <<'MD'
-# OpenSpec Docs
+# MindScript Docs
 
-- [OpenSpec Types](api/openspec-types)
-- [OpenSpec Runtime](api/openspec-runtime)
+- [MindScript Types](api/openspec-types)
+- [MindScript Runtime](api/openspec-runtime)
 - [MindQL Core](api/mindql-core)
 - [MindGraphQL Core](api/mindgraphql-core)
-- [OpenSpec Plugin: MindQL](api/openspec-plugin-mindql)
-- [OpenSpec Plugin: MindGraphQL](api/openspec-plugin-mindgraphql)
+- [MindScript Plugin: MindQL](api/openspec-plugin-mindql)
+- [MindScript Plugin: MindGraphQL](api/openspec-plugin-mindgraphql)
 MD

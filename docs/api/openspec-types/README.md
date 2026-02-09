@@ -12,9 +12,9 @@
 - [JsonArray](interfaces/JsonArray.md)
 - [JsonObject](interfaces/JsonObject.md)
 - [JsonPatch](interfaces/JsonPatch.md)
-- [OpenSpecBase](interfaces/OpenSpecBase.md)
-- [OpenSpecContext](interfaces/OpenSpecContext.md)
-- [OpenSpecTurn](interfaces/OpenSpecTurn.md)
+- [MindScriptBase](interfaces/MindScriptBase.md)
+- [MindScriptContext](interfaces/MindScriptContext.md)
+- [MindScriptTurn](interfaces/MindScriptTurn.md)
 - [Provenance](interfaces/Provenance.md)
 - [ToolBinding](interfaces/ToolBinding.md)
 

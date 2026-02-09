@@ -1,6 +1,6 @@
 # Templates & Librarian
 
-Templates capture recurring patterns of specs so they don’t need to be rebuilt from scratch every time.
+Templates capture recurring patterns of MindScript (formerly OpenSpec) specs so they don’t need to be rebuilt from scratch every time.
 The **Librarian** manages templates: classifying, patching, promoting, and rolling back.
 
 ---
@@ -63,13 +63,13 @@ Example:
 Templates are stored with stable IDs:
 
 ```
-openspec://templates/{intent}/{name}/{version}
+mindscript://templates/{intent}/{name}/{version}
 ```
 
 Example:
 
 ```
-openspec://templates/restaurant/standard/v1
+mindscript://templates/restaurant/standard/v1
 ```
 
 ---

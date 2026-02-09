@@ -2,16 +2,16 @@
 
 ***
 
-[@mindscript/openspec-types](../README.md) / OpenSpecBase
+[@mindscript/openspec-types](../README.md) / MindScriptBase
 
-# Interface: OpenSpecBase\<F\>
+# Interface: MindScriptBase\<F\>
 
 Defined in: [packages/openspec-types/dist/index.d.ts:79](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L79)
 
 ## Extended by
 
-- [`OpenSpecContext`](OpenSpecContext.md)
-- [`OpenSpecTurn`](OpenSpecTurn.md)
+- [`MindScriptContext`](MindScriptContext.md)
+- [`MindScriptTurn`](MindScriptTurn.md)
 
 ## Type Parameters
 

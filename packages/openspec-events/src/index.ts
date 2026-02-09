@@ -1,7 +1,7 @@
 import type { JsonObject, JsonValue, ISODateTime } from "@mindscript/openspec-types";
 
 /**
- * OpenSpec Events (public, stable, boring)
+ * MindScript Events (public, stable, boring)
  * ------------------------------------------------------------
  * This package defines an extremely flexible, vendor-neutral event contract.
  * It intentionally avoids proprietary source enums and domain-specific logic.

@@ -1,6 +1,6 @@
-# OpenSpec Validation
+# MindScript Validation
 
-Validation ensures specs are consistent, complete, and unambiguous before they are executed.
+Validation ensures MindScript (formerly OpenSpec) specs are consistent, complete, and unambiguous before they are executed.
 
 ---
 
@@ -28,7 +28,7 @@ Validation ensures specs are consistent, complete, and unambiguous before they a
 
 ## Tooling
 
-* **CLI Validator** (planned): `openspec validate path/to/spec.yaml`
+* **CLI Validator** (planned): `mindscript validate path/to/spec.yaml`
 * **CI Integration**: add validation to pipelines to ensure only valid contracts are committed.
 * **Golden Tests**: verify that promoted templates consistently pass their acceptance criteria.
 
@@ -38,7 +38,7 @@ Validation ensures specs are consistent, complete, and unambiguous before they a
 
 ```bash
 # Validate a spec file
-openspec validate docs/mindscript/examples/ctx-telescope.yaml
+mindscript validate docs/mindscript/examples/ctx-telescope.yaml
 ```
 
 ---
