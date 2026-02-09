@@ -1,0 +1,5 @@
+**@mindscript/cli**
+
+***
+
+# @mindscript/cli

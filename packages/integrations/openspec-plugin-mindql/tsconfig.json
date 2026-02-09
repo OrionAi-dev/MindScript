@@ -1,0 +1,6 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": { "composite": true, "types": ["node"] },
+  "references": [{ "path": "../mindql-core" }],
+  "include": ["src"]
+}

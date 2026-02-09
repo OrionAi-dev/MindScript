@@ -9,7 +9,9 @@
     "test": "turbo run test --parallel",
     "lint": "turbo run lint --parallel",
     "docs": "tools/gen-docs.sh",
-    "fix:doc-links": "node tools/clean-doc-links.mjs --write"
+    "fix:doc-links": "node tools/clean-doc-links.mjs --write",
+    "check:schema-drift": "node tools/check-schema-drift.mjs",
+    "fix:schema-drift": "node tools/check-schema-drift.mjs --write"
   },
   "devDependencies": {
     "@changesets/cli": "2.29.6",
@@ -21,10 +23,5 @@
     "typescript": "5.9.2",
     "vitest": "2.1.9",
     "zod": "^3.25.76"
-  },
-  "dependencies": {
-    "@mindscript/openspec-audio": "workspace:*",
-    "graphql": "^16.11.0",
-    "openai": "^6.15.0"
   }
 }

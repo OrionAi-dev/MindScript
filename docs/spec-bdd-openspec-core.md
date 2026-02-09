@@ -2,7 +2,7 @@
 
 This page is kept for backward compatibility. The canonical documentation now lives under the MindScript spec section:
 
-- [MindScript BDD Core (canonical)](mindscript/spec-bdd-openspec-core.md)
+- [MindScript BDD Core (canonical)](integrations/bdd/openspec.core/README.md)
 - [MindScript docs index](index.md)
 
 ---
