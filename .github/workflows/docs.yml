@@ -56,6 +56,13 @@ jobs:
       - name: Normalize internal doc links
         run: node tools/clean-doc-links.mjs --write
 
+      - name: Check generated docs are up to date
+        run: |
+          if ! git diff --exit-code -- docs/; then
+            echo "::error::Generated docs are out of date. Run tools/gen-docs.sh and tools/clean-doc-links.mjs --write."
+            exit 1
+          fi
+
       # Python / MkDocs
       - name: Setup Python
         uses: actions/setup-python@v5

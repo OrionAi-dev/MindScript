@@ -131,6 +131,21 @@ requirements:
 
 ---
 
+## API docs regeneration
+To refresh the TypeDoc-generated API docs locally:
+
+```bash
+pnpm install
+pnpm -r build
+bash tools/gen-docs.sh
+node tools/clean-doc-links.mjs --write
+```
+
+The script writes API output to `docs/api/` and updates `docs/index.md` with the
+latest API doc links.
+
+---
+
 ## Contributing
 Ideas, issues, and pull requests are welcome.  
 Good first contributions include example specs, validation rules for acceptance criteria, and adapters that map OpenSpec requirements into existing tools.
