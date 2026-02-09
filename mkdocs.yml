@@ -81,6 +81,7 @@ nav:
       - Schema: mindscript/spec-schema.md
       - Validation: mindscript/spec-validation.md
       - Context Turn: mindscript/context-turn.md
+      - Protocol: mindscript/protocol.md
       - Templates: mindscript/templates.md
       - TypeScript: mindscript/typescript.md
       - Verification: mindscript/verification.md
