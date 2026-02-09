@@ -93,7 +93,25 @@ export interface MindScriptContext<F extends Record<string, SpecField> = Record<
   lifespan: { mode: "session" | "rolling" | "pinned"; ttlDays?: number; maxUses?: number };
 }
 
-export type Context<F extends Record<string, SpecField> = Record<string, SpecField>> = OpenSpecContext<F>;
+/**
+ * @deprecated Use `MindScriptBase`.
+ * Kept for compatibility with earlier OpenSpec naming.
+ */
+export type OpenSpecBase<F extends Record<string, SpecField> = Record<string, SpecField>> = MindScriptBase<F>;
+
+/**
+ * @deprecated Use `MindScriptContext`.
+ * Kept for compatibility with earlier OpenSpec naming.
+ */
+export type OpenSpecContext<F extends Record<string, SpecField> = Record<string, SpecField>> = MindScriptContext<F>;
+
+/**
+ * @deprecated Use `MindScriptTurn`.
+ * Kept for compatibility with earlier OpenSpec naming.
+ */
+export type OpenSpecTurn<F extends Record<string, SpecField> = Record<string, SpecField>> = MindScriptTurn<F>;
+
+export type Context<F extends Record<string, SpecField> = Record<string, SpecField>> = MindScriptContext<F>;
 
 // ---------- Turn spec ----------
 export interface MindScriptTurn<F extends Record<string, SpecField> = Record<string, SpecField>>
@@ -102,12 +120,12 @@ export interface MindScriptTurn<F extends Record<string, SpecField> = Record<str
   inheritsFrom: string;              // context id
 }
 
-export type Turn<F extends Record<string, SpecField> = Record<string, SpecField>> = OpenSpecTurn<F>;
+export type Turn<F extends Record<string, SpecField> = Record<string, SpecField>> = MindScriptTurn<F>;
 
 // ---------- API request envelopes ----------
-export interface OpenSpecRequestEnvelope<
-  TContext extends OpenSpecContext = OpenSpecContext,
-  TTurn extends OpenSpecTurn = OpenSpecTurn,
+export interface MindScriptRequestEnvelope<
+  TContext extends MindScriptContext = MindScriptContext,
+  TTurn extends MindScriptTurn = MindScriptTurn,
   TInput extends JsonObject | JsonValue = JsonObject
 > {
   context: TContext;
@@ -117,21 +135,47 @@ export interface OpenSpecRequestEnvelope<
   meta?: Record<string, JsonValue>;
 }
 
-export interface OpenSpecContextRequestEnvelope<
-  TContext extends OpenSpecContext = OpenSpecContext
+export interface MindScriptContextRequestEnvelope<
+  TContext extends MindScriptContext = MindScriptContext
 > {
   context: TContext;
   requestId?: string;
   meta?: Record<string, JsonValue>;
 }
 
-export interface OpenSpecTurnRequestEnvelope<
-  TTurn extends OpenSpecTurn = OpenSpecTurn
+export interface MindScriptTurnRequestEnvelope<
+  TTurn extends MindScriptTurn = MindScriptTurn
 > {
   turn: TTurn;
   requestId?: string;
   meta?: Record<string, JsonValue>;
 }
+
+/**
+ * @deprecated Use `MindScriptRequestEnvelope`.
+ * Kept for compatibility with earlier OpenSpec naming.
+ */
+export type OpenSpecRequestEnvelope<
+  TContext extends MindScriptContext = MindScriptContext,
+  TTurn extends MindScriptTurn = MindScriptTurn,
+  TInput extends JsonObject | JsonValue = JsonObject
+> = MindScriptRequestEnvelope<TContext, TTurn, TInput>;
+
+/**
+ * @deprecated Use `MindScriptContextRequestEnvelope`.
+ * Kept for compatibility with earlier OpenSpec naming.
+ */
+export type OpenSpecContextRequestEnvelope<
+  TContext extends MindScriptContext = MindScriptContext
+> = MindScriptContextRequestEnvelope<TContext>;
+
+/**
+ * @deprecated Use `MindScriptTurnRequestEnvelope`.
+ * Kept for compatibility with earlier OpenSpec naming.
+ */
+export type OpenSpecTurnRequestEnvelope<
+  TTurn extends MindScriptTurn = MindScriptTurn
+> = MindScriptTurnRequestEnvelope<TTurn>;
 
 // ---------- Patches & derived specs ----------
 export type JsonPatchOp = "add" | "replace" | "remove";
