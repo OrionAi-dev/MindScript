@@ -132,6 +132,20 @@ requirements:
 
 ---
 
+## API docs regeneration
+To refresh the TypeDoc-generated API docs locally:
+
+```bash
+pnpm install
+pnpm -r build
+bash tools/gen-docs.sh
+node tools/clean-doc-links.mjs --write
+```
+
+The script writes API output to `docs/api/` and updates `docs/index.md` with the
+latest API doc links.
+CI validates that `docs/` stays in sync with generated output, so ensure
+`git diff -- docs/` is clean before pushing.
 ## Release expectations
 - We use **SemVer + Changesets** for package versioning across the monorepo.  
 - Pre-1.0 releases treat **minor** versions as breaking changes, and **patch** as backwards-compatible fixes/features.  

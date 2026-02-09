@@ -12,6 +12,34 @@ Thank you for your interest in contributing!
 2. Create or edit specs in `docs/mindscript/`
 3. Follow the guidelines in the white paper
 
+## Documentation generation
+To rebuild the API docs and MkDocs site locally:
+
+1. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+2. Build the workspace packages (TypeDoc depends on build artifacts):
+   ```bash
+   pnpm -r build
+   ```
+3. Generate API docs with TypeDoc:
+   ```bash
+   bash tools/gen-docs.sh
+   ```
+   This script clears and regenerates `docs/api/` for each package and refreshes
+   `docs/index.md` with links to the new API docs.
+4. Normalize Markdown links created by TypeDoc:
+   ```bash
+   node tools/clean-doc-links.mjs --write
+   ```
+5. Build the MkDocs site:
+   ```bash
+   mkdocs build --strict --site-dir site
+   ```
+
+CI runs a doc-drift check after generation. If it fails, rerun the steps above
+and ensure `git diff -- docs/` is clean before pushing.
 ## Generated Artifacts
 - Package builds output to each package's `dist/` directory (for example `packages/mindql-core/dist/`).
 - OpenSpec CLI runs (see `tools/verify-monorepo.sh`) emit artifacts under `generated/`, including:
