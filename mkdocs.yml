@@ -6,6 +6,21 @@ repo_url: https://github.com/OrionAi-dev/MindScript
 repo_name: OrionAi-dev/MindScript
 edit_uri: ""
 docs_dir: docs
+exclude_docs: |
+  api/openspec-types/interfaces/OpenSpecContextRequestEnvelope.md
+  api/openspec-types/interfaces/OpenSpecRequestEnvelope.md
+  api/openspec-types/interfaces/OpenSpecTurnRequestEnvelope.md
+  api/openspec-types/type-aliases/AcceptanceCriteria.md
+  api/openspec-types/type-aliases/Context.md
+  api/openspec-types/type-aliases/Turn.md
+  api/openspec-types/variables/OPENSPEC_TYPES_RUNTIME.md
+  api/openspec-runtime/interfaces/OpenSpecContextRequestEnvelope.md
+  api/openspec-runtime/interfaces/OpenSpecRequestEnvelope.md
+  api/openspec-runtime/interfaces/OpenSpecTurnRequestEnvelope.md
+  api/openspec-runtime/type-aliases/AcceptanceCriteria.md
+  api/openspec-runtime/type-aliases/Context.md
+  api/openspec-runtime/type-aliases/Turn.md
+  api/openspec-runtime/variables/OPENSPEC_TYPES_RUNTIME.md
 
 theme:
   name: material
@@ -56,6 +71,8 @@ plugins:
       enable_creation_date: true
       type: timeago
       fallback_to_build_date: true
+      exclude:
+        - api/**
 
 markdown_extensions:
   - admonition
@@ -73,14 +90,16 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 nav:
-  - Home: index.md
+  - Start here: index.md
 
   - MindScript Spec:
       - Overview: mindscript/spec-overview.md
       - Language: mindscript/spec-language.md
       - Schema: mindscript/spec-schema.md
       - Validation: mindscript/spec-validation.md
+      - API: mindscript/api.md
       - Context Turn: mindscript/context-turn.md
+      - Protocol: mindscript/protocol.md
       - Templates: mindscript/templates.md
       - TypeScript: mindscript/typescript.md
       - Verification: mindscript/verification.md
@@ -106,10 +125,6 @@ nav:
           - Template: "mindscript/implementations/@software/template.md"
       - "BDD / openspec.core":
           - Overview: mindscript/implementations/bdd/openspec.core/README.md
-
-  - Legacy:
-      - OpenSPI Overview: openspi/overview.md
-      - (Root) OpenSpec BDD Core: spec-bdd-openspec-core.md
 
   - API Reference:
       - openspec-types:
@@ -204,3 +219,7 @@ nav:
           - Overview: api/openspec-plugin-mindgraphql/README.md
           - Functions:
               - default: api/openspec-plugin-mindgraphql/functions/default.md
+
+  - Legacy:
+      - OpenSPI Overview: openspi/overview.md
+      - (Root) OpenSpec BDD Core: spec-bdd-openspec-core.md
