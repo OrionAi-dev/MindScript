@@ -1,128 +1,122 @@
 # Quickstart
 
-This quickstart shows how to use MindScript (formerly OpenSpec) infrastructure (Context + Turn contracts) in 5 steps.
+This quickstart shows the core MindScript loop:
+
+1. Define **Context** + **Turn** contracts
+2. Validate against the canonical **JSON Schemas**
+3. Lock deterministically (timestamp + signature)
+4. Verify an output against acceptance criteria
 
 ---
 
 ## 1. Install
 
-Add the core package:
+**In this monorepo**
 
 ```bash
-npm install @mindscript/openspec-types zod
+pnpm install
+pnpm -r build
 ```
 
 ---
 
 ## 2. Create a Context
 
-Define an environment contract.
+Create `context.json`:
 
-```ts
-import type { AcceptanceCriteria, MindScriptContext } from "@mindscript/openspec-types";
-
-const criteria: AcceptanceCriteria = [
-  {
-    id: "continuity",
-    description: "Maintain Telescope continuity",
-    verifier: "contains_requirements",
-    params: { project: "Telescope" }
-  }
-];
-
-const ctx: MindScriptContext = {
-  kind: "context",
-  id: "ctx:Telescope",
-  intent: "project_session",
-  scope: { type: "project", id: "Telescope" },
-  lifespan: { mode: "rolling", ttlDays: 30 },
-  fields: {
-    tone: { type: "string", value: "concise, technical", source: "user" },
-    escape_ticks: { type: "boolean", value: true, scope: { kind: "filetype", value: "md" } }
+```json
+{
+  "kind": "context",
+  "id": "ctx:demo",
+  "intent": "demo session",
+  "scope": { "type": "session" },
+  "lifespan": { "mode": "session" },
+  "fields": {
+    "tone": { "type": "string", "value": "concise", "source": "user" }
   },
-  acceptanceCriteria: criteria,
-  lockedAt: new Date().toISOString()
-};
+  "acceptanceCriteria": [],
+  "lockedAt": "2026-02-09T00:00:00.000Z"
+}
 ```
 
 ---
 
-## 3. Draft a Turn
+## 3. Create a Turn
 
-Start a per-request contract from Context.
+Create `turn.json`:
 
-```ts
-import { MindScriptTurn } from "@mindscript/openspec-types";
-
-const turn: MindScriptTurn = {
-  kind: "turn",
-  id: "turn:1",
-  intent: "markdown_transform",
-  inheritsFrom: ctx.id,
-  fields: {
-    file: { type: "string", value: "README.md", source: "user" },
-    escape_ticks: { type: "boolean", value: true, source: "context" }
-  },
-  acceptanceCriteria: [
-    { id: "render", description: "Convert README to HTML", verifier: "output_format" },
-    { id: "ticks", description: "Backticks escaped", verifier: "lint_markdown" }
+```json
+{
+  "kind": "turn",
+  "id": "turn:demo",
+  "intent": "demo verification",
+  "inheritsFrom": "ctx:demo",
+  "fields": {},
+  "acceptanceCriteria": [
+    {
+      "id": "has_ok_true",
+      "description": "Output must equal { ok: true }",
+      "verifier": "equals",
+      "params": { "value": { "ok": true } }
+    }
   ],
-  lockedAt: new Date().toISOString()
-};
+  "lockedAt": "2026-02-09T00:00:00.000Z"
+}
 ```
 
 ---
 
-## 4. Lock & Execute
+## 4. Validate and Lock
 
-Freeze the Turn contract, map to a tool, run.
+From the repo root:
 
-```ts
-// lock: record signature + timestamp
-// execute: send to tool binding (e.g., markdown parser)
+```bash
+node packages/mindscript-cli/dist/cli.js validate context.json
+node packages/mindscript-cli/dist/cli.js validate turn.json
+node packages/mindscript-cli/dist/cli.js lock turn.json --write
 ```
 
 ---
 
-## 5. Verify
+## 5. Verify an Output
 
-Check against acceptance criteria.
+Create `output.json`:
 
-```ts
-// run verifiers: e.g., response_shape, contains_fields
-// pass/fail → decide remediation or return
+```json
+{ "ok": true }
+```
+
+Run verification:
+
+```bash
+node packages/mindscript-cli/dist/cli.js verify --turn turn.json --output output.json --write report.json
+node packages/mindscript-cli/dist/cli.js validate report.json
+```
+
+The report is a stable, machine-readable `VerificationReport`:
+
+```json
+{
+  "overall": true,
+  "results": [
+    { "criterionId": "has_ok_true", "verifier": "equals", "pass": true }
+  ],
+  "at": "..."
+}
 ```
 
 ---
 
-## (Optional) API Envelope
+## Built-In Verifiers (Core)
 
-Send Context + Turn in a single API payload.
+Core ships a small, stable verifier set:
 
-```ts
-import type { MindScriptRequestEnvelope } from "@mindscript/openspec-types";
+* `equals`
+* `contains_fields`
+* `regex_match`
+* `count_between`
+* `json_schema` (inline schema or local `schemaRef`)
+* `artifact_exists` (checks `criterion.evidence[]` local refs)
 
-const request: MindScriptRequestEnvelope = {
-  context: ctx,
-  turn,
-  input: { format: "html" },
-  requestId: "req:1234"
-};
-```
+See [verification.md](./verification.md) for details.
 
----
-
-## Summary
-
-1. Install core package
-2. Create a Context
-3. Draft a Turn from Context
-4. Lock & Execute
-5. Verify against acceptance criteria
-
-For deeper detail, see:
-
-* [spec-language.md](./spec-language.md)
-* [context-turn.md](./context-turn.md)
-* [verification.md](./verification.md)
-* [templates.md](./templates.md)

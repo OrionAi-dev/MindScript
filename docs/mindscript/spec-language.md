@@ -28,10 +28,11 @@ Each field has a consistent shape:
 * `many`: allow multiple values
 * `noneAllowed`: allow null/empty
 * `default`: default if not provided
-* `source`: `user` | `context` | `default` | `memory` | `model`
+* `source`: `system` | `user` | `context` | `default` | `memory` | `model`
 * `confidence`: interpreter confidence score
 * `rationale`: explanation of how it was set
 * `scope`: scope (`filetype`, `project`, `intent`, `global`)
+* `ext`: extension bucket for nested tooling metadata
 
 See [typescript.md](./typescript.md) for canonical TypeScript interfaces.
 
@@ -96,7 +97,8 @@ Standardized issue codes:
 
 MindScript supports multiple representations:
 
-* **TypeScript**: canonical schema and validation layer (with `zod`).
+* **JSON Schema**: canonical contract model (draft 2020-12).
+* **TypeScript**: bindings + runtime utilities (`@mindscript/runtime`) aligned to the schemas.
 * **JSON**: preferred wire format for APIs and automation.
 * **YAML**: human-readable format, often used in BDD, legal, and compliance contexts.
 
