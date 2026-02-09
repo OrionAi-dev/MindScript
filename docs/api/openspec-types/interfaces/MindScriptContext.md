@@ -1,16 +1,16 @@
-[**@mindscript/openspec-runtime**](../README.md)
+[**@mindscript/openspec-types**](../README.md)
 
 ***
 
-[@mindscript/openspec-runtime](../README.md) / OpenSpecTurn
+[@mindscript/openspec-types](../README.md) / MindScriptContext
 
-# Interface: OpenSpecTurn\<F\>
+# Interface: MindScriptContext\<F\>
 
-Defined in: [packages/openspec-types/dist/index.d.ts:103](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L103)
+Defined in: [packages/openspec-types/dist/index.d.ts:91](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L91)
 
 ## Extends
 
-- [`OpenSpecBase`](OpenSpecBase.md)\<`F`\>
+- [`MindScriptBase`](MindScriptBase.md)\<`F`\>
 
 ## Type Parameters
 
@@ -28,7 +28,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:84](https://github.com/Orio
 
 #### Inherited from
 
-[`OpenSpecBase`](OpenSpecBase.md).[`acceptanceCriteria`](OpenSpecBase.md#acceptancecriteria)
+[`MindScriptBase`](MindScriptBase.md).[`acceptanceCriteria`](MindScriptBase.md#acceptancecriteria)
 
 ***
 
@@ -40,7 +40,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:83](https://github.com/Orio
 
 #### Inherited from
 
-[`OpenSpecBase`](OpenSpecBase.md).[`fields`](OpenSpecBase.md#fields)
+[`MindScriptBase`](MindScriptBase.md).[`fields`](MindScriptBase.md#fields)
 
 ***
 
@@ -52,15 +52,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:81](https://github.com/Orio
 
 #### Inherited from
 
-[`OpenSpecBase`](OpenSpecBase.md).[`id`](OpenSpecBase.md#id)
-
-***
-
-### inheritsFrom
-
-> **inheritsFrom**: `string`
-
-Defined in: [packages/openspec-types/dist/index.d.ts:105](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L105)
+[`MindScriptBase`](MindScriptBase.md).[`id`](MindScriptBase.md#id)
 
 ***
 
@@ -72,19 +64,39 @@ Defined in: [packages/openspec-types/dist/index.d.ts:82](https://github.com/Orio
 
 #### Inherited from
 
-[`OpenSpecBase`](OpenSpecBase.md).[`intent`](OpenSpecBase.md#intent)
+[`MindScriptBase`](MindScriptBase.md).[`intent`](MindScriptBase.md#intent)
 
 ***
 
 ### kind
 
-> **kind**: `"turn"`
+> **kind**: `"context"`
 
-Defined in: [packages/openspec-types/dist/index.d.ts:104](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L104)
+Defined in: [packages/openspec-types/dist/index.d.ts:92](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L92)
 
 #### Overrides
 
-[`OpenSpecBase`](OpenSpecBase.md).[`kind`](OpenSpecBase.md#kind)
+[`MindScriptBase`](MindScriptBase.md).[`kind`](MindScriptBase.md#kind)
+
+***
+
+### lifespan
+
+> **lifespan**: `object`
+
+Defined in: [packages/openspec-types/dist/index.d.ts:97](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L97)
+
+#### maxUses?
+
+> `optional` **maxUses**: `number`
+
+#### mode
+
+> **mode**: `"session"` \| `"rolling"` \| `"pinned"`
+
+#### ttlDays?
+
+> `optional` **ttlDays**: `number`
 
 ***
 
@@ -96,7 +108,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:86](https://github.com/Orio
 
 #### Inherited from
 
-[`OpenSpecBase`](OpenSpecBase.md).[`lockedAt`](OpenSpecBase.md#lockedat)
+[`MindScriptBase`](MindScriptBase.md).[`lockedAt`](MindScriptBase.md#lockedat)
 
 ***
 
@@ -108,7 +120,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:89](https://github.com/Orio
 
 #### Inherited from
 
-[`OpenSpecBase`](OpenSpecBase.md).[`meta`](OpenSpecBase.md#meta)
+[`MindScriptBase`](MindScriptBase.md).[`meta`](MindScriptBase.md#meta)
 
 ***
 
@@ -120,7 +132,23 @@ Defined in: [packages/openspec-types/dist/index.d.ts:85](https://github.com/Orio
 
 #### Inherited from
 
-[`OpenSpecBase`](OpenSpecBase.md).[`provenance`](OpenSpecBase.md#provenance)
+[`MindScriptBase`](MindScriptBase.md).[`provenance`](MindScriptBase.md#provenance)
+
+***
+
+### scope
+
+> **scope**: `object`
+
+Defined in: [packages/openspec-types/dist/index.d.ts:93](https://github.com/OrionAi-dev/MindScript/blob/772014c2a83cedf14ab87c8e634202e2d32c1b02/packages/openspec-types/dist/index.d.ts#L93)
+
+#### id?
+
+> `optional` **id**: `string`
+
+#### type
+
+> **type**: `"project"` \| `"global"` \| `"session"` \| `"workspace"`
 
 ***
 
@@ -132,7 +160,7 @@ Defined in: [packages/openspec-types/dist/index.d.ts:88](https://github.com/Orio
 
 #### Inherited from
 
-[`OpenSpecBase`](OpenSpecBase.md).[`signature`](OpenSpecBase.md#signature)
+[`MindScriptBase`](MindScriptBase.md).[`signature`](MindScriptBase.md#signature)
 
 ***
 
@@ -144,4 +172,4 @@ Defined in: [packages/openspec-types/dist/index.d.ts:87](https://github.com/Orio
 
 #### Inherited from
 
-[`OpenSpecBase`](OpenSpecBase.md).[`version`](OpenSpecBase.md#version)
+[`MindScriptBase`](MindScriptBase.md).[`version`](MindScriptBase.md#version)

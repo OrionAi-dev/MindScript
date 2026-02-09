@@ -1,6 +1,6 @@
-# OpenSpec Overview (Specification Layer)
+# MindScript Overview (Specification Layer)
 
-OpenSpec defines requirements and acceptance criteria in a structured, machine-readable format.
+MindScript (formerly OpenSpec) defines requirements and acceptance criteria in a structured, machine-readable format.
 This complements the **infrastructure layer** (Context/Turn specs) by giving higher-level ways to describe goals and map them to contracts.
 
 ---
@@ -38,7 +38,7 @@ acceptanceCriteria:
     verifier: response_shape
 ```
 
-This requirement maps to an OpenSpec Turn contract with `fields` (`username`, `password`) and `acceptanceCriteria` that are verified after execution.
+This requirement maps to a MindScript Turn contract with `fields` (`username`, `password`) and `acceptanceCriteria` that are verified after execution.
 
 ---
 

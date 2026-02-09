@@ -1,6 +1,6 @@
-# OpenSpec: Spec Language
+# MindScript: Spec Language
 
-OpenSpec defines a consistent contract language for AI interactions.
+MindScript (formerly OpenSpec) defines a consistent contract language for AI interactions.
 The **infrastructure layer** (previously called OpenSPI) provides the primitives: Contexts, Turns, Fields, and Contracts.
 
 ---
@@ -94,7 +94,7 @@ Standardized issue codes:
 
 ## Format
 
-OpenSpec supports multiple representations:
+MindScript supports multiple representations:
 
 * **TypeScript**: canonical schema and validation layer (with `zod`).
 * **JSON**: preferred wire format for APIs and automation.

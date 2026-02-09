@@ -1,6 +1,6 @@
 # Verification
 
-Verification ensures that an execution result matches the locked contract’s acceptance criteria.
+Verification ensures that a MindScript (formerly OpenSpec) execution result matches the locked contract’s acceptance criteria.
 
 ---
 

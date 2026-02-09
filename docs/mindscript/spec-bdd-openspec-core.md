@@ -1,7 +1,8 @@
-# OpenSpec BDD: `openspec.core` (v1.0)
+# MindScript BDD: `openspec.core` (v1.0)
 
 **What it is:** a minimal, portable BDD scenario format (YAML) you can use in domains that do not already have a native BDD stack.  
-**How it is used:** just like Cucumber or Behave; your OpenSpec specs reference it via `bdd_ref.source` and `bdd_ref.path`.
+**How it is used:** just like Cucumber or Behave; your MindScript specs reference it via `bdd_ref.source` and `bdd_ref.path`.
+MindScript (formerly OpenSpec) retains the `openspec.core` profile identifier for compatibility.
 
 ---
 
@@ -18,7 +19,7 @@ If you already have a mature BDD toolchain, prefer that and just reference it.
 ## File format (YAML)
 
 **Header**
-- `profile: https://openspec.dev/profiles/bdd/openspec.core`
+- `profile: https://mindscript.dev/profiles/bdd/openspec.core`
 - `kind: bdd-core`
 - `meta.id` (for example, `AUTH-101.core`), `meta.title`, optional `meta.tags`
 
@@ -31,7 +32,7 @@ If you already have a mature BDD toolchain, prefer that and just reference it.
 
 **Minimal example**
 ```yaml
-profile: https://openspec.dev/profiles/bdd/openspec.core
+profile: https://mindscript.dev/profiles/bdd/openspec.core
 kind: bdd-core
 meta:
   id: AUTH-101.core
@@ -53,7 +54,7 @@ scenarios:
 
 ```yaml
 # inside docs/mindscript/implementations/@software/examples/AUTH-101.context-turn.yaml
-profile: https://openspec.dev/profiles/@software
+profile: https://mindscript.dev/profiles/@software
 kind: software
 meta: { id: AUTH-101, title: User can log in, owner: app-auth, priority: P0 }
 requirements:
@@ -64,7 +65,7 @@ requirements:
         type: functional
         text: Valid credentials produce a successful session
         bdd_ref:
-          source: https://openspec.dev/profiles/bdd/openspec.core
+          source: https://mindscript.dev/profiles/bdd/openspec.core
           path: ../../bdd/openspec.core/examples/AUTH-101.core.yaml
           scenario: auth-login-success
 ```
@@ -92,8 +93,8 @@ ajv validate
 
 ## Versioning
 
-- Profile URL: `https://openspec.dev/profiles/bdd/openspec.core`  
-- Schema URL: `https://openspec.dev/schemas/bdd/openspec.core-1.0.json`  
+- Profile URL: `https://mindscript.dev/profiles/bdd/openspec.core`  
+- Schema URL: `https://mindscript.dev/schemas/bdd/openspec.core-1.0.json`  
 - Use SemVer. Backward compatible additions bump the minor version, breaking changes bump the major version.
 
 ---
@@ -102,4 +103,4 @@ ajv validate
 
 - Schema and examples: `docs/mindscript/implementations/bdd/openspec.core/`  
 - `@software` BDD registry entry: `docs/mindscript/implementations/@software/bdd-registry.yaml`  
-- This page: `docs/mindscript/spec-bdd-context-turn.md`
+- This page: `docs/mindscript/spec-bdd-openspec-core.md`

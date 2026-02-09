@@ -1,6 +1,6 @@
-# OpenSpec Schema
+# MindScript Schema
 
-The OpenSpec schema defines the canonical structure for Context and Turn contracts.
+The MindScript (formerly OpenSpec) schema defines the canonical structure for Context and Turn contracts.
 It is implemented in TypeScript bindings and validated at runtime with `zod`.
 
 ---

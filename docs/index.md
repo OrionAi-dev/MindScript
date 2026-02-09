@@ -1,8 +1,8 @@
-# OpenSpec Docs
+# MindScript Docs
 
-- [OpenSpec Types](api/openspec-types/README.md)
-- [OpenSpec Runtime](api/openspec-runtime/README.md)
+- [MindScript Types](api/openspec-types/README.md)
+- [MindScript Runtime](api/openspec-runtime/README.md)
 - [MindQL Core](api/mindql-core/README.md)
 - [MindGraphQL Core](api/mindgraphql-core/README.md)
-- [OpenSpec Plugin: MindQL](api/openspec-plugin-mindql/README.md)
-- [OpenSpec Plugin: MindGraphQL](api/openspec-plugin-mindgraphql/README.md)
+- [MindScript Plugin: MindQL](api/openspec-plugin-mindql/README.md)
+- [MindScript Plugin: MindGraphQL](api/openspec-plugin-mindgraphql/README.md)

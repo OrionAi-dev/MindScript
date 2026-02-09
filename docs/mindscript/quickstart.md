@@ -1,6 +1,6 @@
 # Quickstart
 
-This quickstart shows how to use OpenSpec infrastructure (Context + Turn contracts) in 5 steps.
+This quickstart shows how to use MindScript (formerly OpenSpec) infrastructure (Context + Turn contracts) in 5 steps.
 
 ---
 
@@ -9,7 +9,7 @@ This quickstart shows how to use OpenSpec infrastructure (Context + Turn contrac
 Add the core package:
 
 ```bash
-npm install @openspi/core zod
+npm install @mindscript/openspec-types zod
 ```
 
 ---
@@ -19,9 +19,9 @@ npm install @openspi/core zod
 Define an environment contract.
 
 ```ts
-import { OpenSpecContext } from "@openspi/core";
+import { MindScriptContext } from "@mindscript/openspec-types";
 
-const ctx: OpenSpecContext = {
+const ctx: MindScriptContext = {
   kind: "context",
   id: "ctx:Telescope",
   intent: "project_session",
@@ -43,9 +43,9 @@ const ctx: OpenSpecContext = {
 Start a per-request contract from Context.
 
 ```ts
-import { OpenSpecTurn } from "@openspi/core";
+import { MindScriptTurn } from "@mindscript/openspec-types";
 
-const turn: OpenSpecTurn = {
+const turn: MindScriptTurn = {
   kind: "turn",
   id: "turn:1",
   intent: "markdown_transform",

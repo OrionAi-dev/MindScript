@@ -1,6 +1,6 @@
 # TypeScript Bindings
 
-OpenSpec is type-first. The canonical bindings are implemented in TypeScript to guarantee consistency, validation, and extensibility.
+MindScript (formerly OpenSpec) is type-first. The canonical bindings are implemented in TypeScript to guarantee consistency, validation, and extensibility.
 
 ---
 
@@ -93,7 +93,7 @@ export type FieldScope =
   | { kind: "intent"; value: string }
   | { kind: "global" };
 
-export interface OpenSpecBase<
+export interface MindScriptBase<
   F extends Record<string, SpecField> = Record<string, SpecField>
 > {
   kind: "context" | "turn";
@@ -107,17 +107,17 @@ export interface OpenSpecBase<
   signature?: string;
 }
 
-export interface OpenSpecContext<
+export interface MindScriptContext<
   F extends Record<string, SpecField> = Record<string, SpecField>
-> extends OpenSpecBase<F> {
+> extends MindScriptBase<F> {
   kind: "context";
   scope: { type: "session" | "project" | "workspace" | "global"; id?: string };
   lifespan: { mode: "session" | "rolling" | "pinned"; ttlDays?: number; maxUses?: number };
 }
 
-export interface OpenSpecTurn<
+export interface MindScriptTurn<
   F extends Record<string, SpecField> = Record<string, SpecField>
-> extends OpenSpecBase<F> {
+> extends MindScriptBase<F> {
   kind: "turn";
   inheritsFrom: string;
 }
@@ -175,6 +175,6 @@ export interface RestaurantFields {
   };
 }
 
-export type RestaurantTurn = OpenSpecTurn<RestaurantFields>;
-export type RestaurantContext = OpenSpecContext<RestaurantFields>;
+export type RestaurantTurn = MindScriptTurn<RestaurantFields>;
+export type RestaurantContext = MindScriptContext<RestaurantFields>;
 ```

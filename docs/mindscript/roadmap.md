@@ -1,4 +1,4 @@
-# OpenSpec Roadmap
+# MindScript Roadmap
 
 ## v0.1.0
 
@@ -19,14 +19,14 @@
 
 ## v0.4.0
 
-* CLI tooling: `openspi validate|lock|verify|diff`
+* CLI tooling: `mindscript validate|lock|verify|diff`
 * JSON Schema publication from TS bindings
 * Golden tests for core intents
 * Canary + rollback template promotion
 
 ## v1.0.0
 
-* Stable specification (OpenSpec + OpenSPI unified)
+* Stable specification (MindScript + OpenSPI unified)
 * Reference implementations in multiple languages
 * Full verifier stdlib hardened
 * Community-contributed template registry

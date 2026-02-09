@@ -1,10 +1,10 @@
 # Context vs Turn
 
-OpenSpec distinguishes between **Context** (long-lived environment contract) and **Turn** (ephemeral per-request contract). Together they ensure that assumptions are explicit, scoped, and auditable.
+MindScript (formerly OpenSpec) distinguishes between **Context** (long-lived environment contract) and **Turn** (ephemeral per-request contract). Together they ensure that assumptions are explicit, scoped, and auditable.
 
 ---
 
-## OpenSpec.Context
+## MindScript.Context
 
 A **Context** is a long-lived environment contract.
 
@@ -19,7 +19,7 @@ A **Context** is a long-lived environment contract.
 
 ---
 
-## OpenSpec.Turn
+## MindScript.Turn
 
 A **Turn** is an ephemeral, per-request contract.
 
