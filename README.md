@@ -143,6 +143,8 @@ node tools/clean-doc-links.mjs --write
 
 The script writes API output to `docs/api/` and updates `docs/index.md` with the
 latest API doc links.
+CI validates that `docs/` stays in sync with generated output, so ensure
+`git diff -- docs/` is clean before pushing.
 
 ---
 

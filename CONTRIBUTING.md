@@ -38,5 +38,8 @@ To rebuild the API docs and MkDocs site locally:
    mkdocs build --strict --site-dir site
    ```
 
+CI runs a doc-drift check after generation. If it fails, rerun the steps above
+and ensure `git diff -- docs/` is clean before pushing.
+
 ## Code of Conduct
 Please be respectful and collaborative in discussions.
