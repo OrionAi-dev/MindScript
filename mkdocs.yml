@@ -80,6 +80,7 @@ nav:
       - Language: mindscript/spec-language.md
       - Schema: mindscript/spec-schema.md
       - Validation: mindscript/spec-validation.md
+      - API: mindscript/api.md
       - Context Turn: mindscript/context-turn.md
       - Templates: mindscript/templates.md
       - TypeScript: mindscript/typescript.md
