@@ -25,6 +25,8 @@ yarn.lock
 dist/
 **/dist/
 *.tsbuildinfo
+generated/
+**/generated/
 
 # Docs/build artifacts
 *.pdf
