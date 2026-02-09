@@ -63,6 +63,8 @@ export interface AcceptanceCriterion {
   params?: JsonObject;               // extra arguments for verifier
 }
 
+export type AcceptanceCriteria = ReadonlyArray<AcceptanceCriterion>;
+
 export interface Provenance {
   field: string;                     // field key
   source: "user" | "context" | "default" | "memory" | "model";
@@ -75,7 +77,7 @@ export interface OpenSpecBase<F extends Record<string, SpecField> = Record<strin
   id: string;                        // unique ID for traceability
   intent: string;                    // purpose
   fields: F;                         // dynamic fields
-  acceptanceCriteria: ReadonlyArray<AcceptanceCriterion>;
+  acceptanceCriteria: AcceptanceCriteria;
   provenance?: ReadonlyArray<Provenance>;
   lockedAt: ISODateTime;             // freeze timestamp
   version?: string;                  // semver for templates/contracts
@@ -91,11 +93,44 @@ export interface OpenSpecContext<F extends Record<string, SpecField> = Record<st
   lifespan: { mode: "session" | "rolling" | "pinned"; ttlDays?: number; maxUses?: number };
 }
 
+export type Context<F extends Record<string, SpecField> = Record<string, SpecField>> = OpenSpecContext<F>;
+
 // ---------- Turn spec ----------
 export interface OpenSpecTurn<F extends Record<string, SpecField> = Record<string, SpecField>>
   extends OpenSpecBase<F> {
   kind: "turn";
   inheritsFrom: string;              // context id
+}
+
+export type Turn<F extends Record<string, SpecField> = Record<string, SpecField>> = OpenSpecTurn<F>;
+
+// ---------- API request envelopes ----------
+export interface OpenSpecRequestEnvelope<
+  TContext extends OpenSpecContext = OpenSpecContext,
+  TTurn extends OpenSpecTurn = OpenSpecTurn,
+  TInput extends JsonObject | JsonValue = JsonObject
+> {
+  context: TContext;
+  turn: TTurn;
+  input?: TInput;
+  requestId?: string;
+  meta?: Record<string, JsonValue>;
+}
+
+export interface OpenSpecContextRequestEnvelope<
+  TContext extends OpenSpecContext = OpenSpecContext
+> {
+  context: TContext;
+  requestId?: string;
+  meta?: Record<string, JsonValue>;
+}
+
+export interface OpenSpecTurnRequestEnvelope<
+  TTurn extends OpenSpecTurn = OpenSpecTurn
+> {
+  turn: TTurn;
+  requestId?: string;
+  meta?: Record<string, JsonValue>;
 }
 
 // ---------- Patches & derived specs ----------
