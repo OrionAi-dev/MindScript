@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openspec.dev/schemas/mindscript/acceptance-criteria-0.1.json",
+  "title": "MindScript Acceptance Criteria",
+  "description": "Structured, verifiable conditions attached to a Context or Turn. Versions follow SemVer; increment major for breaking changes, minor for additive changes, and patch for clarifications.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "description"],
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Stable identifier for the criterion."
+      },
+      "description": {
+        "type": "string",
+        "description": "Human-readable requirement."
+      },
+      "verifier": {
+        "type": "string",
+        "description": "Verifier name or strategy (e.g., response_shape, contains_fields)."
+      },
+      "status": {
+        "type": "string",
+        "enum": ["pending", "pass", "fail"],
+        "description": "Optional evaluation status."
+      },
+      "evidence": {
+        "type": "string",
+        "description": "Optional note or evidence that supports the status."
+      }
+    }
+  }
+}

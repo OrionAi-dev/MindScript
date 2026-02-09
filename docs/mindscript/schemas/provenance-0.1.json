@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openspec.dev/schemas/mindscript/provenance-0.1.json",
+  "title": "MindScript Provenance",
+  "description": "Audit trail entries that describe how data was produced. Versions follow SemVer; increment major for breaking changes, minor for additive changes, and patch for clarifications.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["source", "timestamp"],
+    "properties": {
+      "source": {
+        "type": "string",
+        "enum": ["user", "context", "default", "memory", "model", "system"],
+        "description": "Origin of the data."
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time",
+        "description": "ISO-8601 timestamp for when the entry was recorded."
+      },
+      "actor": {
+        "type": "string",
+        "description": "Identifier for the agent or system that created the entry."
+      },
+      "note": {
+        "type": "string",
+        "description": "Short explanation of the provenance event."
+      },
+      "data": {
+        "type": "object",
+        "description": "Optional structured data captured alongside the event.",
+        "additionalProperties": true
+      }
+    }
+  }
+}

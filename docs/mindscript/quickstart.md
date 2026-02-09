@@ -20,6 +20,16 @@ Define an environment contract.
 
 ```ts
 import { OpenSpecContext } from "@openspi/core";
+import type { AcceptanceCriteria } from "@mindscript/openspec-types";
+
+const criteria: AcceptanceCriteria = [
+  {
+    id: "continuity",
+    description: "Maintain Telescope continuity",
+    verifier: "contains_requirements",
+    params: { project: "Telescope" }
+  }
+];
 
 const ctx: OpenSpecContext = {
   kind: "context",
@@ -31,7 +41,7 @@ const ctx: OpenSpecContext = {
     tone: { type: "string", value: "concise, technical", source: "user" },
     escape_ticks: { type: "boolean", value: true, scope: { kind: "filetype", value: "md" } }
   },
-  acceptanceCriteria: ["Maintain Telescope continuity"],
+  acceptanceCriteria: criteria,
   lockedAt: new Date().toISOString()
 };
 ```
@@ -54,7 +64,10 @@ const turn: OpenSpecTurn = {
     file: { type: "string", value: "README.md", source: "user" },
     escape_ticks: { type: "boolean", value: true, source: "context" }
   },
-  acceptanceCriteria: ["Convert README to HTML", "Backticks escaped"],
+  acceptanceCriteria: [
+    { id: "render", description: "Convert README to HTML", verifier: "output_format" },
+    { id: "ticks", description: "Backticks escaped", verifier: "lint_markdown" }
+  ],
   lockedAt: new Date().toISOString()
 };
 ```
@@ -79,6 +92,23 @@ Check against acceptance criteria.
 ```ts
 // run verifiers: e.g., response_shape, contains_fields
 // pass/fail → decide remediation or return
+```
+
+---
+
+## (Optional) API Envelope
+
+Send Context + Turn in a single API payload.
+
+```ts
+import type { OpenSpecRequestEnvelope } from "@mindscript/openspec-types";
+
+const request: OpenSpecRequestEnvelope = {
+  context: ctx,
+  turn,
+  input: { format: "html" },
+  requestId: "req:1234"
+};
 ```
 
 ---

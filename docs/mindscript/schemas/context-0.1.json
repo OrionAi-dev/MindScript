@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openspec.dev/schemas/mindscript/context-0.1.json",
+  "title": "MindScript Context",
+  "description": "Shared contract that frames multiple Turns. Versions follow SemVer; increment major for breaking changes, minor for additive changes, and patch for clarifications.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "kind",
+    "id",
+    "intent",
+    "scope",
+    "lifespan",
+    "fields",
+    "acceptanceCriteria"
+  ],
+  "properties": {
+    "kind": {
+      "const": "context"
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the Context."
+    },
+    "intent": {
+      "type": "string",
+      "description": "Purpose of the Context."
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["session", "project", "workspace", "global"]
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "lifespan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["session", "rolling", "pinned"]
+        },
+        "ttlDays": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maxUses": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "fields": {
+      "type": "object",
+      "description": "Field map defining the contract payload.",
+      "additionalProperties": {
+        "$ref": "#/$defs/specField"
+      }
+    },
+    "acceptanceCriteria": {
+      "$ref": "./acceptance-criteria-0.1.json"
+    },
+    "provenance": {
+      "$ref": "./provenance-0.1.json"
+    },
+    "lockedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$",
+      "description": "Semantic version for the Context contract."
+    },
+    "signature": {
+      "type": "string",
+      "description": "Deterministic hash or signature for the Context."
+    },
+    "ext": {
+      "type": "object",
+      "description": "Namespace for extensions.",
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "specField": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["string", "number", "boolean", "enum", "object", "array", "any"]
+        },
+        "value": {},
+        "default": {},
+        "required": {
+          "type": "boolean"
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "enum": {
+          "type": "array",
+          "items": {}
+        },
+        "pattern": {
+          "type": "string"
+        },
+        "many": {
+          "type": "boolean"
+        },
+        "noneAllowed": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string",
+          "enum": ["user", "context", "default", "memory", "model", "system"]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "ext": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    }
+  }
+}
