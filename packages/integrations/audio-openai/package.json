@@ -1,0 +1,38 @@
+{
+  "name": "@mindscript/integration-audio-openai",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./adapters/openai": {
+      "types": "./dist/adapters/openai.d.ts",
+      "import": "./dist/adapters/openai.js",
+      "require": "./dist/adapters/openai.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --dts --format esm,cjs",
+    "smoke": "node scripts/smoke.mjs",
+    "test": "node --test",
+    "smoke:import": "node scripts/smoke-import.mjs"
+  },
+  "dependencies": {
+    "@mindscript/openspec-types": "workspace:*",
+    "openai": "^6.15.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  }
+}

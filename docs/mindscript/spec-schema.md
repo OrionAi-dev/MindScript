@@ -1,82 +1,75 @@
 # MindScript Schema
 
-The MindScript (formerly OpenSpec) schema defines the canonical structure for Context and Turn contracts.
-It is implemented in TypeScript bindings and validated at runtime with `zod`.
+MindScript contracts are defined by canonical **JSON Schemas** (draft 2020-12).
+
+* Canonical package: `@mindscript/schema` (`packages/mindscript-schema/`)
+* Human-browsable copies: `docs/mindscript/schemas/`
+* Runtime validator: `@mindscript/runtime` (AJV)
 
 ---
 
-## Top-Level Spec
+## Canonical Schemas
 
-Every spec must include:
+Core schemas (current version `0.1`):
 
-* **kind**: `"context"` | `"turn"`
-* **id**: unique identifier
-* **intent**: description of the purpose
-* **fields**: mapping of field keys to `SpecField` objects
-* **acceptanceCriteria**: list of conditions to verify
-* **lockedAt**: ISO datetime when contract was frozen
-* **provenance**: optional audit trail of how fields were set
-* **version**: optional semantic version string
-* **signature**: optional deterministic hash
+* Context: `docs/mindscript/schemas/context-0.1.json`
+* Turn: `docs/mindscript/schemas/turn-0.1.json`
+* Acceptance criteria: `docs/mindscript/schemas/acceptance-criteria-0.1.json`
+* Provenance: `docs/mindscript/schemas/provenance-0.1.json`
+* Verification report: `docs/mindscript/schemas/verification-report-0.1.json`
+* Shared definitions: `docs/mindscript/schemas/defs-0.1.json`
 
 ---
 
-## Context
+## Contract Highlights
 
-Additional required fields for Context:
+### Context and Turn
 
-* **scope**: `{ type: "session" | "project" | "workspace" | "global", id?: string }`
-* **lifespan**: `{ mode: "session" | "rolling" | "pinned", ttlDays?: number, maxUses?: number }`
+Both share:
 
----
+* `fields`: `Record<string, SpecField>`
+* `acceptanceCriteria`: `AcceptanceCriterion[]`
+* `provenance`: optional audit entries
+* `lockedAt`: required ISO date-time
+* `signature`: optional deterministic hash
+* `meta`: extension bucket (free-form)
 
-## Turn
+Context adds:
 
-Additional required fields for Turn:
+* `scope`: `{ type: "session" | "project" | "workspace" | "global", id?: string }`
+* `lifespan`: `{ mode: "session" | "rolling" | "pinned", ttlDays?: number, maxUses?: number }`
 
-* **inheritsFrom**: ID of the Context it derives from
+Turn adds:
 
----
+* `inheritsFrom`: Context id string
 
-## SpecField
+### SpecField
 
-Each field has a consistent structure:
+`SpecField` is a recursively-typed description of a field.
 
-* **type**: `"string" | "number" | "boolean" | "enum" | "object" | "array" | "any"`
-* **value / default**: actual or default values
-* **required**: must be present before execution
-* **min / max**: numeric or length constraints
-* **enum**: allowed values
-* **pattern**: regex for strings
-* **many**: allow multiple values
-* **noneAllowed**: allow null/empty
-* **description**: human-readable text
-* **source**: `"user" | "context" | "default" | "memory" | "model"`
-* **confidence**: 0–1 confidence score
-* **rationale**: explanation of how it was set
-* **scope**: filetype/project/intent/global
-* **ext**: extension namespace for custom properties
+Key properties include:
 
----
+* `type`: `"string" | "number" | "boolean" | "enum" | "object" | "array" | "any"`
+* `value`, `default`, constraints (`min`, `max`, `enum`, `pattern`, ...)
+* `source`: `"system" | "user" | "context" | "default" | "memory" | "model"`
+* `scope`: `{ kind: "filetype" | "project" | "intent" | "global", ... }`
+* `ext`: extension bucket (free-form)
 
-## Acceptance Criteria
+### AcceptanceCriterion
 
-Structured list of verifiable conditions:
+Acceptance criteria are always structured objects:
 
-```yaml
-acceptanceCriteria:
-  - id: LEGAL-202.1
-    description: Invoices are due within 30 days
-    verifier: response_shape
-  - id: LEGAL-202.2
-    description: Late payments accrue 5% monthly fee
-    verifier: contains_fields
-```
+* `id` (required)
+* `description` (required)
+* `verifier` (required)
+* `params` (optional)
+* `evidence[]` (optional, framework-agnostic references)
 
 ---
 
 ## Cross-References
 
-* [spec-language.md](./spec-language.md) → full description of fields & contracts
-* [typescript.md](./typescript.md) → canonical TypeScript interfaces
-* [verification.md](./verification.md) → verifiers and acceptance criteria checks
+* [spec-language.md](./spec-language.md) for the narrative model
+* [spec-validation.md](./spec-validation.md) for CLI/runtime validation
+* [verification.md](./verification.md) for verifiers and reports
+

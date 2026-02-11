@@ -1,86 +1,91 @@
 # Verification
 
-Verification ensures that a MindScript (formerly OpenSpec) execution result matches the locked contract’s acceptance criteria.
+Verification checks that an output matches a locked contract’s acceptance criteria.
+
+In core, verification is **provider/framework-agnostic**:
+
+* Criteria are structured objects: `{ id, description, verifier, params?, evidence? }`
+* Verifiers are pluggable functions registered by id
+* Results are emitted as a stable `VerificationReport`
 
 ---
 
 ## Acceptance Criteria
 
-Each spec includes a list of **acceptanceCriteria**:
-
-* **id**: unique identifier (e.g., `within_radius`)
-* **description**: human-readable
-* **verifier**: reference to a registered verifier
-* **params**: optional arguments to the verifier
-
-Example:
+Example criterion:
 
 ```json
 {
-  "id": "radius_check",
-  "description": "Result must be within 10 minutes walking distance",
-  "verifier": "count_between",
-  "params": { "min": 1, "max": 10 }
+  "id": "has_required_fields",
+  "description": "Output contains id + title",
+  "verifier": "contains_fields",
+  "params": { "fields": ["id", "title"] }
+}
+```
+
+Optional evidence references (framework-agnostic):
+
+```json
+{
+  "id": "artifact_present",
+  "description": "Build produced an artifact",
+  "verifier": "artifact_exists",
+  "evidence": [{ "ref": "dist/report.json", "checksum": "sha256:..." }]
 }
 ```
 
 ---
 
-## Verifiers
+## Built-In Verifiers (Core)
 
-* **Registry**: pluggable functions registered by `key`.
-* **Signature**: `(output, params) → { pass: boolean, details?: string }`
-* **Stdlib** (built-in):
+Core ships a minimal stable set:
 
-  * `count_between`: check array length
-  * `sorted_by`: verify ordering
-  * `contains_fields`: required fields present
-  * `unique_by`: uniqueness on a field
-  * `response_shape`: pluggable structural check (predicate or schema hook)
+* `equals`: deep-equality vs `params.value`
+* `contains_fields`: object or array-of-objects contains `params.fields` (string[])
+* `regex_match`: string output matches `params.pattern` (+ optional `params.flags`)
+* `count_between`: array length between `params.min` and `params.max`
+* `json_schema`: validate output against JSON Schema (`params.schema` inline or `params.schemaRef` local path)
+* `artifact_exists`: verifies `criterion.evidence[]` local refs exist (optional sha256 checksum)
 
----
-
-## Workflow
-
-1. Executor produces `output`.
-2. For each criterion:
-
-   * Look up verifier by `verifier` key.
-   * Run against `output` with `params`.
-   * Record result: pass/fail + details.
-3. Aggregate results → overall pass/fail.
+Everything else belongs in integrations.
 
 ---
 
-## Policies
+## VerificationReport
 
-* If **all criteria pass** → contract fulfilled.
-* If **any fail** → return structured error with failure details.
-* Failure handling:
-
-  * **Retry**: ask clarifiers, re-execute.
-  * **Escalate**: flag to user or system.
-  * **Rollback**: revert template if systematic.
-
----
-
-## Example: Verifier Run
+Verification produces a stable report:
 
 ```json
 {
-  "contractId": "turn:123",
+  "contextId": "ctx:demo",
+  "turnId": "turn:demo",
+  "overall": true,
   "results": [
-    { "id": "radius_check", "pass": true, "details": "length=3, min=1, max=10" },
-    { "id": "sorted", "pass": false, "details": "Order violation at index 2" }
+    {
+      "criterionId": "has_required_fields",
+      "verifier": "contains_fields",
+      "pass": true,
+      "details": "Output contains: id, title"
+    }
   ],
-  "overall": false
+  "at": "2026-02-09T00:00:00.000Z"
 }
 ```
 
 ---
 
-## Cross-References
+## CLI and Runtime
 
-* [spec-language.md](./spec-language.md) → acceptanceCriteria field definition
-* [templates.md](./templates.md) → template promotion criteria use verifier results
-* [quickstart.md](./quickstart.md) → shows locking & verifying in code
+CLI:
+
+```bash
+node packages/mindscript-cli/dist/cli.js verify --turn turn.json --output output.json --write report.json
+```
+
+Runtime:
+
+```ts
+import { verifyOutput } from "@mindscript/runtime";
+const report = await verifyOutput({ output, criteria });
+```
+

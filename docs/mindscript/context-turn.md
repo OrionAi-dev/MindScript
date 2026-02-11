@@ -34,8 +34,9 @@ A **Turn** is an ephemeral, per-request contract.
 ## Inheritance Rules
 
 * A Turn can override Context fields.
-* **Precedence order**: `user` > `turn-explicit` > `context` > `preference` > `default` > `model`
-* Conflicts trigger clarifiers or error flags.
+* **Precedence order** (highest wins): `system` > `user` > `context` > `memory` > `default` > `model` > unset
+* Precedence is determined by `fields.*.source`. If two fields have the same precedence, the Turn value wins.
+* Conflicts should trigger clarifiers or error flags at the application layer.
 
 ---
 
@@ -64,8 +65,8 @@ A **Turn** is an ephemeral, per-request contract.
     "tone": { "type": "string", "value": "concise, technical", "source": "user" },
     "escape_ticks": { "type": "boolean", "value": true, "scope": { "kind": "filetype", "value": "md" } }
   },
-  "acceptanceCriteria": ["Maintain Telescope continuity"],
-  "lockedAt": "2025-08-30T00:00:00Z"
+  "acceptanceCriteria": [],
+  "lockedAt": "2026-02-09T00:00:00.000Z"
 }
 ```
 
@@ -81,7 +82,14 @@ A **Turn** is an ephemeral, per-request contract.
     "file": { "type": "string", "value": "README.md", "source": "user" },
     "escape_ticks": { "type": "boolean", "value": true, "source": "context" }
   },
-  "acceptanceCriteria": ["Convert README to HTML", "Backticks escaped"],
-  "lockedAt": "2025-08-30T00:01:00Z"
+  "acceptanceCriteria": [
+    {
+      "id": "contains_title",
+      "description": "Output contains a title field",
+      "verifier": "contains_fields",
+      "params": { "fields": ["title"] }
+    }
+  ],
+  "lockedAt": "2026-02-09T00:01:00.000Z"
 }
 ```

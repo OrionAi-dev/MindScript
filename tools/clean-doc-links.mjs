@@ -26,6 +26,24 @@ const target = {
   contextTurn: path.join(docsDir, "mindscript", "context-turn.md"),
 };
 
+const legacyLinkMap = {
+  openspi: {
+    overview: path.join(docsDir, "openspi", "overview.md"),
+    "spec-language": path.join(docsDir, "mindscript", "spec-language.md"),
+    "context-turn": path.join(docsDir, "mindscript", "context-turn.md"),
+    typescript: path.join(docsDir, "mindscript", "typescript.md"),
+    verification: path.join(docsDir, "mindscript", "verification.md"),
+    templates: path.join(docsDir, "mindscript", "templates.md"),
+    quickstart: path.join(docsDir, "mindscript", "quickstart.md"),
+    roadmap: path.join(docsDir, "mindscript", "roadmap.md"),
+  },
+  openspec: {
+    overview: path.join(docsDir, "mindscript", "spec-overview.md"),
+    "spec-language": path.join(docsDir, "mindscript", "spec-language.md"),
+    templates: path.join(docsDir, "mindscript", "templates.md"),
+  },
+};
+
 function rewrite(fileAbs, content) {
   let txt = content;
 
@@ -35,22 +53,20 @@ function rewrite(fileAbs, content) {
     () => `(${rel(fileAbs, target.contextTurn)})`
   );
 
-  // 2) Legacy "openspi/<page>.md" -> "mindscript/<page>.md"
-  txt = txt.replace(
-    /\((?:\.{0,2}\/)*openspi\/([a-z0-9\-]+)\.md\)/gi,
-    (_m, page) => `(${rel(fileAbs, path.join(docsDir, "mindscript", `${page}.md`))})`
-  );
-
-  // 3) Legacy "openspec/<page>.md" -> "mindscript/<page>.md" (seen in spec-bdd-openspec-core.md)
-  txt = txt.replace(
-    /\((?:\.{0,2}\/)*openspec\/([a-z0-9\-]+)\.md\)/gi,
-    (_m, page) => `(${rel(fileAbs, path.join(docsDir, "mindscript", `${page}.md`))})`
-  );
+  // 2) Legacy links -> stable targets (only for known pages)
+  txt = txt.replace(/\((?:\.{0,2}\/)*openspi\/([a-z0-9\-]+)\.md\)/gi, (_m, page) => {
+    const dst = legacyLinkMap.openspi[page];
+    return dst ? `(${rel(fileAbs, dst)})` : _m;
+  });
+  txt = txt.replace(/\((?:\.{0,2}\/)*openspec\/([a-z0-9\-]+)\.md\)/gi, (_m, page) => {
+    const dst = legacyLinkMap.openspec[page];
+    return dst ? `(${rel(fileAbs, dst)})` : _m;
+  });
 
   // 4) API landing links on Home page -> .../README.md
   if (path.basename(fileAbs) === "index.md") {
     txt = txt.replace(
-      /\bapi\/(openspec-types|openspec-runtime|mindql-core|mindgraphql-core|openspec-plugin-mindql|openspec-plugin-mindgraphql)\b(?!\/README\.md)/g,
+      /\bapi\/(schema|runtime|cli|legacy\/openspec-types|legacy\/openspec-runtime|integrations\/mindql-core|integrations\/mindgraphql-core|integrations\/openspec-plugin-mindql|integrations\/openspec-plugin-mindgraphql)\b(?!\/README\.md)/g,
       "api/$1/README.md"
     );
   }

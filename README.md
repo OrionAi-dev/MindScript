@@ -92,9 +92,9 @@ MindScript references executable scenarios through `bdd_ref`. Use any supported 
 - Robot  
 - SpecFlow  
 - **MindScript Core (formerly OpenSpec Core)**: a minimal YAML BDD format for domains without a native BDD stack, and for teams that want a flexible, schema-validated BDD language.  
-  - Docs: `docs/mindscript/spec-bdd-openspec-core.md`  
-  - Schema: `docs/mindscript/implementations/bdd/openspec.core/schema.yaml`  
-  - Example: `docs/mindscript/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml`
+  - Docs: `docs/integrations/bdd/openspec.core/README.md`  
+  - Schema: `docs/integrations/bdd/openspec.core/schema.yaml`  
+  - Example: `docs/integrations/bdd/openspec.core/examples/AUTH-101.core.yaml`
 
 **Example: referencing `openspec.core` from a spec**
 ```yaml
@@ -115,7 +115,7 @@ requirements:
         text: Valid credentials produce a successful session
         bdd_ref:
           source: https://mindscript.dev/profiles/bdd/openspec.core
-          path: docs/mindscript/implementations/bdd/openspec.core/examples/AUTH-101.core.yaml
+          path: docs/integrations/bdd/openspec.core/examples/AUTH-101.core.yaml
           scenario: auth-login-success
 ```
 
@@ -146,8 +146,7 @@ bash tools/gen-docs.sh
 node tools/clean-doc-links.mjs --write
 ```
 
-The script writes API output to `docs/api/` and updates `docs/index.md` with the
-latest API doc links.
+The scripts write API output to `docs/api/` and normalize internal links for MkDocs.
 CI validates that `docs/` stays in sync with generated output, so ensure
 `git diff -- docs/` is clean before pushing.
 ## Release expectations

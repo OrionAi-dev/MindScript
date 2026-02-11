@@ -1,50 +1,60 @@
 # MindScript Validation
 
-Validation ensures MindScript (formerly OpenSpec) specs are consistent, complete, and unambiguous before they are executed.
+Validation ensures MindScript contracts are structurally correct **before** they are locked, executed, or verified.
+
+The core project treats **JSON Schema as canonical** and validates with **AJV (draft 2020-12)**.
 
 ---
 
-## Core Rules
+## What Gets Validated
 
-1. Every spec must have a unique `id`.
-2. Each spec must declare a valid `kind`: `"context"` or `"turn"`.
-3. `fields` must conform to `SpecField` typing (type, constraints, scope).
-4. `acceptanceCriteria` must reference valid verifiers and contain unique `id`s.
-5. `lockedAt` must be an ISO datetime string.
-6. Contexts must declare a valid `scope` and `lifespan`.
-7. Turns must include `inheritsFrom` referencing a valid Context.
-8. Circular references between specs should be avoided.
-9. Provenance records must align with declared field keys.
+1. **Shape**: Context/Turn match the canonical JSON Schemas.
+2. **Strictness**: unknown top-level keys are rejected (`additionalProperties: false`), but extensions are allowed via:
+   * `meta` (top-level)
+   * `fields.*.ext`
+3. **Acceptance criteria**: `acceptanceCriteria[]` is structured objects (no string shorthand).
+
+Some checks are intentionally out of scope for schema validation (for example: whether `inheritsFrom` points to a real Context id, or whether a verifier is registered at runtime).
 
 ---
 
-## Schema Alignment
+## CLI
 
-* Validation is enforced at runtime with [`zod`](https://zod.dev) schemas.
-* The TypeScript bindings (`types.ts`, `validators.ts`) are the canonical source.
-* JSON Schema can be generated from TypeScript for language-agnostic validation.
-
----
-
-## Tooling
-
-* **CLI Validator** (planned): `mindscript validate path/to/spec.yaml`
-* **CI Integration**: add validation to pipelines to ensure only valid contracts are committed.
-* **Golden Tests**: verify that promoted templates consistently pass their acceptance criteria.
-
----
-
-## Example
+Validate a file (JSON or YAML):
 
 ```bash
-# Validate a spec file
-mindscript validate docs/mindscript/examples/ctx-telescope.yaml
+node packages/mindscript-cli/dist/cli.js validate path/to/spec.json
+```
+
+Exit codes:
+
+* `0` valid
+* `1` schema validation error / unknown shape
+
+---
+
+## TypeScript Runtime
+
+If you need validation inside an app:
+
+```ts
+import { validateContext, validateTurn } from "@mindscript/runtime";
+
+const res = validateTurn(turn);
+if (!res.ok) {
+  // res.errors: [{ path, message, keyword?, schemaPath?, params? }]
+}
 ```
 
 ---
 
-## Cross-References
+## Schema Drift Guard (Docs)
 
-* [spec-schema.md](./spec-schema.md) → field definitions and schema
-* [verification.md](./verification.md) → how acceptance criteria are checked
-* [templates.md](./templates.md) → how validation gates promotion
+This repo keeps copies of the canonical schemas under `docs/mindscript/schemas/` for easy browsing.
+
+CI enforces that those docs copies match the canonical package:
+
+```bash
+pnpm check:schema-drift
+```
+

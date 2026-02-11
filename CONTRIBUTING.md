@@ -58,8 +58,7 @@ To rebuild the API docs and MkDocs site locally:
    ```bash
    bash tools/gen-docs.sh
    ```
-   This script clears and regenerates `docs/api/` for each package and refreshes
-   `docs/index.md` with links to the new API docs.
+   This script clears and regenerates `docs/api/` for each package.
 4. Normalize Markdown links created by TypeDoc:
    ```bash
    node tools/clean-doc-links.mjs --write
@@ -72,7 +71,7 @@ To rebuild the API docs and MkDocs site locally:
 CI runs a doc-drift check after generation. If it fails, rerun the steps above
 and ensure `git diff -- docs/` is clean before pushing.
 ## Generated Artifacts
-- Package builds output to each package's `dist/` directory (for example `packages/mindql-core/dist/`).
+- Package builds output to each package's `dist/` directory (for example `packages/mindscript-runtime/dist/`).
 - MindScript CLI runs (see `tools/verify-monorepo.sh`) emit artifacts under `generated/`, including:
   - `generated/mindql/ast.json`
   - `generated/graphql/schema.graphql`

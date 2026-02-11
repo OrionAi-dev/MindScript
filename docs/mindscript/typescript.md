@@ -1,46 +1,39 @@
 # TypeScript Bindings
 
-MindScript (formerly OpenSpec) is type-first. The canonical bindings are implemented in TypeScript to guarantee consistency, validation, and extensibility.
+MindScript ships TypeScript types and runtime helpers, aligned to the canonical JSON Schemas.
+
+* Canonical schemas: `@mindscript/schema`
+* Runtime (AJV + continuity + verification): `@mindscript/runtime`
+* CLI: `@mindscript/cli`
 
 ---
 
-## Goals
+## Core Types
 
-* **Type safety**: Every spec is a typed object.
-* **Consistency**: `SpecField` uses discriminated unions.
-* **Validation**: Runtime checks with [zod](https://zod.dev).
-* **Extensibility**: Support module augmentation and `ext` namespaces.
-
----
-
-## Core primitives
+The runtime exports the core contracts:
 
 ```ts
-export type JsonPrimitive = string | number | boolean | null;
-export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
-export interface JsonObject { [k: string]: JsonValue }
-export interface JsonArray extends Array<JsonValue> {}
-
-export type ISODateTime = string & { readonly __brand: "ISODateTime" };
+import type {
+  MindScriptContext,
+  MindScriptTurn,
+  SpecField,
+  AcceptanceCriterion,
+  EvidenceRef,
+  ProvenanceEntry
+} from "@mindscript/runtime";
 ```
 
----
+### `SpecField`
 
-## SpecField
+`SpecField` describes a field (including nested objects/arrays):
 
 ```ts
-export type FieldType =
-  | "string"
-  | "number"
-  | "boolean"
-  | "enum"
-  | "object"
-  | "array"
-  | "any";
+export type FieldSource = "system" | "user" | "context" | "default" | "memory" | "model";
 
 export interface BaseField<T = unknown> {
-  type: FieldType;
+  type: "string" | "number" | "boolean" | "enum" | "object" | "array" | "any";
   value?: T;
+  default?: T;
   required?: boolean;
   min?: number;
   max?: number;
@@ -48,133 +41,70 @@ export interface BaseField<T = unknown> {
   pattern?: string;
   many?: boolean;
   noneAllowed?: boolean;
-  default?: T;
   description?: string;
-  source?: "user" | "context" | "default" | "memory" | "model";
+  source?: FieldSource;
   confidence?: number;
   rationale?: string;
-  scope?: FieldScope;
-  ext?: Record<string, JsonValue>; // extensibility bucket
+  scope?: { kind: "filetype" | "project" | "intent" | "global"; value?: string; id?: string };
+  ext?: Record<string, unknown>;
 }
-
-export type SpecField<T = unknown> = BaseField<T> &
-  (
-    | { type: "string"; value?: string; default?: string }
-    | { type: "number"; value?: number; default?: number }
-    | { type: "boolean"; value?: boolean; default?: boolean }
-    | { type: "enum"; enum: readonly T[]; value?: T; default?: T }
-    | { type: "object"; properties?: Record<string, SpecField> }
-    | { type: "array"; items?: SpecField }
-    | { type: "any" }
-  );
 ```
 
----
+### Acceptance criteria + evidence
 
-## Spec, Context, Turn
+Criteria are framework-agnostic and can reference evidence:
 
 ```ts
+export interface EvidenceRef {
+  ref: string;            // local path or URL
+  kind?: string;          // "test" | "doc" | "artifact" | ...
+  selector?: string;      // integration-defined selector
+  checksum?: string;      // recommended: "sha256:<hex>"
+  ext?: Record<string, unknown>;
+}
+
 export interface AcceptanceCriterion {
   id: string;
   description: string;
   verifier: string;
-  params?: JsonObject;
-}
-
-export interface Provenance {
-  field: string;
-  source: "user" | "context" | "default" | "memory" | "model";
-  rationale?: string;
-}
-
-export type FieldScope =
-  | { kind: "filetype"; value: string }
-  | { kind: "project"; id: string }
-  | { kind: "intent"; value: string }
-  | { kind: "global" };
-
-export interface MindScriptBase<
-  F extends Record<string, SpecField> = Record<string, SpecField>
-> {
-  kind: "context" | "turn";
-  id: string;
-  intent: string;
-  fields: F;
-  acceptanceCriteria: ReadonlyArray<AcceptanceCriterion>;
-  provenance?: ReadonlyArray<Provenance>;
-  lockedAt: ISODateTime;
-  version?: string;
-  signature?: string;
-}
-
-export interface MindScriptContext<
-  F extends Record<string, SpecField> = Record<string, SpecField>
-> extends MindScriptBase<F> {
-  kind: "context";
-  scope: { type: "session" | "project" | "workspace" | "global"; id?: string };
-  lifespan: { mode: "session" | "rolling" | "pinned"; ttlDays?: number; maxUses?: number };
-}
-
-export interface MindScriptTurn<
-  F extends Record<string, SpecField> = Record<string, SpecField>
-> extends MindScriptBase<F> {
-  kind: "turn";
-  inheritsFrom: string;
+  params?: Record<string, unknown>;
+  evidence?: ReadonlyArray<EvidenceRef>;
 }
 ```
 
----
+### Provenance
 
-## Patches & ToolBindings
+Provenance entries support both audit trails and per-field attribution:
 
 ```ts
-export type JsonPatchOp = "add" | "replace" | "remove";
-export interface JsonPatch { op: JsonPatchOp; path: string; value?: JsonValue }
-
-export interface DerivedSpec {
-  baseId: string;
-  patches: ReadonlyArray<JsonPatch>;
-  provenance: ReadonlyArray<Provenance>;
-}
-
-export interface ToolBinding<
-  P extends Record<string, SpecField> = Record<string, SpecField>
-> {
-  intent: string;
-  tool: string;
-  paramMap: { [K in keyof P]?: string } & Record<string, string>;
+export interface ProvenanceEntry {
+  source: FieldSource;
+  at: string;       // ISO date-time
+  field?: string;   // key or JSON Pointer
+  actor?: string;
+  note?: string;
+  data?: Record<string, unknown>;
+  ext?: Record<string, unknown>;
 }
 ```
 
 ---
 
-## Validation & Tooling
+## Runtime Validation
 
-* Generate JSON Schema from TypeScript via [`ts-json-schema-generator`](https://github.com/YousefED/typescript-json-schema).
-* Runtime validation with `zod`.
-* Enforce strict mode in `tsconfig`:
-
-  * `strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`
-* ESLint rules: forbid `any`, enforce readonly.
-
----
-
-## Example: Restaurant Turn
+Validation uses AJV against the canonical JSON Schemas:
 
 ```ts
-export interface RestaurantFields {
-  definition_of_best: SpecField<
-    "highest_rated" | "best_value" | "closest"
-  > & { type: "enum" };
-  cuisine: SpecField<string> & { type: "string" };
-  radius_minutes: SpecField<number> & {
-    type: "number";
-    min?: 1;
-    max?: 60;
-    default?: 15;
-  };
-}
+import { validateContext, validateTurn } from "@mindscript/runtime";
 
-export type RestaurantTurn = MindScriptTurn<RestaurantFields>;
-export type RestaurantContext = MindScriptContext<RestaurantFields>;
+const res = validateTurn(turn);
+if (!res.ok) console.error(res.errors);
 ```
+
+---
+
+## Note On Legacy Types
+
+Older OpenSpec-named packages (`@mindscript/openspec-types`, `@mindscript/openspec-runtime`) remain as compatibility wrappers.
+Any generator/plugin-specific types should live under `packages/integrations/*` rather than in the core runtime.
+

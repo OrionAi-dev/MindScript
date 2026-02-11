@@ -6,26 +6,23 @@ rm -rf "$OUT"
 mkdir -p "$OUT"
 
 gen() {
-  local pkgdir="$1"
+  local pkgdir="$1" # path relative to ./packages (may include slashes)
   local sub="$2"
   cd "$ROOT/packages/$pkgdir"
   pnpm exec typedoc --options typedoc.json --out "$OUT/$sub"
 }
 
-gen openspec-types openspec-types
-gen openspec-runtime openspec-runtime
-gen mindql-core mindql-core
-gen mindgraphql-core mindgraphql-core
-gen openspec-plugin-mindql openspec-plugin-mindql
-gen openspec-plugin-mindgraphql openspec-plugin-mindgraphql
+# Core (canonical)
+gen mindscript-schema schema
+gen mindscript-runtime runtime
+gen mindscript-cli cli
 
-cat > "$ROOT/docs/index.md" <<'MD'
-# MindScript Docs
+# Compatibility (legacy OpenSpec naming)
+gen openspec-types legacy/openspec-types
+gen openspec-runtime legacy/openspec-runtime
 
-- [MindScript Types](api/openspec-types)
-- [MindScript Runtime](api/openspec-runtime)
-- [MindQL Core](api/mindql-core)
-- [MindGraphQL Core](api/mindgraphql-core)
-- [MindScript Plugin: MindQL](api/openspec-plugin-mindql)
-- [MindScript Plugin: MindGraphQL](api/openspec-plugin-mindgraphql)
-MD
+# Integrations / generators (optional)
+gen integrations/mindql-core integrations/mindql-core
+gen integrations/mindgraphql-core integrations/mindgraphql-core
+gen integrations/openspec-plugin-mindql integrations/openspec-plugin-mindql
+gen integrations/openspec-plugin-mindgraphql integrations/openspec-plugin-mindgraphql
